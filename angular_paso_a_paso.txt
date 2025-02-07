@@ -104,24 +104,24 @@
 
 --- 02.04. Modificar código del archivo 'app01/src/app/app.component.html', eliminando líneas de código y quedando así:
 
-           1.  <main class="main">
-           2.  
-           3.  </main>
-           4.  
-           5.  <router-outlet />
+            1.  <main class="main">
+            2.  
+            3.  </main>
+            4.  
+            5.  <router-outlet />
 
 --- 02.05. Seguir modificando el código del archivo 'app01/src/app/app.component.html', creando las siguientes líneas de código:
 
-           1.  <main class="main">
-           2.    <header class="brand-home">
-           3.      <img class="brand-logo" src="" alt="logo" />
-           4.    </header>
-           5.    <section class="content">
-           6.
-           7.    </section>
-           8.  </main>
-           9.
-          10.  <router-outlet />
+            1.  <main class="main">
+            2.    <header class="brand-home">
+            3.      <img class="brand-logo" src="" alt="logo" />
+            4.    </header>
+            5.    <section class="content">
+            6.
+            7.    </section>
+            8.  </main>
+            9.
+           10.  <router-outlet />
 
 --- 02.06. Crear la carpeta 'assets' en la carpeta 'public'
 --- 02.07. En la carpeta 'public/assets', cargar la siguiente imagen:
@@ -130,30 +130,29 @@
 
 --- 02.08. Seguir modificando el código del archivo 'app01/src/app/app.component.html', en la línea 3 y 6:
            
-           3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
-           6.      <app-home></app-home>
+            3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
+            6.      <app-home></app-home>
 
 --- 02.09. Modificar código del archivo 'app01/src/app/app.component.ts', para agregar el nuevo componente, línea 6:
 
-           6.      imports: [RouterOutlet, HomeComponent],
+            6.      imports: [RouterOutlet, HomeComponent],
 
---- 02.09. Seguir modificando código del archivo 'app01/src/app/app.component.ts' en la línea 6, para importar el componente 
+--- 02.09. Seguir modificando el código del archivo 'app01/src/app/app.component.ts' en la línea 6, para importar el componente 
            creado, presionando 'Ctrl + Space' al final de 'HomeComponent' y seleccionando el mismo nombre, quedando así:
 
-           1.  import { Component } from '@angular/core';
-           2.  import { RouterOutlet } from '@angular/router';
-           3.  import { HomeComponent } from './components/home/home.component';
-           4.
-           5.  @Component({
-           6.    selector: 'app-root',
-           7.    imports: [RouterOutlet, HomeComponent],
-           8.    templateUrl: './app.component.html',
-           9.    styleUrl: './app.component.css'
-          10.  })
-          11.  export class AppComponent {
-          12.    title:number = 35;
-          13.  }
-
+            1.  import { Component } from '@angular/core';
+            2.  import { RouterOutlet } from '@angular/router';
+            3.  import { HomeComponent } from './components/home/home.component';
+            4.
+            5.  @Component({
+            6.    selector: 'app-root',
+            7.    imports: [RouterOutlet, HomeComponent],
+            8.    templateUrl: './app.component.html',
+            9.    styleUrl: './app.component.css'
+           10.  })
+           11.  export class AppComponent {
+           12.    title:number = 35;
+           13.  }
 
 
 |------------------------------------------------------------------------------------------------------------------------------------|

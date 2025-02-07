@@ -124,4 +124,22 @@
           10.  <router-outlet />
 
 --- 02.06. Crear la carpeta 'assets' en la carpeta 'public'
---- 02.07. En la carpeta 'public/assets', cargar la siguiente imagen
+--- 02.07. En la carpeta 'public/assets', cargar la siguiente imagen:
+
+           https://github.com/ProfeAlbeiro/angular/blob/main/app01/public/assets/logo.svg
+
+--- 02.08. Seguir modificando el código del archivo 'app01/src/app/app.component.html', en la línea 3:
+           
+           3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
+
+--- 02.10. Seguir modificando el código del archivo 'app01/src/app/app.component.html', en la línea 3:
+
+
+
+
+
+
+
+
+
+

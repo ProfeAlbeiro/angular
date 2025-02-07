@@ -120,5 +120,7 @@
            6.
            7.  </section>
            8.  </main>
+           9.
+          10.  <router-outlet />
 
-<router-outlet />
+--- 02.06. Seguir modificando el código del archivo 'app01/src/app/app.component.html', creando las siguientes líneas de código:

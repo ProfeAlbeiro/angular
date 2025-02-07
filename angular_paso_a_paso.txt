@@ -114,11 +114,11 @@
 
            1.  <main class="main">
            2.    <header class="brand-home">
-           3.    <img class="brand-logo" src="" alt="logo" />
-           4.  </header>
-           5.  <section class="content">
+           3.      <img class="brand-logo" src="" alt="logo" />
+           4.    </header>
+           5.    <section class="content">
            6.
-           7.  </section>
+           7.    </section>
            8.  </main>
            9.
           10.  <router-outlet />

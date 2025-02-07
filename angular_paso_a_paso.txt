@@ -86,11 +86,18 @@
 
 --- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en línea 11:
 
-           11.   title:number = 35;           
+           11.   title:number = 35;
+
 
 |------------------------------------------------------------------------------------------------------------------------------------|
 |-- 02. Componentes -----------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------|
 
+--- 02.01. Abrir una nueva terminal para ejecutar más comandos -> 'Terminal / New Terminal' ó Ctrl + Shift + ñ
+--- 02.02. Ingresar nuevamente a la carpeta 'app01':
 
+           PS C:\Users\ADMIN\Desktop\angular> cd app01
 
+--- 02.03. Crear un nuevo componente:
+
+           PS C:\Users\ADMIN\Desktop\angular> cd app01

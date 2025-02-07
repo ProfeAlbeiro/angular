@@ -46,7 +46,7 @@
          
 --- 01.05. Crear una carpeta raíz para los proyectos en el computador -> 'Escritorio/angular'
 --- 01.06. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'angular'
---- 01.07. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó Ctrl + Shift + ñ
+--- 01.07. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
 --- 01.08. Instalar Angular escribiendo en la terminal: 
 
            PS C:\Users\ADMIN\Desktop\angular> npm install -g @angular/cli 
@@ -86,18 +86,39 @@
 
 --- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en línea 11:
 
-           11.   title:number = 35;
+           11.  title:number = 35;
 
 
 |------------------------------------------------------------------------------------------------------------------------------------|
 |-- 02. Componentes -----------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------|
 
---- 02.01. Abrir una nueva terminal para ejecutar más comandos -> 'Terminal / New Terminal' ó Ctrl + Shift + ñ
+--- 02.01. Abrir una nueva terminal para ejecutar más comandos -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
 --- 02.02. Ingresar nuevamente a la carpeta 'app01':
 
            PS C:\Users\ADMIN\Desktop\angular> cd app01
 
 --- 02.03. Crear un nuevo componente:
 
-           PS C:\Users\ADMIN\Desktop\angular> cd app01
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/home
+
+--- 02.04. Modificar código del archivo 'app01/src/app/app.component.html', eliminando líneas de código y quedando así:
+
+           1.  <main class="main">
+           2.  
+           3.  </main>
+           4.  
+           5.  <router-outlet />
+
+--- 02.05. Seguir modificando el código del archivo 'app01/src/app/app.component.html', creando las siguientes líneas de código:
+
+           1.  <main class="main">
+           2.    <header class="brand-home">
+           3.    <img class="brand-logo" src="" alt="logo" />
+           4.  </header>
+           5.  <section class="content">
+           6.
+           7.  </section>
+           8.  </main>
+
+<router-outlet />

@@ -1,0 +1,73 @@
+|-------------------------------------------------------------------------------------------------|
+|-------------------------------------- ANGULAR PASO A PASO --------------------------------------|
+|-------------------------------------------------------------------------------------------------|
+|-- Bibliografía https://angular.dev/tutorials ---------------------------------------------------|
+|--------------- https://www.youtube.com/playlist?list=PLrAw40DbN0l2XNbdFx0GvoRdzsyqTsdmP --------|
+|-------------------------------------------------------------------------------------------------|
+
+|-------------------------------------------------------------------------------------------------|
+|-- 01. Presentación y creación del proyecto -----------------------------------------------------|
+|-------------------------------------------------------------------------------------------------|
+
+--- 01.01. Instalar Visual Studio Code -> https://code.visualstudio.com/download
+--- 01.02. Instalar las siguientes extensiones en Visual Studio Code:
+
+           Auto Close Tag
+           Auto Complete Tag
+           Auto Rename Tag
+           Code Runner
+           HTML CSS Support
+           IntelliSense for CSS class names in HTML
+           JavaScript (ES6) code snippets
+           Live Server
+           Material Icon Theme
+           Path IntelliSense         
+           Prettier - Code formatter
+
+           Angular Essentials (Version 18)
+           Angular Language Service
+           Angular Snippets (Version 18)
+           TypeScript Importer
+
+--- 01.03. Instalar node.js -> https://nodejs.org/es/
+--- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir los siguientes comandos:
+         
+           PS C:\Windows\system32> Get-ExecutionPolicy
+           PS C:\Windows\system32> Set-ExecutionPolicy Unrestricted
+         
+           Cambio de directiva de ejecución
+           La directiva de ejecución te ayuda a protegerte de scripts en los que no confías. 
+           Si cambias dicha directiva, podrías exponerte a los riesgos de seguridad descritos 
+           en el tema de la Ayuda about_Execution_Policies en 
+           https:/go.microsoft.com/fwlink/?LinkID=135170. 
+           ¿Quieres cambiar la directiva de ejecución?
+           [S] Sí  [O] Sí a todo  [N] No  [T] No a todo  [U] Suspender  [?] Ayuda 
+           (el valor predeterminado es "N"): S         
+         
+--- 01.05. Crear una carpeta raíz para los proyectos en el computador -> 'Escritorio/angular'
+--- 01.06. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'angular'
+--- 01.07. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó Ctrl + Shift + ñ
+--- 01.08. Instalar Angular escribiendo en la terminal: 
+
+           PS C:\Users\ADMIN\Desktop\angular> npm install -g @angular/cli 
+
+--- 01.09. Verificar las versiones de node.js y angular en la terminal:
+           
+           PS C:\Users\ADMIN\Desktop\angular> node --version
+           PS C:\Users\ADMIN\Desktop\angular> ng version
+
+--- 01.10. Crear un nuevo proyecto de Angular:
+           
+           PS C:\Users\ADMIN\Desktop\angular> ng new app01
+
+--- 01.11. Seleccionar:
+
+           ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
+           
+
+|-------------------------------------------------------------------------------------------------|
+|-- 02. Presentación y creación del proyecto -----------------------------------------------------|
+|-------------------------------------------------------------------------------------------------|
+
+
+

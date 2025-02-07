@@ -123,4 +123,5 @@
            9.
           10.  <router-outlet />
 
---- 02.06. Seguir modificando el código del archivo 'app01/src/app/app.component.html', creando las siguientes líneas de código:
+--- 02.06. Crear la carpeta 'assets' en la carpeta 'public'
+--- 02.07. En la carpeta 'public/assets', cargar la siguiente imagen

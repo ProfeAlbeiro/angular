@@ -65,9 +65,31 @@
            ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
            ? Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N) n           
 
+--- 01.12. Ingresar a la carpeta 'app01':
+
+           PS C:\Users\ADMIN\Desktop\angular> cd app01
+
+--- 01.13. Ejecturar el Servidor en la terminal:
+
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng serve -o
+
+           Would you like to share pseudonymous usage data about this project with the Angular Team
+           at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
+           details and how to change this setting, see https://angular.dev/cli/analytics.
+
+               (y/N) y           
+           
+           Watch mode enabled. Watching for file changes...
+           NOTE: Raw file sizes do not reflect development server per-request transformations.
+           ➜  Local:   http://localhost:4200/
+           ➜  press h + enter to show help
+
+--- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en línea 11:
+
+           11.   title:number = 35;           
 
 |------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02. xxxx ------------------------------------------------------------------------------------------------------------------------|
+|-- 02. Componentes -----------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------|
 
 

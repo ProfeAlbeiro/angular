@@ -210,7 +210,6 @@
 
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/housing-location/housing-location.component.css
 
-
 --- 02.18. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/public/assets/location-pin.svg

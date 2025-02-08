@@ -124,7 +124,7 @@
            10.  <router-outlet />
 
 --- 02.06. Crear la carpeta 'assets' en la carpeta 'public'
---- 02.07. En la carpeta 'public/assets', cargar la siguiente imagen:
+--- 02.07. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/public/assets/logo.svg
 
@@ -211,13 +211,15 @@
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/housing-location/housing-location.component.css
 
 
---- 02.XX. ¡Aquí voy!:
+--- 02.18. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
 
+           https://github.com/ProfeAlbeiro/angular/blob/main/app01/public/assets/location-pin.svg
 
 
 |----------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03. xxxxxxxxxxx ---------------------------------------------------------------------------------------------------------------------------|
+|-- 03. Interfaces ----------------------------------------------------------------------------------------------------------------------------|
 |----------------------------------------------------------------------------------------------------------------------------------------------|
 
+--- 03.XX. ¡Aquí voy!:
 
 

@@ -171,7 +171,13 @@
 
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/home/home.component.css
 
---- 02.13. ¡Aquí voy!:
+--- 02.13. Agregar los estilos globales al archivo 'app01/src/styles.css', desde el siguiente enlace:
+
+           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/home/home.component.css
+
+--- 02.XX. ¡Aquí voy!:
+
+
 
 
 

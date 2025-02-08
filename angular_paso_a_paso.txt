@@ -169,6 +169,11 @@
 
 --- 02.12. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 
+           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/home/home.component.css
+
+--- 02.13. ¡Aquí voy!:
+
+
 
 |------------------------------------------------------------------------------------------------------------------------------------|
 |-- 03. xxxxxxxxxxx -----------------------------------------------------------------------------------------------------------------|

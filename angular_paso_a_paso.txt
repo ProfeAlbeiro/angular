@@ -56,7 +56,7 @@
            PS C:\Users\ADMIN\Desktop\angular> node --version
            PS C:\Users\ADMIN\Desktop\angular> ng version
 
---- 01.10. Crear un nuevo proyecto de Angular:
+--- 01.10. Crear un nuevo proyecto de Angular desde la terminal:
            
            PS C:\Users\ADMIN\Desktop\angular> ng new app01
 
@@ -65,7 +65,7 @@
            ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
            ? Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N) n           
 
---- 01.12. Ingresar a la carpeta 'app01':
+--- 01.12. Ingresar a la carpeta 'app01' desde la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular> cd app01
 
@@ -94,11 +94,11 @@
 |------------------------------------------------------------------------------------------------------------------------------------|
 
 --- 02.01. Abrir una nueva terminal para ejecutar más comandos -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
---- 02.02. Ingresar nuevamente a la carpeta 'app01':
+--- 02.02. Ingresar nuevamente a la carpeta 'app01', desde la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular> cd app01
 
---- 02.03. Crear un nuevo componente:
+--- 02.03. Crear un nuevo componente desde la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/home
 
@@ -174,6 +174,24 @@
 --- 02.13. Agregar los estilos globales al archivo 'app01/src/styles.css', desde el siguiente enlace:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/styles.css
+
+--- 02.14. Crear un nuevo componente denominado 'housingLocation' desde la terminal:
+
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/housingLocation
+
+--- 02.15. Agregar código al archivo 'app01/src/app/components/home/home.component.html', quedando así:
+
+            1.  <section>
+            2.    <form>
+            3.      <input type="text" placeholder="Filter by city" />
+            4.      <button class="primary" type="button">Search</button>
+            5.    </form>
+            6.    <section>
+            7.      <app-housing-location></app-housing-location>
+            8.    </section>
+            9.  <section>
+
+--- 02.16. XXXX:
 
 --- 02.XX. ¡Aquí voy!:
 

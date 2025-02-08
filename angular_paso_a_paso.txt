@@ -137,7 +137,7 @@
 
             6.      imports: [RouterOutlet, HomeComponent],
 
---- 02.09. Seguir modificando el código del archivo 'app01/src/app/app.component.ts' en la línea 6, para importar el componente 
+--- 02.10. Seguir modificando el código del archivo 'app01/src/app/app.component.ts' en la línea 6, para importar el componente 
            creado, presionando 'Ctrl + Space' al final de 'HomeComponent' y seleccionando el mismo nombre, quedando así:
 
             1.  import { Component } from '@angular/core';
@@ -153,6 +153,21 @@
            11.  export class AppComponent {
            12.    title:number = 35;
            13.  }
+
+--- 02.11. Modificar código del archivo 'app01/src/app/components/home/home.component.html', de la siguiente forma:
+
+            1.  <main class="main">
+            2.    <header class="brand-home">
+            3.      <img class="brand-logo" src="" alt="logo" />
+            4.    </header>
+            5.    <section class="content">
+            6.
+            7.    </section>
+            8.  </main>
+            9.
+           10.  <router-outlet />
+
+--- 02.12. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 
 
 |------------------------------------------------------------------------------------------------------------------------------------|

@@ -135,7 +135,7 @@
 
 --- 02.09. Modificar código del archivo 'app01/src/app/app.component.ts', para agregar el nuevo componente, línea 6:
 
-            6.      imports: [RouterOutlet, HomeComponent],
+            1.      imports: [RouterOutlet, HomeComponent],
 
 --- 02.10. Seguir modificando el código del archivo 'app01/src/app/app.component.ts' en la línea 6, para importar el componente 
            creado, presionando 'Ctrl + Space' al final de 'HomeComponent' y seleccionando el mismo nombre, quedando así:
@@ -156,16 +156,15 @@
 
 --- 02.11. Modificar código del archivo 'app01/src/app/components/home/home.component.html', de la siguiente forma:
 
-            1.  <main class="main">
-            2.    <header class="brand-home">
-            3.      <img class="brand-logo" src="" alt="logo" />
-            4.    </header>
-            5.    <section class="content">
-            6.
-            7.    </section>
-            8.  </main>
-            9.
-           10.  <router-outlet />
+            1.  <section>
+            2.    <form>
+            3.      <input type="text" placeholder="Filter by city" />
+            4.      <button class="primary" type="button">Search</button>
+            5.    </form>
+            6.    <section>
+            7.      
+            8.    </section>
+            9.  <section>
 
 --- 02.12. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 
@@ -179,7 +178,7 @@
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/housingLocation
 
---- 02.15. Agregar código al archivo 'app01/src/app/components/home/home.component.html', quedando así:
+--- 02.15. Agregar código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:
 
             1.  <section>
             2.    <form>
@@ -218,6 +217,8 @@
 |----------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 03. Interfaces ----------------------------------------------------------------------------------------------------------------------------|
 |----------------------------------------------------------------------------------------------------------------------------------------------|
+
+--- 03.01. 
 
 --- 03.XX. ¡Aquí voy!:
 

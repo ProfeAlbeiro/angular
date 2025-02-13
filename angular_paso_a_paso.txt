@@ -264,17 +264,17 @@
 
 --- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para agregar un 
            decorador (@), quedando así:
-
-            1.  import { Housinglocation } from '../housinglocation';
-            2.  @Component({
-            3.    selector: 'app-housing-location',
-            4.    imports: [],
-            5.    templateUrl: './housing-location.component.html',
-            6.    styleUrl: './housing-location.component.css'
-            7.  })
-            8.  export class HousingLocationComponent {
-            9.    @Input() housingLocation!: Housinglocation;
-           10.  }
+            1.  import { Component, Input } from '@angular/core';
+            2.  import { Housinglocation } from '../housinglocation';
+            3.  @Component({
+            4.    selector: 'app-housing-location',
+            5.    imports: [],
+            6.    templateUrl: './housing-location.component.html',
+            7.    styleUrl: './housing-location.component.css'
+            8.  })
+            9.  export class HousingLocationComponent {
+           10.    @Input() housingLocation!: Housinglocation;
+           11.  }
 
 
 --- 03.XX. ¡Aquí voy!:

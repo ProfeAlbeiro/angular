@@ -98,7 +98,7 @@
 
            PS C:\Users\ADMIN\Desktop\angular> cd app01
 
---- 02.03. Crear un nuevo componente desde la terminal:
+--- 02.03. Crear un componente desde la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/home
 
@@ -218,7 +218,50 @@
 |-- 03. Interfaces ----------------------------------------------------------------------------------------------------------------------------|
 |----------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 03.01. 
+--- 03.01. Crear una interface desde la terminal:
+
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate interface components/housinglocation
+
+--- 03.02. Modificar código del archivo 'app01/src/app/components/housinglocation.ts' para definir propiedades, quedando así:
+
+            1.  export interface Housinglocation {
+            2.      id: number;
+            3.      name: string;
+            4.      city: string;
+            5.      state: string;
+            6.      photo: string;
+            7.      availableUnits: number;
+            8.      wifi:boolean;
+            9.      laundry:boolean;
+           10.  }
+
+--- 02.16. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para crear una instancia
+           de la interfaz, quedando así:
+
+            1.  import { Component } from '@angular/core';
+            2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+            3.  import { Housinglocation } from '../housinglocation';
+            4.
+            5.  @Component({  
+            6.    selector: 'app-home',
+            7.    imports: [HousingLocationComponent],
+            8.    templateUrl: './home.component.html',
+            9.    styleUrl: './home.component.css'
+           10.  })
+           11.  export class HomeComponent {
+           12.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+           13.    housinglocation: Housinglocation = {
+           14.      id: 999,
+           15.      name: 'Test Home',
+           16.      city: 'Test City',
+           17.      state: 'ST',
+           18.      photo: `${this.baseUrl}/example-house.jpg`,
+           19.      availableUnits: 99,
+           20.      wifi: true,
+           21.      laundry: false
+           22.    };
+           23.  }
+
 
 --- 03.XX. ¡Aquí voy!:
 

@@ -264,6 +264,7 @@
 
 --- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para agregar un 
            decorador (@), quedando así:
+
             1.  import { Component, Input } from '@angular/core';
             2.  import { Housinglocation } from '../housinglocation';
             3.  @Component({
@@ -276,7 +277,167 @@
            10.    @Input() housingLocation!: Housinglocation;
            11.  }
 
+--- 03.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:
 
---- 03.XX. ¡Aquí voy!:
+            1.  <section>
+            2.    <form>
+            3.      <input type="text" placeholder="Filter by city" />
+            4.      <button class="primary" type="button">Search</button>
+            5.    </form>
+            6.    <section class="results">
+            7.      <app-housing-location [housingLocation]="housinglocation"></app-housing-location>
+            8.    </section>
+            9.  <section>
+
+--- 03.06. Modificar código del archivo 'app01/src/app/components/housint-location/housing-location.component.html', de la siguiente forma:
+
+            1.  <section class="listing">
+            2.      <img 
+            3.          class="listing-photo"
+            4.          [src]="housingLocation.photo"
+            5.          alt="Exterior photo of {{ housingLocation.name }}"
+            6.          crossorigin
+            7.      />
+            8.      <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+            9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
+           10.  </section>
+
+--- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para incluir más datos (arreglo) y el 'CommonModule' 
+           quedando así:
+
+            1.  import { Component } from '@angular/core';
+            2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+            3.  import { Housinglocation } from '../housinglocation';
+            4.  import { CommonModule } from '@angular/common';
+            5.
+            6.  @Component({  
+            7.    selector: 'app-home',
+            8.    imports: [CommonModule, HousingLocationComponent],
+            9.    templateUrl: './home.component.html',
+           10.    styleUrl: './home.component.css'
+           11.  })
+           12.  export class HomeComponent {
+           13.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+           14.    housinglocationList: Housinglocation [] = [
+           15.      {
+           16.        id: 0,
+           17.        name: 'Acme Fresh Start Housing',
+           18.        city: 'Chicago',
+           19.        state: 'IL',
+           20.        photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
+           21.        availableUnits: 4,
+           22.        wifi: true,
+           23.        laundry: true,
+           24.      },
+           25.      {
+           26.        id: 1,
+           27.        name: 'A113 Transitional Housing',
+           28.        city: 'Santa Monica',
+           29.        state: 'CA',
+           30.        photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
+           31.        availableUnits: 0,
+           32.        wifi: false,
+           33.        laundry: true,
+           34.      },
+           35.      {
+           36.        id: 2,
+           37.        name: 'Warm Beds Housing Support',
+           38.        city: 'Juneau',
+           39.        state: 'AK',
+           40.        photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
+           41.        availableUnits: 1,
+           42.        wifi: false,
+           43.        laundry: false,
+           44.      },
+           45.      {
+           46.        id: 3,
+           47.        name: 'Homesteady Housing',
+           48.        city: 'Chicago',
+           49.        state: 'IL',
+           50.        photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
+           51.        availableUnits: 1,
+           52.        wifi: true,
+           53.        laundry: false,
+           54.      },
+           55.      {
+           56.        id: 4,
+           57.        name: 'Happy Homes Group',
+           58.        city: 'Gary',
+           59.        state: 'IN',
+           60.        photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
+           61.        availableUnits: 1,
+           62.        wifi: true,
+           63.        laundry: false,
+           64.      },
+           65.      {
+           66.        id: 5,
+           67.        name: 'Hopeful Apartment Group',
+           68.        city: 'Oakland',
+           69.        state: 'CA',
+           70.        photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
+           71.        availableUnits: 2,
+           72.        wifi: true,
+           73.        laundry: true,
+           74.      },
+           75.      {
+           76.        id: 6,
+           77.        name: 'Seriously Safe Towns',
+           78.        city: 'Oakland',
+           79.        state: 'CA',
+           80.        photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
+           81.        availableUnits: 5,
+           82.        wifi: true,
+           83.        laundry: true,
+           84.      },
+           85.      {
+           86.        id: 7,
+           87.        name: 'Hopeful Housing Solutions',
+           88.        city: 'Oakland',
+           89.        state: 'CA',
+           90.        photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
+           91.        availableUnits: 2,
+           92.        wifi: true,
+           93.        laundry: true,
+           94.      },
+           95.      {
+           96.        id: 8,
+           97.        name: 'Seriously Safe Towns',
+           98.        city: 'Oakland',
+           99.        state: 'CA',
+          100.        photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
+          101.        availableUnits: 10,
+          102.        wifi: false,
+          103.        laundry: false,
+          104.      },
+          105.      {
+          106.        id: 9,
+          107.        name: 'Capital Safe Towns',
+          108.        city: 'Portland',
+          109.        state: 'OR',
+          110.        photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+          111.        availableUnits: 6,
+          112.        wifi: true,
+          113.        laundry: true,
+          114.      },
+          115.    ];
+          116.  }
+
+--- 03.08. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' para incluir un snippets (for), quedando así:
+
+            1.  <section>
+            2.    <form>
+            3.      <input type="text" placeholder="Filter by city" />
+            4.      <button class="primary" type="button">Search</button>
+            5.    </form>
+            6.    <section class="results">
+            7.      <app-housing-location [housingLocation]="housinglocation"></app-housing-location>
+            8.    </section>
+            9.  <section>
 
 
+|----------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 04. Services ----------------------------------------------------------------------------------------------------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------------------------|
+
+
+--- 04.XX. ¡Aquí voy!:

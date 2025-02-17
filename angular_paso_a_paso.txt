@@ -100,8 +100,8 @@
 
 --- 02.03. Crear la carpeta 'assets' en la carpeta 'public' y cargar las siguientes imágenes:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/source/img/assets/logo.svg
-           https://github.com/ProfeAlbeiro/angular/blob/main/app01/public/assets/location-pin.svg
+           https://github.com/ProfeAlbeiro/angular/blob/main/source/assets/logo.svg
+           https://github.com/ProfeAlbeiro/angular/blob/main/source/assets/location-pin.svg
 
 --- 02.04. Agregar los estilos globales al archivo 'app01/src/styles.css', desde el siguiente enlace:
 
@@ -158,7 +158,7 @@
             1.  <section>
             2.    <form>
             3.      <input type="text" placeholder="Filter by city" />
-            4.      <button class="primary" type="button">Search</button>
+            4.      <button type="button" class="primary">Search</button>
             5.    </form>
             6.    <section class="results">
             7.      <app-housing-location></app-housing-location>            7.      
@@ -180,29 +180,13 @@
            11.
            12.  }
 
---- 02.11. Crear otro componente 'housingLocation' desde la terminal:
+--- 02.11. Crear el componente 'housingLocation' desde la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/housingLocation
 
 --- 02.12. Agregar estilos al archivo 'app01/src/app/components/housing-location/housing-location.component.css', desde el siguiente enlace:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/source/css/housing-location.component.css
-
---- 02.13. Agregar código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:
-
-            1.  <section>
-            2.    <form>
-            3.      <input type="text" placeholder="Filter by city" />
-            4.      <button type="button" class="primary">Search</button>
-            5.    </form>
-            6.    <section class="results">
-            7.      
-            8.    </section>
-            9.  <section>
-
---- 02.15. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
-
-           
 
 
 |----------------------------------------------------------------------------------------------------------------------------------------------|

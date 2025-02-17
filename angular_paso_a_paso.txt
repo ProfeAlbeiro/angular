@@ -104,45 +104,36 @@
 
 --- 02.04. Agregar los estilos globales al archivo 'app01/src/styles.css', desde el siguiente enlace:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/styles.css
+           https://github.com/ProfeAlbeiro/angular/blob/main/source/css/styles.css
 
---- 02.05. Modificar código del archivo 'app01/src/app/app.component.html', eliminando líneas de código y quedando así:
+--- 02.05. Crear la carpeta 'assets' en la carpeta 'public'
+--- 02.06. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
 
-            1.  <main class="main">
-            2.  
-            3.  </main>
-            4.  
-            5.  <router-outlet />
+           https://github.com/ProfeAlbeiro/angular/blob/main/source/img/assets/logo.svg
 
---- 02.06. Seguir modificando el código del archivo 'app01/src/app/app.component.html', creando las siguientes líneas de código:
+--- 02.07. Modificar código del archivo 'app01/src/app/app.component.html', de la siguiente forma:            
 
             1.  <main class="main">
             2.    <header class="brand-home">
-            3.      <img class="brand-logo" src="" alt="logo" />
+            3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
             4.    </header>
             5.    <section class="content">
-            6.
+            6.      <app-home></app-home>
             7.    </section>
             8.  </main>
             9.
            10.  <router-outlet />
 
---- 02.07. Crear la carpeta 'assets' en la carpeta 'public'
---- 02.08. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
+--- 02.08. Modificar código del archivo 'app01/src/app/app.component.ts', para agregar el nuevo componente en la línea 6:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/app01/public/assets/logo.svg
+            6.  imports: [RouterOutlet, HomeComponent],
 
---- 02.09. Seguir modificando el código del archivo 'app01/src/app/app.component.html', en la línea 3 y 6:
-           
-            3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
-            6.      <app-home></app-home>
-
---- 02.10. Modificar código del archivo 'app01/src/app/app.component.ts', para agregar el nuevo componente, línea 6:
-
-            1.      imports: [RouterOutlet, HomeComponent],
-
---- 02.11. Seguir modificando el código del archivo 'app01/src/app/app.component.ts' en la línea 6, para importar el componente 
-           creado, presionando 'Ctrl + Space' al final de 'HomeComponent' y seleccionando el mismo nombre, quedando así:
+           NOTA: Si en la línea 3 no aparece la librería: 
+                    
+            3.  import { HomeComponent } from './components/home/home.component'; 
+            
+           entonces, ubicarse en la línea 6 y presionar 'Ctrl + Space' al final de la palabra 'HomeComponent' y seleccionar el mismo nombre, 
+           quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { RouterOutlet } from '@angular/router';
@@ -158,7 +149,11 @@
            12.    title:number = 35;
            13.  }
 
---- 02.12. Modificar código del archivo 'app01/src/app/components/home/home.component.html', de la siguiente forma:
+--- 02.10. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
+
+           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/home/home.component.css
+
+--- 02.09. Modificar código del archivo 'app01/src/app/components/home/home.component.html', de la siguiente forma:
 
             1.  <section>
             2.    <form>
@@ -170,27 +165,31 @@
             8.    </section>
             9.  <section>
 
---- 02.13. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
+--- 02.10. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/home/home.component.css
 
---- 02.14. Crear un nuevo componente denominado 'housingLocation' desde la terminal:
+--- 02.11. Crear un nuevo componente denominado 'housingLocation' desde la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/housingLocation
 
---- 02.15. Agregar código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:
+--- 02.12. Agregar estilos al archivo 'app01/src/app/components/housing-location/housing-location.component.css', desde el siguiente enlace:
+
+           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/housing-location/housing-location.component.css
+
+--- 02.13. Agregar código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:
 
             1.  <section>
             2.    <form>
             3.      <input type="text" placeholder="Filter by city" />
-            4.      <button class="primary" type="button">Search</button>
+            4.      <button type="button" class="primary">Search</button>
             5.    </form>
             6.    <section class="results">
             7.      <app-housing-location></app-housing-location>
             8.    </section>
             9.  <section>
 
---- 02.16. Modificar código del archivo 'app01/src/app/components/home/home.component.ts', quedando así:
+--- 02.14. Modificar código del archivo 'app01/src/app/components/home/home.component.ts', quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -205,11 +204,8 @@
            11.
            12.  }
 
---- 02.17. Agregar estilos al archivo 'app01/src/app/components/housing-location/housing-location.component.css', desde el siguiente enlace:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/housing-location/housing-location.component.css
-
---- 02.18. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
+--- 02.15. En la carpeta 'app01/public/assets', cargar la siguiente imagen:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/app01/public/assets/location-pin.svg
 

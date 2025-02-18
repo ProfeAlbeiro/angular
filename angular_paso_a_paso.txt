@@ -100,12 +100,12 @@
 
 --- 02.03. Crear en la carpeta 'app01/public' la carpeta 'assets' y cargar las siguientes imágenes:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/source/assets/logo.svg
-           https://github.com/ProfeAlbeiro/angular/blob/main/source/assets/location-pin.svg
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/logo.svg
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/location-pin.svg
 
 --- 02.04. Agregar los estilos globales al archivo 'app01/src/styles.css', desde el siguiente enlace:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/source/css/styles.css
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/styles.css
 
 --- 02.05. Modificar código del archivo 'app01/src/app/app.component.html', de la siguiente forma:            
 
@@ -151,7 +151,7 @@
 
 --- 02.08. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/source/css/home.component.css
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/home.component.css
 
 --- 02.09. Modificar código del archivo 'app01/src/app/components/home/home.component.html', de la siguiente forma:
 
@@ -186,7 +186,7 @@
 
 --- 02.12. Agregar estilos al archivo 'app01/src/app/components/housing-location/housing-location.component.css', desde el siguiente enlace:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/source/css/housing-location.component.css
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/housing-location.component.css
 
 
 |----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -242,15 +242,16 @@
 
             1.  import { Component, Input } from '@angular/core';
             2.  import { Housinglocation } from '../housinglocation';
-            3.  @Component({
-            4.    selector: 'app-housing-location',
-            5.    imports: [],
-            6.    templateUrl: './housing-location.component.html',
-            7.    styleUrl: './housing-location.component.css'
-            8.  })
-            9.  export class HousingLocationComponent {
-           10.    @Input() housingLocation!: Housinglocation;
-           11.  }
+            3.  
+            4.  @Component({
+            5.    selector: 'app-housing-location',
+            6.    imports: [],
+            7.    templateUrl: './housing-location.component.html',
+            8.    styleUrl: './housing-location.component.css'
+            9.  })
+           10.  export class HousingLocationComponent {
+           11.    @Input() housingLocation!: Housinglocation;
+           12.  }
 
 --- 03.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:
 
@@ -277,8 +278,8 @@
             9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
            10.  </section>
 
---- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para incluir más datos (arreglo) y el 'CommonModule' 
-           quedando así:
+--- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para incluir el 'CommonModule' y más datos 
+           (https://angular.dev/tutorials/first-app/08-ngFor), quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -408,8 +409,8 @@
             6.      <section class="results">
             7.          <app-housing-location 
             8.              *ngFor="let housinglocation of housinglocationList"
-            9.              [housingLocation]="housinglocation"
-           10.          ></app-housing-location>
+            9.              [housingLocation]="housinglocation">
+           10.          </app-housing-location>
            11.      </section>
            12.  </section>
 
@@ -418,5 +419,6 @@
 |-- 04. Services ------------------------------------------------------------------------------------------------------------------------------|
 |----------------------------------------------------------------------------------------------------------------------------------------------|
 
+--- 04.01. 
 
 --- 04.XX. ¡Aquí voy!:

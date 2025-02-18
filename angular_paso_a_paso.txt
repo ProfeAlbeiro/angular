@@ -130,11 +130,15 @@
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/home
 
---- 02.07. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea 6:
+--- 02.07. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 
-            6.  imports: [RouterOutlet, HomeComponent],
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/home.component.css
 
-           Para asociarlo con el nuevo componente 'home': 'app01/src/app/components/home/home.component.ts', línea '10.  export class HomeComponent':
+--- 02.08. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea 6:
+
+            6.    imports: [RouterOutlet, HomeComponent],
+
+           Para asociarlo con el nuevo componente 'home': 'app01/src/app/components/home/home.component.ts', línea '9.  export class HomeComponent'.
 
            NOTA: Si en la línea 3 no aparece la librería: 
                     
@@ -156,9 +160,9 @@
            12.    title:number = 35;
            13.  }           
 
---- 02.08. Modificar el código del archivo 'app01/src/app/app.component.html' en la línea 6:
+--- 02.09. Modificar el código del archivo 'app01/src/app/app.component.html' en la línea 6:
                 
-                6.  <app-home></app-home>
+            6.      <app-home></app-home>            
            
            Para llamar el nuevo componente 'home': 'app01/src/app/components/home/home.component.ts', línea '5.  selector: 'app-home'', quedando así:
 
@@ -173,11 +177,7 @@
             9.
            10.  <router-outlet />
 
---- 02.08. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
-
-           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/home.component.css
-
---- 02.09. Modificar código del archivo 'app01/src/app/components/home/home.component.html', de la siguiente forma:
+--- 02.10. Modificar el código del archivo 'app01/src/app/components/home/home.component.html', de la siguiente forma:
 
             1.  <section>
             2.    <form>
@@ -185,15 +185,24 @@
             4.      <button type="button" class="primary">Search</button>
             5.    </form>
             6.    <section class="results">
-            7.      <app-housing-location></app-housing-location>
+            7.      
             8.    </section>
             9.  <section>
 
---- 02.10. Crear el componente 'housingLocation' desde la terminal:
+--- 02.11. Crear el componente 'housingLocation' desde la terminal:
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/housingLocation
 
---- 02.11. Modificar código del archivo 'app01/src/app/components/home/home.component.ts', quedando así:
+--- 02.12. Agregar estilos al archivo 'app01/src/app/components/housing-location/housing-location.component.css', desde el siguiente enlace:
+
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/housing-location.component.css
+
+--- 02.13. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en la línea 5:
+
+            5.    imports: [HousingLocationComponent],          
+
+           Para asociarlo con el componente 'housing-location': 'app01/src/app/components/housing-location/housing-location.component.ts', 
+           línea '9.  export class HomeComponent'. Al final quedará así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -208,9 +217,22 @@
            11.
            12.  }
 
---- 02.12. Agregar estilos al archivo 'app01/src/app/components/housing-location/housing-location.component.css', desde el siguiente enlace:
+--- 02.14. Modificar el código del archivo 'app01/src/app/components/home/home.component.html' en la línea 7:
+                
+            7.      <app-housing-location></app-housing-location>
+           
+           Para llamar el nuevo componente 'housing-location': 'app01/src/app/components/housing-location/housing-location.component.ts', 
+           línea '4.  selector: 'app-housing-location''; qudando así:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/housing-location.component.css
+            1.  <section>
+            2.    <form>
+            3.      <input type="text" placeholder="Filter by city" />
+            4.      <button type="button" class="primary">Search</button>
+            5.    </form>
+            6.    <section class="results">
+            7.        <app-housing-location></app-housing-location>
+            8.    </section>
+            9.  <section>
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|

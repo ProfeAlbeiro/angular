@@ -107,14 +107,14 @@
 
            https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/styles.css
 
---- 02.05. Modificar código del archivo 'app01/src/app/app.component.html', de la siguiente forma:            
+--- 02.05. Modificar el código del archivo 'app01/src/app/app.component.html', de la siguiente forma:            
 
             1.  <main class="main">
             2.    <header class="brand-home">
             3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
             4.    </header>
             5.    <section class="content">
-            6.      <app-home></app-home>
+            6.      
             7.    </section>
             8.  </main>
             9.
@@ -124,7 +124,8 @@
 
            PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/home
 
---- 02.07. Modificar código del archivo 'app01/src/app/app.component.ts', para agregar el nuevo componente en la línea 6:
+--- 02.07. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea 6, para asociarlo con el nuevo componente creado 
+           ('app01/src/app/components/home/home.component.ts', línea '10.  export class HomeComponent'):
 
             6.  imports: [RouterOutlet, HomeComponent],
 
@@ -132,8 +133,8 @@
                     
             3.  import { HomeComponent } from './components/home/home.component'; 
             
-           entonces, ubicarse en la línea 6 y presionar 'Ctrl + Space' al final de la palabra 'HomeComponent' y seleccionar el mismo nombre, 
-           quedando así:
+           Ubiquese al final de la palabra 'HomeComponent' en la línea 6, presione 'Ctrl + Space' y seleccione el mismo nombre. Al final 
+           quedaría así:
 
             1.  import { Component } from '@angular/core';
             2.  import { RouterOutlet } from '@angular/router';
@@ -147,7 +148,39 @@
            10.  })
            11.  export class AppComponent {
            12.    title:number = 35;
-           13.  }
+           13.  }           
+
+--- 02.08. Modificar el código del archivo 'app01/src/app/app.component.html' en la línea 6, incluyendo '<app-home></app-home>', para llamar
+           el archivo (componente) 'app01/src/app/components/home/home.component.ts', haciendo referencia a su línea 5. 'selector: 'app-home'', 
+           quedando los códigos de la siguiente forma:
+
+           'app.component.html':
+
+            1.  <main class="main">
+            2.    <header class="brand-home">
+            3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
+            4.    </header>
+            5.    <section class="content">
+            6.      <app-home></app-home>
+            7.    </section>
+            8.  </main>
+            9.
+           10.  <router-outlet />
+
+           'home.components.ts':
+
+            1.  import { Component } from '@angular/core';
+            2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+            3.
+            4.  @Component({
+            5.    selector: 'app-home',
+            6.    imports: [HousingLocationComponent],
+            7.    templateUrl: './home.component.html',
+            8.    styleUrl: './home.component.css'
+            9.  })
+           10.  export class HomeComponent {
+           11.
+           12.  }
 
 --- 02.08. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 

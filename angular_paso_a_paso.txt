@@ -98,7 +98,7 @@
 
            PS C:\Users\ADMIN\Desktop\angular> cd app01
 
---- 02.03. Crear la carpeta 'assets' en la carpeta 'public' y cargar las siguientes imágenes:
+--- 02.03. Crear en la carpeta 'app01/public' la carpeta 'assets' y cargar las siguientes imágenes:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/source/assets/logo.svg
            https://github.com/ProfeAlbeiro/angular/blob/main/source/assets/location-pin.svg
@@ -120,7 +120,11 @@
             9.
            10.  <router-outlet />
 
---- 02.06. Modificar código del archivo 'app01/src/app/app.component.ts', para agregar el nuevo componente en la línea 6:
+--- 02.06. Crear el componente 'home' desde la terminal:
+
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/home
+
+--- 02.07. Modificar código del archivo 'app01/src/app/app.component.ts', para agregar el nuevo componente en la línea 6:
 
             6.  imports: [RouterOutlet, HomeComponent],
 
@@ -145,10 +149,6 @@
            12.    title:number = 35;
            13.  }
 
---- 02.07. Crear el componente 'home' desde la terminal:
-
-           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/home
-
 --- 02.08. Agregar estilos al archivo 'app01/src/app/components/home/home.component.css', desde el siguiente enlace:
 
            https://github.com/ProfeAlbeiro/angular/blob/main/source/css/home.component.css
@@ -161,11 +161,15 @@
             4.      <button type="button" class="primary">Search</button>
             5.    </form>
             6.    <section class="results">
-            7.      <app-housing-location></app-housing-location>            7.      
+            7.      <app-housing-location></app-housing-location>
             8.    </section>
             9.  <section>
 
---- 02.10. Modificar código del archivo 'app01/src/app/components/home/home.component.ts', quedando así:
+--- 02.10. Crear el componente 'housingLocation' desde la terminal:
+
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/housingLocation
+
+--- 02.11. Modificar código del archivo 'app01/src/app/components/home/home.component.ts', quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -179,10 +183,6 @@
            10.  export class HomeComponent {
            11.
            12.  }
-
---- 02.11. Crear el componente 'housingLocation' desde la terminal:
-
-           PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/housingLocation
 
 --- 02.12. Agregar estilos al archivo 'app01/src/app/components/housing-location/housing-location.component.css', desde el siguiente enlace:
 

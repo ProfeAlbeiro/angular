@@ -164,7 +164,7 @@
                 
             6.      <app-home></app-home>            
            
-           Para llamar el nuevo componente 'home': 'app01/src/app/components/home/home.component.ts', línea '5.  selector: 'app-home'', quedando así:
+           Para llamar el nuevo componente 'home': 'app01/src/app/components/home/home.component.ts', línea '4.  selector: 'app-home'', quedando así:
 
             1.  <main class="main">
             2.    <header class="brand-home">
@@ -199,10 +199,10 @@
 
 --- 02.13. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en la línea 5:
 
-            5.    imports: [HousingLocationComponent],          
+            5.    imports: [HousingLocationComponent],
 
            Para asociarlo con el componente 'housing-location': 'app01/src/app/components/housing-location/housing-location.component.ts', 
-           línea '9.  export class HomeComponent'. Al final quedará así:
+           línea '9.  export class HousingLocationComponent'. Al final debe quedar así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';

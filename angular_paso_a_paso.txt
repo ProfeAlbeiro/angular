@@ -637,8 +637,56 @@
            15.    housingService: HousingService = inject(HousingService);
            16.  }
 
+--- 04.05. Incluir en el código del archivo 'app01/src/app/components/housing.service.js', una función en la línea 114 para mostrar todos los objetos
+           del arreglo y otra función en la línea 118 para mostrar solo un elemento por identificador, quedando así:
 
---- 04.05. 
+            1.  import { Injectable } from '@angular/core';
+            2.  import { HousingLocation } from './housing-location';
+            3.  
+            4.  @Injectable({
+            5.    providedIn: 'root'
+            6.  })
+            7.  export class HousingService {
+            8.  
+            9.    constructor() { }
+           10.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+           11.>   housinglocationList: Housinglocation [] = [
+          112.    ];
+          113.
+          114.    getAllHousingLocations(): HousingLocation[] {
+          115.      return this.housingLocationList
+          116.    }
+          117.  
+          118.    getHousingLocationById(id:number): HousingLocation | undefined {
+          119.      return this.housingLocationList.find((housingLocation) => housingLocation.id === id);
+          120.    }
+          121.  
+          122.  }
+
+--- 04.06. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en la línea 17, para en el constructor la función de
+           traer todos los elementos del paso anterior, quedando así:
+
+            1.  import { Component, inject } from '@angular/core';
+            2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+            3.  import { Housinglocation } from '../housinglocation';
+            4.  import { CommonModule } from '@angular/common';
+            5.  import { HousingService } from '../housing.service';
+            6.
+            7.  @Component({  
+            8.    selector: 'app-home',
+            9.    imports: [CommonModule, HousingLocationComponent],
+           10.    templateUrl: './home.component.html',
+           11.    styleUrl: './home.component.css'
+           12.  })
+           13.  export class HomeComponent {
+           14.    housingLocationList: HousingLocation[] = [];
+           15.    housingService: HousingService = inject(HousingService);
+           16.  
+           17.     constructor(){
+           18.       this.housingLocationList = this.housingService.getAllHousingLocations();
+           19.     }
+           20.  
+           21.  }
 
 
 --- 04.XX. ¡Aquí voy!:

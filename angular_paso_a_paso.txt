@@ -245,7 +245,7 @@
 
 --- 03.02. Modificar código del archivo 'app01/src/app/components/housinglocation.ts' para definir propiedades, quedando así:
 
-            1.  export interface Housinglocation {
+            1.  export interface HousingLocation {
             2.      id: number;
             3.      name: string;
             4.      city: string;
@@ -255,13 +255,13 @@
             8.      wifi:boolean;
             9.      laundry:boolean;
            10.  }
-
---- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para crear una instancia de la interfaz, 
-           quedando así:
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+--- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para crear una instancia de la interfaz, dentro de la clase  
+           'export class HomeComponent', quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
-            3.  import { Housinglocation } from '../housinglocation';
+            3.  import { HousingLocation } from '../housinglocation';
             4.
             5.  @Component({  
             6.    selector: 'app-home',
@@ -271,7 +271,7 @@
            10.  })
            11.  export class HomeComponent {
            12.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-           13.    housinglocation: Housinglocation = {
+           13.    housingLocation: HousingLocation = {
            14.      id: 999,
            15.      name: 'Test Home',
            16.      city: 'Test City',
@@ -284,7 +284,7 @@
            23.  }
 
 --- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para agregar un 
-           decorador (@), quedando así:
+           decorador (@), dentro de la clase 'export class HousingLocationComponent', quedando así:
 
             1.  import { Component, Input } from '@angular/core';
             2.  import { Housinglocation } from '../housinglocation';
@@ -307,7 +307,7 @@
             4.      <button class="primary" type="button">Search</button>
             5.    </form>
             6.    <section class="results">
-            7.      <app-housing-location [housingLocation]="housinglocation"></app-housing-location>
+            7.      <app-housing-location [housingLocation]="housingLocation"></app-housing-location>
             8.    </section>
             9.  <section>
 

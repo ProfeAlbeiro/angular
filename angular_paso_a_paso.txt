@@ -255,7 +255,7 @@
             8.      wifi:boolean;
             9.      laundry:boolean;
            10.  }
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
 --- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para crear una instancia de la interfaz, dentro de la clase  
            'export class HomeComponent', quedando así:
 
@@ -328,7 +328,8 @@
 
             7.    imports: [CommonModule, HousingLocationComponent],
 
-           para incluir el 'CommonModule' y más datos (https://angular.dev/tutorials/first-app/08-ngFor), quedando así:
+           para incluir el 'CommonModule' y un arreglo de objetos (https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js), 
+           quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -447,6 +448,8 @@
           115.    ];
           116.  }
 
+           NOTA: Tenga en cuenta que se cambia el nombre de objeto 'housinglocation' al arreglo 'housingLocationList'
+
 --- 03.08. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' para incluir un ciclo for (snippets), 
            quedando así:
 
@@ -458,7 +461,7 @@
             6.      <section class="results">
             7.          <app-housing-location 
             8.              *ngFor="let housinglocation of housingLocationList"
-            9.              [housingLocation]="housinglocation">
+            9.              [housingLocation]="housingLocation">
            10.          </app-housing-location>
            11.      </section>
            12.  </section>

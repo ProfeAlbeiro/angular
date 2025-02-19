@@ -610,6 +610,36 @@
           112.    ];
           113.  }
 
+--- 04.04. Inyectar el servicio al archivo 'app01/src/app/components/home/home.component.ts' en la línea 1, incluir el arreglo de objetos en la línea 13,
+           importar el servicio en la línea 5 y usarlo en la línea 15: 
+           
+            1.  import { Component, inject } from '@angular/core';
+           13.    housingLocationList: HousingLocation[] = [];
+            5.  import { HousingService } from '../housing.service';
+           15.    housingService: HousingService = inject(HousingService);
+           
+           quedando así:
+
+            1.  import { Component, inject } from '@angular/core';
+            2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+            3.  import { Housinglocation } from '../housinglocation';
+            4.  import { CommonModule } from '@angular/common';
+            5.  import { HousingService } from '../housing.service';
+            6.
+            7.  @Component({  
+            8.    selector: 'app-home',
+            9.    imports: [CommonModule, HousingLocationComponent],
+           10.    templateUrl: './home.component.html',
+           11.    styleUrl: './home.component.css'
+           12.  })
+           13.  export class HomeComponent {
+           14.    housingLocationList: HousingLocation[] = [];
+           15.    housingService: HousingService = inject(HousingService);
+           16.  }
+
+
+--- 04.05. 
+
 
 --- 04.XX. ¡Aquí voy!:
 

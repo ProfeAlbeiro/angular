@@ -241,7 +241,7 @@
 
 --- 03.01. Crear una interface desde la terminal:
 
-           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate interface components/housinglocation
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate interface components/housingLocation
 
 --- 03.02. Modificar código del archivo 'app01/src/app/components/housinglocation.ts' para definir propiedades, quedando así:
 
@@ -324,8 +324,11 @@
             9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
            10.  </section>
 
---- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para incluir el 'CommonModule' y más datos 
-           (https://angular.dev/tutorials/first-app/08-ngFor), quedando así:
+--- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en la línea 7:
+
+            7.    imports: [CommonModule, HousingLocationComponent],
+
+           para incluir el 'CommonModule' y más datos (https://angular.dev/tutorials/first-app/08-ngFor), quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -454,7 +457,7 @@
             5.      </form>
             6.      <section class="results">
             7.          <app-housing-location 
-            8.              *ngFor="let housinglocation of housinglocationList"
+            8.              *ngFor="let housinglocation of housingLocationList"
             9.              [housingLocation]="housinglocation">
            10.          </app-housing-location>
            11.      </section>

@@ -471,6 +471,149 @@
 |-- 04. Services ----------------------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 04.01. 
+--- 04.01. Crear un servicio desde la terminal (sin incluir el archivo *.spec.ts), para separar la lógica y los datos que, a su vez, puedan ser 
+           utilizados por varios componentes:
+
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate service components/housing --skip-tests
+
+--- 04.02. Cortar el código del archivo 'app01/src/app/components/home/home.component.ts', desde la línea 13 hasta la 115, quedando así:
+
+            1.  import { Component } from '@angular/core';
+            2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+            3.  import { Housinglocation } from '../housinglocation';
+            4.  import { CommonModule } from '@angular/common';
+            5.
+            6.  @Component({  
+            7.    selector: 'app-home',
+            8.    imports: [CommonModule, HousingLocationComponent],
+            9.    templateUrl: './home.component.html',
+           10.    styleUrl: './home.component.css'
+           11.  })
+           12.  export class HomeComponent {
+           13.
+           14.  }  
+
+--- 04.03. Pegar el código cortado en el paso anterior en el archivo 'app01/src/app/components/housing.service.js', en la línea 9 y; en la línea 10,
+           importar 'HousingLocation', quedando así:
+
+            1.  import { Injectable } from '@angular/core';
+            2.  import { HousingLocation } from './housing-location';
+            3.  
+            4.  @Injectable({
+            5.    providedIn: 'root'
+            6.  })
+            7.  export class HousingService {
+            8.  
+            9.    constructor() { }
+           10.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+           11.    housinglocationList: Housinglocation [] = [
+           12.      {
+           13.        id: 0,
+           14.        name: 'Acme Fresh Start Housing',
+           15.        city: 'Chicago',
+           16.        state: 'IL',
+           17.        photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
+           18.        availableUnits: 4,
+           19.        wifi: true,
+           20.        laundry: true,
+           21.      },
+           22.      {
+           23.        id: 1,
+           24.        name: 'A113 Transitional Housing',
+           25.        city: 'Santa Monica',
+           26.        state: 'CA',
+           27.        photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
+           28.        availableUnits: 0,
+           29.        wifi: false,
+           30.        laundry: true,
+           31.      },
+           32.      {
+           33.        id: 2,
+           34.        name: 'Warm Beds Housing Support',
+           35.        city: 'Juneau',
+           36.        state: 'AK',
+           37.        photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
+           38.        availableUnits: 1,
+           39.        wifi: false,
+           40.        laundry: false,
+           41.      },
+           42.      {
+           43.        id: 3,
+           44.        name: 'Homesteady Housing',
+           45.        city: 'Chicago',
+           46.        state: 'IL',
+           47.        photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
+           48.        availableUnits: 1,
+           49.        wifi: true,
+           50.        laundry: false,
+           51.      },
+           52.      {
+           53.        id: 4,
+           54.        name: 'Happy Homes Group',
+           55.        city: 'Gary',
+           56.        state: 'IN',
+           57.        photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
+           58.        availableUnits: 1,
+           59.        wifi: true,
+           60.        laundry: false,
+           61.      },
+           62.      {
+           63.        id: 5,
+           64.        name: 'Hopeful Apartment Group',
+           65.        city: 'Oakland',
+           66.        state: 'CA',
+           67.        photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
+           68.        availableUnits: 2,
+           69.        wifi: true,
+           70.        laundry: true,
+           71.      },
+           72.      {
+           73.        id: 6,
+           74.        name: 'Seriously Safe Towns',
+           75.        city: 'Oakland',
+           76.        state: 'CA',
+           77.        photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
+           78.        availableUnits: 5,
+           79.        wifi: true,
+           80.        laundry: true,
+           81.      },
+           82.      {
+           83.        id: 7,
+           84.        name: 'Hopeful Housing Solutions',
+           85.        city: 'Oakland',
+           86.        state: 'CA',
+           87.        photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
+           88.        availableUnits: 2,
+           89.        wifi: true,
+           90.        laundry: true,
+           91.      },
+           92.      {
+           93.        id: 8,
+           94.        name: 'Seriously Safe Towns',
+           95.        city: 'Oakland',
+           96.        state: 'CA',
+           97.        photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
+           98.        availableUnits: 10,
+           99.        wifi: false,
+          100.        laundry: false,
+          101.      },
+          102.      {
+          103.        id: 9,
+          104.        name: 'Capital Safe Towns',
+          105.        city: 'Portland',
+          106.        state: 'OR',
+          107.        photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+          108.        availableUnits: 6,
+          109.        wifi: true,
+          110.        laundry: true,
+          111.      },
+          112.    ];
+          113.  }
+
 
 --- 04.XX. ¡Aquí voy!:
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 05. Routing -----------------------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|

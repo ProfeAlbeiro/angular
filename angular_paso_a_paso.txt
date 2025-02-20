@@ -284,7 +284,7 @@
            23.  }
 
 --- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para agregar un 
-           decorador (@), dentro de la clase 'export class HousingLocationComponent' en la línea 11, quedando así:
+           decorador (@), dentro de la clase 'export class HousingLocationComponent' en la línea 10, quedando así:
 
             1.  import { Component, Input } from '@angular/core';
             2.  import { Housinglocation } from '../housinglocation';
@@ -460,7 +460,7 @@
             5.      </form>
             6.      <section class="results">
             7.          <app-housing-location 
-            8.              *ngFor="let housinglocation of housingLocationList"
+            8.              *ngFor="let housingLocation of housingLocationList"
             9.              [housingLocation]="housingLocation">
            10.          </app-housing-location>
            11.      </section>
@@ -697,3 +697,28 @@
 
 
 --- 05.XX. ¡Aquí voy!:
+
+
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- Clonar y correr el proyecto -------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+--- 01. Clonar el proyecto desde github en cualquier parte del computador (Ejp, Escritorio)
+
+--- 02. Abrir en Visual Studion Code
+
+--- 03. Abrir una terminal
+
+--- 04. Ingresar a la carpeta del proyecto:
+
+        PS C:\Users\ADMIN\Desktop\angular> cd app01
+
+--- 05. Instalar dependencias de angular 
+
+        PS C:\Users\Instructor\Desktop\angular\app01> npm install
+        
+        NOTA: Si no está instalado Angular en el computador, seguir el apartado '01. Presentación y creación del proyecto':
+
+--- 06. XXXXXXXXXX

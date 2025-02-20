@@ -257,7 +257,7 @@
            10.  }
 
 --- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para crear una instancia de la interfaz, dentro de la clase  
-           'export class HomeComponent', quedando así:
+           'export class HomeComponent' desde la línea 11, quedando así:
 
             1.  import { Component } from '@angular/core';
             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -284,7 +284,7 @@
            23.  }
 
 --- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para agregar un 
-           decorador (@), dentro de la clase 'export class HousingLocationComponent', quedando así:
+           decorador (@), dentro de la clase 'export class HousingLocationComponent' en la línea 11, quedando así:
 
             1.  import { Component, Input } from '@angular/core';
             2.  import { Housinglocation } from '../housinglocation';
@@ -296,7 +296,7 @@
             8.    styleUrl: './housing-location.component.css'
             9.  })
            10.  export class HousingLocationComponent {
-           11.    @Input() housingLocation!: Housinglocation;
+           11.    @Input() housingLocation!: HousingLocation;
            12.  }
 
 --- 03.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:

@@ -732,7 +732,7 @@
            13.    title:number = 35;
            14.  }
 
---- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' para agregar las rutas e incluir la etiqueta 'a' para incluir 'routerLink', 
+--- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' para agregar las rutas e incluir los links para incluir 'routerLink', 
            quedando así:
 
             1.  <main class="main">
@@ -757,6 +757,55 @@
             7.      {path:'details/:id', component: DetailsComponent, title:'Home Details'},
             8.  ];
 
+--- 05.07. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para importar 'RouterModule', quedando así:
+
+            1.  import { Component, Input } from '@angular/core';
+            2.  import { Housinglocation } from '../housinglocation';
+            3.  import { RouterModule } from '@angular/router';
+            4.  
+            5.  @Component({
+            6.    selector: 'app-housing-location',
+            7.    imports: [RouterModule],
+            8.    templateUrl: './housing-location.component.html',
+            9.    styleUrl: './housing-location.component.css'
+           10.  })
+           11.  export class HousingLocationComponent {
+           12.    @Input() housingLocation!: HousingLocation;
+           13.  }
+
+--- 05.08. Modificar código del archivo 'app01/src/app/components/housint-location/housing-location.component.html' para agregar 'routerLink' en la 
+           línea 10, quedando así:
+
+            1.  <section class="listing">
+            2.      <img 
+            3.          class="listing-photo"
+            4.          [src]="housingLocation.photo"
+            5.          alt="Exterior photo of {{ housingLocation.name }}"
+            6.          crossorigin
+            7.      />
+            8.      <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+            9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
+           10.      <a [routerLink]="['/details', housingLocation.id]" routerLinkActive="router-link-active" >Learn More</a>
+           11.  </section>
+
+--- 05.09. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' para realizar las importaciones y e inyectar 
+           dependencias, quedando así:
+
+            1.  import { Component, Input } from '@angular/core';
+            2.  import { Housinglocation } from '../housinglocation';
+            3.  import { RouterModule } from '@angular/router';
+            4.  
+            5.  @Component({
+            6.    selector: 'app-housing-location',
+            7.    imports: [RouterModule],
+            8.    templateUrl: './housing-location.component.html',
+            9.    styleUrl: './housing-location.component.css'
+           10.  })
+           11.  export class HousingLocationComponent {
+           12.    @Input() housingLocation!: HousingLocation;
+           13.  }
+
+
 --- 05.XX. ¡Aquí voy!:
 
 
@@ -765,6 +814,9 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- Clonar y correr el proyecto -------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+--- 01. Tomar en cuenta que el proyecto funciona a través de dependencias y están alojadas en 'app01/package.json'
+        (Por ejemplo, '20.  "@angular/router": "^19.1.0",')
 
 --- 01. Clonar el proyecto desde github en cualquier parte del computador (Ejp, Escritorio)
 

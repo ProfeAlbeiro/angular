@@ -699,7 +699,7 @@
 
 --- 05.02. Agregar estilos al archivo 'app01/src/app/components/details/details.component.css', desde el siguiente enlace:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/details.component.css
+           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/details/details.component.css
 
 
 --- 05.XX. ¡Aquí voy!:

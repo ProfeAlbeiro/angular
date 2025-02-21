@@ -714,7 +714,6 @@
             8.    providers: [provideRouter(routes)]
             9.  }).catch((err) => console.error(err));
 
-
 --- 05.04. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea 4 para importar el 'RouterModule' y en la línea 8
            para llamarlo, quedando así:
 
@@ -732,7 +731,6 @@
            12.  export class AppComponent {
            13.    title:number = 35;
            14.  }
-
 
 --- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' para agregar las rutas e incluir la etiqueta 'a' para incluir 'routerLink', 
            quedando así:
@@ -757,8 +755,7 @@
             5.  export const routes: Routes = [
             6.      {path:'', component: HomeComponent, title:'Home Page'},
             7.      {path:'details/:id', component: DetailsComponent, title:'Home Details'},
-            8.  ];          
-
+            8.  ];
 
 --- 05.XX. ¡Aquí voy!:
 

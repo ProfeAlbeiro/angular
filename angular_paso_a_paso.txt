@@ -699,7 +699,65 @@
 
 --- 05.02. Agregar estilos al archivo 'app01/src/app/components/details/details.component.css', desde el siguiente enlace:
 
-           https://github.com/ProfeAlbeiro/angular/blob/main/app01/src/app/components/details/details.component.css
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/details.component.css
+
+--- 05.03. Modificar el código del archivo 'app01/src/main.ts' en la línea 4 para importar el archivo de rutas 'app01/src/app/app.routes.ts', 
+           en la línea 5 importar provideRouter y desde la línea 7 modificar e incluir la función de rutas, quedando así:
+
+            1.  import { bootstrapApplication } from '@angular/platform-browser';
+            2.  import { appConfig } from './app/app.config';
+            3.  import { AppComponent } from './app/app.component';
+            4.  import { routes } from './app/app.routes';
+            5.  import { provideRouter } from '@angular/router';
+            6.  
+            7.  bootstrapApplication(AppComponent,{
+            8.    providers: [provideRouter(routes)]
+            9.  }).catch((err) => console.error(err));
+
+
+--- 05.04. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea 4 para importar el 'RouterModule' y en la línea 8
+           para llamarlo, quedando así:
+
+            1.  import { Component } from '@angular/core';
+            2.  import { RouterOutlet } from '@angular/router';
+            3.  import { HomeComponent } from './components/home/home.component';
+            4.  import { RouterModule } from '@angular/router';
+            5.  
+            6.  @Component({
+            7.    selector: 'app-root',
+            8.    imports: [RouterOutlet, HomeComponent, RouterModule],
+            9.    templateUrl: './app.component.html',
+           10.    styleUrl: './app.component.css'
+           11.  })
+           12.  export class AppComponent {
+           13.    title:number = 35;
+           14.  }
+
+
+--- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' para agregar las rutas e incluir la etiqueta 'a' para incluir 'routerLink', 
+           quedando así:
+
+            1.  <main class="main">
+            2.    <a routerLink="['/']">
+            3.      <header class="brand-home">
+            4.        <img  class="brand-logo" src="assets/logo.svg" alt="logo" />
+            5.      </header>
+            6.    </a>
+            7.    <section class="content">
+            8.      <router-outlet></router-outlet>
+            9.    </section>
+           10.  </main>
+
+--- 05.06. Modificar el código del archivo 'app01/src/app/app.routes.ts' para incluir las rutas y en 'details' agregarle los 'id', quedando así:
+
+            1.  import { Routes } from '@angular/router';
+            2.  import { HomeComponent } from './components/home/home.component';
+            3.  import { DetailsComponent } from './components/details/details.component';
+            4.  
+            5.  export const routes: Routes = [
+            6.      {path:'', component: HomeComponent, title:'Home Page'},
+            7.      {path:'details/:id', component: DetailsComponent, title:'Home Details'},
+            8.  ];          
 
 
 --- 05.XX. ¡Aquí voy!:

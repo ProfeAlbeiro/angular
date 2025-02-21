@@ -693,7 +693,13 @@
 |-- 05. Routing -----------------------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 05.01. 
+--- 05.01. Crear el componente 'home' desde la terminal:
+
+           PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/details
+
+--- 05.02. Agregar estilos al archivo 'app01/src/app/components/details/details.component.css', desde el siguiente enlace:
+
+           https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/details.component.css
 
 
 --- 05.XX. ¡Aquí voy!:

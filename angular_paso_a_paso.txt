@@ -873,7 +873,47 @@
            125.
            126.  }
 
---- 06.02. Modificar código del archivo 'app01/src/app/components/details/details.component.html' para añadir un formulario, quedando así:
+--- 06.02. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' para definir el formulario, quedando así:
+
+             1.  import { Component, inject } from '@angular/core';
+             2.  import { ActivatedRoute } from '@angular/router';
+             3.  import { HousingService } from '../housing.service';
+             4.  import { HousingLocation } from '../housing-location';
+             5.  import { CommonModule } from '@angular/common';
+             6.  import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+             7.  
+             8.  @Component({
+             9.    selector: 'app-details',
+            10.    imports: [CommonModule, ReactiveFormsModule],
+            11.    templateUrl: './details.component.html',
+            12.    styleUrl: './details.component.css'
+            13.  })
+            14.  export class DetailsComponent {
+            15.    route: ActivatedRoute = inject(ActivatedRoute);
+            16.    housingService = inject(HousingService);
+            17.    housingLocation: HousingLocation | undefined;
+            18.  
+            19.    formAngular = new FormGroup({
+            20.      firstName: new FormControl(''),
+            21.      lastName: new FormControl(''),
+            22.      email: new FormControl(''),
+            23.    });
+            24.  
+            25.    constructor(){
+            26.      const housingLocationId = Number(this.route.snapshot.params['id']);
+            27.      this.housingLocation = this.housingService.getHousingLocationById(housingLocationId)
+            28.    }
+            29.  
+            30.    onSubmit(){
+            31.      this.housingService.submitApplication(
+            32.        this.formAngular.value.firstName ?? '',
+            33.        this.formAngular.value.lastName ?? '',
+            34.        this.formAngular.value.email ?? '',
+            35.      )
+            36.    }
+            37.  }
+
+--- 06.03. Modificar código del archivo 'app01/src/app/components/details/details.component.html' para añadir el formulario, quedando así:
 
              1.  <article>
              2.      <img
@@ -894,7 +934,70 @@
             17.              <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
             18.          </ul>
             19.      </section>
-            20.  </article>
+            20.      <section>
+            21.          <h2>Apply Now to live here</h2>
+            22.          <form [formGroup]="formAngular" (submit)="onSubmit()">
+            23.              <label for="first-name">First Name</label>
+            24.              <input type="text" id="first-name" formControlName="firstName" />
+            25.              <label for="last-name">Last Name</label>
+            26.              <input type="text" id="last-name" formControlName="lastName" />
+            27.              <label for="email">First Name</label>
+            28.              <input type="text" id="email" formControlName="email" />
+            29.              <button type="submit" class="primary">Apply now </button>
+            30.          </form>
+            31.      </section>
+            32.  </article>
+
+--- 06.04. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' para definir el formulario de búsqueda, quedando así:
+
+             1.  import { Component, inject } from '@angular/core';
+             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+             3.  import { HousingLocation } from '../housing-location';
+             4.  import { CommonModule } from '@angular/common';
+             5.  import { HousingService } from '../housing.service';
+             6.  
+             7.  @Component({
+             8.    selector: 'app-home',
+             9.    imports: [CommonModule, HousingLocationComponent],
+            10.    templateUrl: './home.component.html',
+            11.    styleUrl: './home.component.css'
+            12.  })
+            13.  export class HomeComponent {
+            14.    housingLocationList: HousingLocation[] = [];
+            15.    housingService: HousingService = inject(HousingService);
+            16.    filteredLocationList: HousingLocation[] = [];
+            17.  
+            18.    constructor(){
+            19.      this.housingLocationList = this.housingService.getAllHousingLocations();
+            20.      this.filteredLocationList = this.housingLocationList
+            21.    }
+            22.  
+            23.    filterResults(text:string){
+            24.      if (!text) {
+            25.        this.filteredLocationList = this.housingLocationList;
+            26.        return;
+            27.      }
+            28.      this.filteredLocationList = this.housingLocationList.filter((housingLocation) => 
+            29.        housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+            30.      )
+            31.    }
+            32.  
+            33.  }
+
+--- 06.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' para incluir el método de filtro de búsqueda, quedando así:
+
+             1.  <section>
+             2.      <form>
+             3.          <input type="text" placeholder="Filter by city" #filter/>
+             4.          <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>
+             5.      </form>
+             6.      <section class="results">
+             7.          <app-housing-location
+             8.          *ngFor="let housingLocation of filteredLocationList"
+             9.              [housingLocation]="housingLocation">
+            10.          </app-housing-location>
+            11.      </section>
+            12.  </section>
 
 --- 06.XX.  Aquí voy...
 

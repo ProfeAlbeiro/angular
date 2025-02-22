@@ -1032,6 +1032,9 @@
            
 --- 07.09. Al seleccionar la terminal en la parte inferior derecha y presionando F2, se puede cambiar el nombre de las terminales
 
+--- 07.10. Al dar clic derecho sobre algún servidor ubicado en la parte inferior derecha y seleccionando la opción 'Change Color...', se puede cambiar
+           el color de la terminal
+
 --- 07.10. 
 
 --- 07.XX.  Aquí voy...

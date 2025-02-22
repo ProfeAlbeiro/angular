@@ -74,7 +74,7 @@
 
              PS C:\Users\ADMIN\Desktop\angular> cd app01
 
---- 01.13. Ejecturar el Servidor en la terminal:
+--- 01.13. Ejecutar el Servidor en la terminal:
 
              PS C:\Users\ADMIN\Desktop\angular\app01> ng serve -o
 
@@ -1004,7 +1004,28 @@
 |-- 07. Http Fetch y Json Server ------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 07.01.  xxx
+--- 07.01. Crear una carpeta denominada 'jsonserver' fuera del proyecto, ejemplo 'angular/sources/jsonserver':
+
+--- 07.02. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+
+--- 07.03. Ingresar a la carpeta 'jsonserver' desde la terminal:
+
+             PS C:\Users\ADMIN\Desktop\angular> cd sources/jsonserver
+
+--- 07.04. Inicializar un proyecto de node.js en la terminal:
+
+             PS C:\Users\ADMIN\Desktop\angular\sources\jsonserver> npm init -y
+
+--- 07.05. Crear dentro de la carpeta 'angular/sources/jsonserver' el archivo de la base de datos denominado 'db.json'
+
+--- 07.06. En el archivo 'db.json' escribir el siguiente código:
+
+             
+
+
+--- 07.06. En el archivo 'db.json' escribir el siguiente código:
+
+
 
 
 --- 07.XX.  Aquí voy...

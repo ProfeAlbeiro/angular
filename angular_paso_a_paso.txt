@@ -1020,7 +1020,7 @@
 
 --- 07.06. Agregar la base de datos al archivo 'db.json' desde el siguiente enlace:
 
-             https://github.com/ProfeAlbeiro/angular/blob/main/jsonserver/db.json
+             https://github.com/ProfeAlbeiro/angular/blob/main/sources/db/db.json
 
 --- 07.07. Instalar 'jsonserver' desde la terminal:
 
@@ -1035,9 +1035,121 @@
 --- 07.10. Al dar clic derecho sobre algún servidor ubicado en la parte inferior derecha y seleccionando la opción 'Change Color...', se puede cambiar
            el color de la terminal
 
---- 07.10. 
+--- 07.11. Modificar el código del archivo 'app01/src/app/components/housing.service.ts' para traer la API y consumirla con las funciones, quedando así:
 
---- 07.XX.  Aquí voy...
+             1.  import { Injectable } from '@angular/core';
+             2.  import { HousingLocation } from './housing-location';
+             3.  
+             4.  @Injectable({
+             5.    providedIn: 'root'
+             6.  })
+             7.  export class HousingService {
+             8.  
+             9.    constructor() { }
+            10.
+            11.    // API: Peticiones HTTP
+            12.    url = 'http://localhost:3000/locations';
+            13.  
+            14.    async getAllHousingLocation(): Promise<HousingLocation[]> {
+            15.      const data = await fetch(this.url);
+            16.      return (await data.json());
+            17.    }
+            18.  
+            19.    async getHousingLocationById(id:number): Promise<HousingLocation | undefined> {
+            20.      const data = await fetch(`${this.url}/${id}`);
+            21.      return (await data.json()) ?? {};
+            22.    }  
+            23.  
+            24.    submitApplication(firstName:string, lastName:string, email:string){
+            25.      console.log(`FirstName: ${firstName} - LastName: ${lastName} - Email: ${email}`);
+            26.    }
+            27.  
+            28.  }
+
+--- 07.12. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' para implementar las funciones anteriores desde el
+           constructor, quedando así:
+
+             1.  import { Component, inject } from '@angular/core';
+             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
+             3.  import { HousingLocation } from '../housing-location';
+             4.  import { CommonModule } from '@angular/common';
+             5.  import { HousingService } from '../housing.service';
+             6.  
+             7.  @Component({
+             8.    selector: 'app-home',
+             9.    imports: [CommonModule, HousingLocationComponent],
+            10.    templateUrl: './home.component.html',
+            11.    styleUrl: './home.component.css'
+            12.  })
+            13.  export class HomeComponent {
+            14.    housingLocationList: HousingLocation[] = [];
+            15.    housingService: HousingService = inject(HousingService);
+            16.    filteredLocationList: HousingLocation[] = [];
+            17.  
+            18.    constructor(){
+            19.      // API: Peticiones HTTP
+            20.      this.housingService.getAllHousingLocation().then((housingLocationList: HousingLocation[]) => {
+            21.        this.housingLocationList = housingLocationList;
+            22.        this.filteredLocationList = housingLocationList;
+            23.      })
+            24.    }
+            25.  
+            26.    filterResults(text:string){
+            27.      if (!text) {
+            28.        this.filteredLocationList = this.housingLocationList;
+            29.        return;
+            30.      }
+            31.      this.filteredLocationList = this.housingLocationList.filter((housingLocation) => 
+            32.        housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+            33.      )
+            34.    }
+            35.  
+            36.  }
+
+--- 07.13. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' para pasar parametros a las funciones heredadas desde 
+           constructor, quedando así:
+
+             1.  import { Component, inject } from '@angular/core';
+             2.  import { ActivatedRoute } from '@angular/router';
+             3.  import { HousingService } from '../housing.service';
+             4.  import { HousingLocation } from '../housing-location';
+             5.  import { CommonModule } from '@angular/common';
+             6.  import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+             7.  
+             8.  @Component({
+             9.    selector: 'app-details',
+            10.    imports: [CommonModule, ReactiveFormsModule],
+            11.    templateUrl: './details.component.html',
+            12.    styleUrl: './details.component.css'
+            13.  })
+            14.  export class DetailsComponent {
+            15.    route: ActivatedRoute = inject(ActivatedRoute);
+            16.    housingService = inject(HousingService);
+            17.    housingLocation: HousingLocation | undefined;
+            18.  
+            19.    formAngular = new FormGroup({
+            20.      firstName: new FormControl(''),
+            21.      lastName: new FormControl(''),
+            22.      email: new FormControl(''),
+            23.    });
+            24.  
+            25.    constructor(){
+            26.      // API: Peticiones HTTP
+            27.      const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+            28.      this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+            29.        this.housingLocation = housingLocation;
+            30.      })
+            31.    }
+            32.  
+            33.    onSubmit(){
+            34.      this.housingService.submitApplication(
+            35.        this.formAngular.value.firstName ?? '',
+            36.        this.formAngular.value.lastName ?? '',
+            37.        this.formAngular.value.email ?? '',
+            38.      )
+            39.    }
+            40.  
+            41.  }
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1070,3 +1182,17 @@
 --- 08. Inicializar un proyecto de node.js desde la terminal:
 
              PS C:\Users\ADMIN\Desktop\angular\sources\jsonserver> npm init -y
+
+--- 09. Crear dentro de la carpeta 'angular/jsonserver' el archivo de la base de datos denominado 'db.json'
+
+--- 10. Agregar la base de datos al archivo 'db.json' desde el siguiente enlace:
+
+             https://github.com/ProfeAlbeiro/angular/blob/main/sources/db/db.json
+
+--- 11. Instalar 'jsonserver' desde la terminal:
+
+             PS C:\Users\ADMIN\Desktop\angular\sources\jsonserver> npm install json-server
+
+--- 12. Ejecutar el servidor 'jsonserver' desde la terminal para tener 'api fake' lista para trabajar:
+
+             PS C:\Users\ADMIN\Desktop\angular\sources\jsonserver> npx json-server db.json

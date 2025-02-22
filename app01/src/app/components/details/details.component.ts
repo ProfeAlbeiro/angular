@@ -23,8 +23,11 @@ export class DetailsComponent {
   });
 
   constructor(){
-    const housingLocationId = Number(this.route.snapshot.params['id']);
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId)
+    // API: Peticiones HTTP
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+    this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+      this.housingLocation = housingLocation;
+    })
   }
 
   onSubmit(){
@@ -34,4 +37,5 @@ export class DetailsComponent {
       this.formAngular.value.email ?? '',
     )
   }
+  
 }

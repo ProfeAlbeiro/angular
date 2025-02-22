@@ -1004,23 +1004,23 @@
 |-- 07. Http Fetch y Json Server ------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 07.01. Crear una carpeta denominada 'jsonserver' fuera del proyecto, ejemplo 'angular/sources/jsonserver':
+--- 07.01. Crear una carpeta denominada 'jsonserver' fuera del proyecto, ejemplo 'angular/jsonserver':
 
 --- 07.02. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
 
 --- 07.03. Ingresar a la carpeta 'jsonserver' desde la terminal:
 
-             PS C:\Users\ADMIN\Desktop\angular> cd sources/jsonserver
+             PS C:\Users\ADMIN\Desktop\angular> cd jsonserver
 
 --- 07.04. Inicializar un proyecto de node.js desde la terminal:
 
              PS C:\Users\ADMIN\Desktop\angular\sources\jsonserver> npm init -y
 
---- 07.05. Crear dentro de la carpeta 'angular/sources/jsonserver' el archivo de la base de datos denominado 'db.json'
+--- 07.05. Crear dentro de la carpeta 'angular/jsonserver' el archivo de la base de datos denominado 'db.json'
 
 --- 07.06. Agregar la base de datos al archivo 'db.json' desde el siguiente enlace:
 
-             https://github.com/ProfeAlbeiro/angular/blob/main/sources/jsonserver/db.json
+             https://github.com/ProfeAlbeiro/angular/blob/main/jsonserver/db.json
 
 --- 07.07. Instalar 'jsonserver' desde la terminal:
 

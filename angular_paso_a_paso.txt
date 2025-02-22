@@ -1030,7 +1030,9 @@
 
              PS C:\Users\ADMIN\Desktop\angular\sources\jsonserver> npx json-server db.json
            
+--- 07.09. Al seleccionar la terminal en la parte inferior derecha y presionando F2, se puede cambiar el nombre de las terminales
 
+--- 07.10. 
 
 --- 07.XX.  Aquí voy...
 

@@ -657,15 +657,14 @@
            112.    ];
            113.  }
 
---- 04.04. Inyectar el servicio al archivo 'app01/src/app/components/home/home.component.ts' en la línea 1, incluir el arreglo de objetos en la línea 13,
-           importar el servicio en la línea 5 y usarlo en la línea 15: 
+--- 04.04. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas: 
            
-             1.  import { Component, inject } from '@angular/core';
-            13.    housingLocationList: HousingLocation[] = [];
-             5.  import { HousingService } from '../housing.service';
-            15.    housingService: HousingService = inject(HousingService);
-           
-           quedando así:
+             1.  import { Component, inject } from '@angular/core';           // Importar la función de inyección de código 'inject'
+            13.    housingLocationList: HousingLocation[] = [];               // Crear una instancia de la Interfaz 'HousingLocation'
+             5.  import { HousingService } from '../housing.service';         // Importar el Servicio
+            15.    housingService: HousingService = inject(HousingService);   // Crear una instancia del servicio e inyecarlo           
+
+           Quedando así:
 
              1.  import { Component, inject } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -684,8 +683,10 @@
             15.    housingService: HousingService = inject(HousingService);
             16.  }
 
---- 04.05. Incluir en el código del archivo 'app01/src/app/components/housing.service.ts', una función en la línea 114 para mostrar todos los objetos
-           del arreglo y otra función en la línea 118 para mostrar solo un elemento por identificador, quedando así:
+--- 04.05. Modificar el código del archivo 'app01/src/app/components/housing.service.ts', en las líneas: 
+           
+           114.    getAllHousingLocations(): HousingLocation[] {}                       // Crear función que obtnenga todos los objetos del arreglo
+           118.    getHousingLocationById(id:number): HousingLocation | undefined {}    // Crear un función que obtenga un solo objeto por filtro             
 
              1.  import { Injectable } from '@angular/core';
              2.  import { HousingLocation } from './housing-location';
@@ -710,9 +711,12 @@
            121.  
            122.  }
 
---- 04.06. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en la línea 17, para que el constructor llame la función de
-           traer todos los elementos del paso anterior, quedando así:
-
+--- 04.06. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en desde la línea:
+            
+            17.    constructor(){                                                               // Apertura del constructor
+            18.      this.housingLocationList = this.housingService.getAllHousingLocations();   // Crear instancia del servicio y llamar función
+            19.    }                                                                            // Cierre del constructor            
+           
              1.  import { Component, inject } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
              3.  import { Housinglocation } from '../housinglocation';

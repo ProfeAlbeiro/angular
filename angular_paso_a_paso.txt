@@ -89,7 +89,7 @@
              ➜  Local:   http://localhost:4200/
              ➜  press h + enter to show help
 
---- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en línea:
+--- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en la línea:
 
             11.  title:number = 35;       // Para cambiar el título de bienvenida de la página inicial al número 35
 

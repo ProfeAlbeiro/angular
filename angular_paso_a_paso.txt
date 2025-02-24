@@ -134,17 +134,16 @@
 
              https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/home.component.css
 
---- 02.08. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea 6:
+--- 02.08. Modificar el código del archivo 'app01/src/app/app.component.ts' en la siguiente línea:
 
-             6.    imports: [RouterOutlet, HomeComponent],
-
-           Para asociarlo con el nuevo componente 'home': '../components/home/home.component.ts', en la línea '9.  export class HomeComponent'.
+             6.    imports: [RouterOutlet, HomeComponent],      // Para asociarlo al componente '../components/home/home.component.ts'
+                                                                // en la línea '9.  export class HomeComponent' 
 
            NOTA: Si en la línea 3 no aparece la librería: 
                     
              3.  import { HomeComponent } from './components/home/home.component'; 
             
-           Ubiquese al final de la palabra 'HomeComponent' en la línea 6, presione 'Ctrl + Space' y seleccione el mismo nombre; al final quedaría así:
+           Ubiquese al final de la palabra 'HomeComponent' de la línea 6, presione 'Ctrl + Space' y seleccione el mismo nombre; al final quedaría así:
 
              1.  import { Component } from '@angular/core';
              2.  import { RouterOutlet } from '@angular/router';
@@ -160,11 +159,12 @@
             12.    title:number = 35;
             13.  }           
 
---- 02.09. Modificar el código del archivo 'app01/src/app/app.component.html' en la línea 6:
+--- 02.09. Modificar el código del archivo 'app01/src/app/app.component.html' en la siguiente línea:
                 
-             6.      <app-home></app-home>            
+             6.      <app-home></app-home>            // Para llamar al componente '../components/home/home.component.ts'
+                                                      // en la línea '4.  selector: 'app-home'', quedando así:
            
-           Para llamar el nuevo componente 'home': '../components/home/home.component.ts', línea '4.  selector: 'app-home'', quedando así:
+           Quedando así: 
 
              1.  <main class="main">
              2.    <header class="brand-home">
@@ -197,12 +197,12 @@
 
              https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/housing-location.component.css
 
---- 02.13. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en la línea 5:
+--- 02.13. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en la siguiente línea:
 
-             5.    imports: [HousingLocationComponent],
+             5.    imports: [HousingLocationComponent],       // Para asociarlo al componente '../components/housing-location/housing-location.component.ts'
+                                                              // en la línea '9.  export class HousingLocationComponent'
 
-           Para asociarlo con el componente 'housing-location': '../components/housing-location/housing-location.component.ts', en la 
-           línea '9.  export class HousingLocationComponent'. Al final debe quedar así:
+           Quedando así;
 
              1.  import { Component } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -217,13 +217,14 @@
             11.
             12.  }
 
---- 02.14. Modificar el código del archivo 'app01/src/app/components/home/home.component.html' en la línea 7:
+--- 02.14. Modificar el código del archivo 'app01/src/app/components/home/home.component.html' en la siguiente línea:
                 
-             7.        <app-housing-location></app-housing-location>             
-           
-           Para llamar el nuevo componente 'housing-location': '../components/housing-location/housing-location.component.ts', en la 
-           línea '4.  selector: 'app-housing-location''; qudando así:
-
+             7.        <app-housing-location></app-housing-location>  // Para llamar al componente 
+                                                                      // '../components/housing-location/housing-location.component.ts'
+                                                                      // en la línea '4.  selector: 'app-housing-location''
+             
+           Quedando así;
+             
              1.  <section>
              2.    <form>
              3.      <input type="text" placeholder="Filter by city" />

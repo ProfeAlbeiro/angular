@@ -89,9 +89,13 @@
              ➜  Local:   http://localhost:4200/
              ➜  press h + enter to show help
 
---- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en línea 11:
+--- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en línea:
 
-            11.  title:number = 35;
+            11.  title:number = 35;       // Para cambiar el título de bienvenida de la página inicial al número 35
+
+           Quedando así: 
+
+           "OJO: COLOCAR EL CÓDIGO DE APP COMPONENT TS CUANDO INICIA EL PROYECTO"
            
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -257,7 +261,7 @@
              9.      laundry: boolean;
             10.  }
 
---- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las línea 3, 12 y 13:
+--- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas 3, 12 y 13:
 
             3.  import { HousingLocation } from '../housinglocation';
            

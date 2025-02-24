@@ -34,7 +34,7 @@
 
              https://nodejs.org/es/
 
---- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir los siguientes comandos:
+--- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir lo siguiente:
          
              PS C:\Windows\system32> Get-ExecutionPolicy
              PS C:\Windows\system32> Set-ExecutionPolicy Unrestricted
@@ -48,7 +48,7 @@
              [S] Sí  [O] Sí a todo  [N] No  [T] No a todo  [U] Suspender  [?] Ayuda 
              (el valor predeterminado es "N"): S         
          
---- 01.05. Crear una carpeta raíz para los proyectos en el computador:
+--- 01.05. Crear una carpeta para los proyectos de Angula en el computador (carpeta raíz):
 
              'Escritorio/angular'
 
@@ -278,7 +278,8 @@
              9.      laundry: boolean;
             10.  }
 
---- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas 3, 12 y 13:
+--- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas:
+             3, 12 y 13:
 
             3.  import { HousingLocation } from '../housinglocation';
            

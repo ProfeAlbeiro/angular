@@ -157,7 +157,7 @@
 
 --- 02.08. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea:
 
-             6.    imports: [RouterOutlet, HomeComponent],      // Para asociarlo al componente '../components/home/home.component.ts'
+             6.    imports: [RouterOutlet, HomeComponent],      // Asociar al componente 'HomeComponent' con '../components/home/home.component.ts'
                                                                 // en la línea '9.  export class HomeComponent' 
 
            NOTA: Si en la línea 3 no aparece la librería: 
@@ -182,8 +182,8 @@
 
 --- 02.09. Modificar el código del archivo 'app01/src/app/app.component.html' en la línea:
                 
-             6.      <app-home></app-home>            // Para llamar al componente '../components/home/home.component.ts'
-                                                      // en la línea '4.  selector: 'app-home'', quedando así:
+             6.      <app-home></app-home>            // Llamar al selector 'app-home' del componente '../components/home/home.component.ts'
+                                                      // en la línea '4.  selector: 'app-home'':
            
            Quedando así: 
 
@@ -220,10 +220,11 @@
 
 --- 02.13. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en la línea:
 
-             5.    imports: [HousingLocationComponent],       // Para asociarlo al componente '../components/housing-location/housing-location.component.ts'
+             5.    imports: [HousingLocationComponent],       // Asociar al componente 'HousingLocationComponent' con 
+                                                              // '../components/housing-location/housing-location.component.ts'
                                                               // en la línea '9.  export class HousingLocationComponent'
 
-           Quedando así;
+           Quedando así:
 
              1.  import { Component } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -240,11 +241,11 @@
 
 --- 02.14. Modificar el código del archivo 'app01/src/app/components/home/home.component.html' en la línea:
                 
-             7.        <app-housing-location></app-housing-location>  // Para llamar al componente 
+             7.        <app-housing-location></app-housing-location>  // Para llamar al selector 'app-housing-location' del componente 
                                                                       // '../components/housing-location/housing-location.component.ts'
                                                                       // en la línea '4.  selector: 'app-housing-location''
              
-           Quedando así;
+           Quedando así:
              
              1.  <section>
              2.    <form>
@@ -278,12 +279,13 @@
              9.      laundry: boolean;
             10.  }
 
---- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas:
-             3, 12 y 13:
+--- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas:             
 
-            3.  import { HousingLocation } from '../housinglocation';
+            3.  import { HousingLocation } from '../housinglocation';                         // Importar la Interface 'HousingLocation'
+            12.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';   // Consumir una API Externa de imágenes
+            13.    housingLocation: HousingLocation = {}                                      // Crear una instancia de 'HousingLocation'
            
-           Para importar la interface, consumir datos de una API externa y crear una instancia, quedando así:
+           Quedando así:           
 
              1.  import { Component } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -309,14 +311,14 @@
             22.    };
             23.  }
 
---- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' en las líneas 1, 2 y 11:
+--- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' en las líneas:
             
-             1.  import { Component, Input } from '@angular/core';
-             2.  import { Housinglocation } from '../housinglocation';
-            11.    @Input() housingLocation!: HousingLocation;
+             1.  import { Component, Input } from '@angular/core';        // Importar el decorador @Input
+             2.  import { Housinglocation } from '../housinglocation';    // Importar la Interface
+            11.    @Input() housingLocation!: HousingLocation;            // Crear una instancia de 'HousingLocation', usar el decorador @Input()
+                                                                          // y heradar datos del componente Padre
 
-             Para agregar un decorador (@), importar la interface 'HousingLocation' y consumir los datos de su componente Padre 
-             '../home/home.component.ts', quedando así:
+           Quedando así:  
 
              1.  import { Component, Input } from '@angular/core';
              2.  import { Housinglocation } from '../housinglocation';
@@ -331,7 +333,11 @@
             11.    @Input() housingLocation!: HousingLocation;
             12.  }
 
---- 03.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en la línea 7, quedando así:
+--- 03.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en la línea:
+
+             7.      <app-housing-location [housingLocation]="housingLocation"></app-housing-location>  // Pasar los datos del Padre al Hijo
+
+           Quedando así:  
 
              1.  <section>
              2.    <form>
@@ -356,14 +362,17 @@
              9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
             10.  </section>
 
---- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas 4, 8 y 14:
+--- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas:
 
-             4.  import { CommonModule } from '@angular/common';
-             8.    imports: [CommonModule, HousingLocationComponent],
-            14.    housinglocationList: Housinglocation []
+             4.  import { CommonModule } from '@angular/common';        // Importar la funcionalidad de crear un arreglo de objetos
+             8.    imports: [CommonModule, HousingLocationComponent],   // Integrar la creación de un arreglo de objetos
+            14.    housinglocationList: Housinglocation []              // Crear una instancia de clase tipo arreglo de objetos
 
-           Para incluir el 'CommonModule' y permitir la creación de un arreglo de objetos
-           (https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js), quedando así:
+           NOTA: En el siguiente enlace está el arreglo de objetos de ejemplo:
+                 https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js
+                 Tenga en cuenta que se cambia el nombre de objeto 'housinglocation' al arreglo 'housingLocationList'                 
+           
+           Quedando así:
 
              1.  import { Component } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -482,10 +491,11 @@
            115.    ];
            116.  }
 
-           NOTA: Tenga en cuenta que se cambia el nombre de objeto 'housinglocation' al arreglo 'housingLocationList'
+--- 03.08. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en la línea:
 
---- 03.08. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' para incluir un ciclo for (snippets), 
-           quedando así:
+             8.              *ngFor="let housingLocation of housingLocationList"      // Incluir ciclo for (snippets) y recorrer el arreglo
+           
+           Quedando así:
 
              1.  <section>
              2.      <form>
@@ -505,8 +515,8 @@
 |-- 04. Services ----------------------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 04.01. Crear un servicio desde la terminal (sin incluir el archivo *.spec.ts), para separar la lógica y los datos que, a su vez, puedan ser 
-           utilizados por varios componentes:
+--- 04.01. Crear un servicio desde la terminal (sin incluir el archivo *.spec.ts), que separe la lógica y los datos de los componentes y que; a su vez, 
+           puedan ser utilizados por varios componentes:
 
              PS C:\Users\ADMIN\Desktop\angular\app01> ng generate service components/housing --skip-tests
 
@@ -527,8 +537,11 @@
             13.
             14.  }  
 
---- 04.03. Pegar el código cortado en el paso anterior en el archivo 'app01/src/app/components/housing.service.ts', en la línea 9 y; en la línea 10,
-           importar 'HousingLocation', quedando así:
+--- 04.03. Pegar el código cortado en el paso anterior en el archivo 'app01/src/app/components/housing.service.ts', en la línea 9 y en la línea: 
+                        
+             2.  import { HousingLocation } from './housing-location';        // Importar la Interface 'HousingLocation'
+           
+           Quedando así:
 
              1.  import { Injectable } from '@angular/core';
              2.  import { HousingLocation } from './housing-location';

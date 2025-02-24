@@ -821,8 +821,7 @@
              3.  import { DetailsComponent } from './components/details/details.component';   // Importar el componente 'DetailsComponent'
              5.  export const routes: Routes = []                                             // Crear un arreglo de las rutas
 
-           Quedando así:           
-           Para incluir los componentes 'HomeComponent', 'DetailsComponent' y las rutas, quedando así:
+           Quedando así:
 
              1.  import { Routes } from '@angular/router';
              2.  import { HomeComponent } from './components/home/home.component';

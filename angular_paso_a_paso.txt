@@ -138,7 +138,7 @@
 
              6.    imports: [RouterOutlet, HomeComponent],
 
-           Para asociarlo con el nuevo componente 'home': 'app01/src/app/components/home/home.component.ts', línea '9.  export class HomeComponent'.
+           Para asociarlo con el nuevo componente 'home': '../components/home/home.component.ts', en la línea '9.  export class HomeComponent'.
 
            NOTA: Si en la línea 3 no aparece la librería: 
                     
@@ -164,7 +164,7 @@
                 
              6.      <app-home></app-home>            
            
-           Para llamar el nuevo componente 'home': 'app01/src/app/components/home/home.component.ts', línea '4.  selector: 'app-home'', quedando así:
+           Para llamar el nuevo componente 'home': '../components/home/home.component.ts', línea '4.  selector: 'app-home'', quedando así:
 
              1.  <main class="main">
              2.    <header class="brand-home">
@@ -201,7 +201,7 @@
 
              5.    imports: [HousingLocationComponent],
 
-           Para asociarlo con el componente 'housing-location': 'app01/src/app/components/housing-location/housing-location.component.ts', 
+           Para asociarlo con el componente 'housing-location': '../components/housing-location/housing-location.component.ts', en la 
            línea '9.  export class HousingLocationComponent'. Al final debe quedar así:
 
              1.  import { Component } from '@angular/core';
@@ -219,9 +219,9 @@
 
 --- 02.14. Modificar el código del archivo 'app01/src/app/components/home/home.component.html' en la línea 7:
                 
-             7.      <app-housing-location></app-housing-location>
+             7.        <app-housing-location></app-housing-location>             
            
-           Para llamar el nuevo componente 'housing-location': 'app01/src/app/components/housing-location/housing-location.component.ts', 
+           Para llamar el nuevo componente 'housing-location': '../components/housing-location/housing-location.component.ts', en la 
            línea '4.  selector: 'app-housing-location''; qudando así:
 
              1.  <section>
@@ -243,7 +243,7 @@
 
              PS C:\Users\ADMIN\Desktop\angular\app01> ng generate interface components/housingLocation
 
---- 03.02. Modificar código del archivo 'app01/src/app/components/housinglocation.ts' para definir propiedades, quedando así:
+--- 03.02. Modificar código del archivo 'app01/src/app/components/housinglocation.ts' para definir los atributos, quedando así:
 
              1.  export interface HousingLocation {
              2.      id: number;
@@ -252,12 +252,15 @@
              5.      state: string;
              6.      photo: string;
              7.      availableUnits: number;
-             8.      wifi:boolean;
-             9.      laundry:boolean;
+             8.      wifi: boolean;
+             9.      laundry: boolean;
             10.  }
 
---- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' para crear una instancia de la interfaz, dentro de la clase  
-           'export class HomeComponent' desde la línea 11, quedando así:
+--- 03.03. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las línea 3, 12 y 13:
+
+            3.  import { HousingLocation } from '../housinglocation';
+           
+           Para importar la interface, consumir datos de una API externa y crear una instancia, quedando así:
 
              1.  import { Component } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -283,8 +286,14 @@
             22.    };
             23.  }
 
---- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para agregar un 
-           decorador (@), dentro de la clase 'export class HousingLocationComponent' en la línea 10, quedando así:
+--- 03.04. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' en las líneas 1, 2 y 11:
+            
+             1.  import { Component, Input } from '@angular/core';
+             2.  import { Housinglocation } from '../housinglocation';
+            11.    @Input() housingLocation!: HousingLocation;
+
+             Para agregar un decorador (@), importar la interface 'HousingLocation' y consumir los datos de su componente Padre 
+             '../home/home.component.ts', quedando así:
 
              1.  import { Component, Input } from '@angular/core';
              2.  import { Housinglocation } from '../housinglocation';
@@ -324,16 +333,18 @@
              9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
             10.  </section>
 
---- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en la línea 7:
+--- 03.07. Modificar código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas 4, 8 y 14:
 
-             7.    imports: [CommonModule, HousingLocationComponent],
+             4.  import { CommonModule } from '@angular/common';
+             8.    imports: [CommonModule, HousingLocationComponent],
+            14.    housinglocationList: Housinglocation []
 
-           para incluir el 'CommonModule' y un arreglo de objetos (https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js), 
-           quedando así:
+           Para incluir el 'CommonModule' y permitir la creación de un arreglo de objetos
+           (https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js), quedando así:
 
              1.  import { Component } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
-             3.  import { Housinglocation } from '../housinglocation';
+             3.  import { HousingLocation } from '../housingLocation';
              4.  import { CommonModule } from '@angular/common';
              5.
              6.  @Component({  

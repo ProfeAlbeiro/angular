@@ -688,6 +688,8 @@
            114.    getAllHousingLocations(): HousingLocation[] {}                       // Crear función que obtnenga todos los objetos del arreglo
            118.    getHousingLocationById(id:number): HousingLocation | undefined {}    // Crear un función que obtenga un solo objeto por filtro             
 
+           Quedando así:
+
              1.  import { Injectable } from '@angular/core';
              2.  import { HousingLocation } from './housing-location';
              3.  
@@ -717,6 +719,8 @@
             18.      this.housingLocationList = this.housingService.getAllHousingLocations();   // Crear instancia del servicio y llamar función
             19.    }                                                                            // Cierre del constructor            
            
+           Quedando así:
+
              1.  import { Component, inject } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
              3.  import { Housinglocation } from '../housinglocation';
@@ -752,8 +756,13 @@
 
              https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/details.component.css
 
---- 05.03. Modificar el código del archivo 'app01/src/main.ts' en la línea 4 para importar el archivo de rutas 'app01/src/app/app.routes.ts', 
-           en la línea 5 importar provideRouter y desde la línea 7 modificar e incluir la función de rutas, quedando así:
+--- 05.03. Modificar el código del archivo 'app01/src/main.ts' en la línea 
+            
+             4.  import { routes } from './app/app.routes';           // Importar la función de rutas            
+             5.  import { provideRouter } from '@angular/router';     // Importar archivo de inyección de dependencias
+             7.  bootstrapApplication(AppComponent,{})                // Implementar dependencias y rutas
+            
+           Quedando así:           
 
              1.  import { bootstrapApplication } from '@angular/platform-browser';
              2.  import { appConfig } from './app/app.config';
@@ -764,14 +773,15 @@
              7.  bootstrapApplication(AppComponent,{
              8.    providers: [provideRouter(routes)]
              9.  })
-            10.  catch((err) => console.error(err));
+            10.  .catch((err) => console.error(err));
 
---- 05.04. Modificar el código del archivo 'app01/src/app/app.component.ts' en las líneas 4, 8, 13
+--- 05.04. Modificar el código del archivo 'app01/src/app/app.component.ts' en las líneas:
              
-             4.  import { RouterModule } from '@angular/router';
-             8.    imports: [RouterOutlet, RouterModule],
+             4.  import { RouterModule } from '@angular/router';      // Importar el módulo 'RouterModule' para enrutar
+             8.    imports: [RouterOutlet, RouterModule],             // Incorporar 'RouterModule' para usar
+            12.    title:string = 'homes';                            // Cambiar el nombre de inicio a 'homes'
 
-           Para importar 'RouterModule' e integrarlos para manejar las rutas, quedando así:
+           Quedando así:
 
              1.  import { Component } from '@angular/core';
              2.  import { RouterOutlet } from '@angular/router';             
@@ -787,12 +797,12 @@
             12.    title:string = 'homes';
             13.  }
 
---- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' en las líneas 2 y 8
+--- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' en las líneas: 2 y 8
            
-             2.    <a routerLink="/">
-             8.      <router-outlet></router-outlet>
+             2.    <a routerLink="/">                     // Para enrutar a los componentes
+             8.      <router-outlet></router-outlet>      // Habilitar el selector de rutas
            
-           para incluir en una etiqueta 'a' el 'routerLink' y el selector '<router-outlet />', quedando así:
+           Quedando así:           
 
              1.  <main class="main">
              2.    <a routerLink="/">
@@ -805,12 +815,13 @@
              9.    </section>
             10.  </main>
 
---- 05.06. Modificar el código del archivo 'app01/src/app/app.routes.ts' en las líneas 2, 3 y desde la 5
+--- 05.06. Modificar el código del archivo 'app01/src/app/app.routes.ts' en las líneas: 
 
-             2.  import { HomeComponent } from './components/home/home.component';
-             3.  import { DetailsComponent } from './components/details/details.component';
-             5.  export const routes: Routes = []
+             2.  import { HomeComponent } from './components/home/home.component';            // Importar el componente 'HomeComponent'
+             3.  import { DetailsComponent } from './components/details/details.component';   // Importar el componente 'DetailsComponent'
+             5.  export const routes: Routes = []                                             // Crear un arreglo de las rutas
 
+           Quedando así:           
            Para incluir los componentes 'HomeComponent', 'DetailsComponent' y las rutas, quedando así:
 
              1.  import { Routes } from '@angular/router';

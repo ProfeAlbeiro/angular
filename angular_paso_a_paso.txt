@@ -704,9 +704,9 @@
 |-- 05. Routing -----------------------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 05.01. Crear el componente 'home' desde la terminal:
+--- 05.01. Crear el componente 'details' desde la terminal:
 
-             PS C:\Users\ADMIN\Desktop\angular\app01> ng generate component components/details
+             PS C:\Users\ADMIN\Desktop\angular\app01> ng g c components/details
 
 --- 05.02. Agregar estilos al archivo 'app01/src/app/components/details/details.component.css', desde el siguiente enlace:
 
@@ -723,28 +723,36 @@
              6.  
              7.  bootstrapApplication(AppComponent,{
              8.    providers: [provideRouter(routes)]
-             9.  }).catch((err) => console.error(err));
+             9.  })
+            10.  catch((err) => console.error(err));
 
---- 05.04. Modificar el código del archivo 'app01/src/app/app.component.ts' en la línea 4 para importar el 'RouterModule' y en la línea 8
-           para llamarlo, quedando así:
+--- 05.04. Modificar el código del archivo 'app01/src/app/app.component.ts' en las líneas 4, 8, 13
+             
+             4.  import { RouterModule } from '@angular/router';
+             8.    imports: [RouterOutlet, RouterModule],
+
+           Para importar 'RouterModule' e integrarlos para manejar las rutas, quedando así:
 
              1.  import { Component } from '@angular/core';
-             2.  import { RouterOutlet } from '@angular/router';
-             3.  import { HomeComponent } from './components/home/home.component';
-             4.  import { RouterModule } from '@angular/router';
-             5.  
-             6.  @Component({
-             7.    selector: 'app-root',
-             8.    imports: [RouterOutlet, HomeComponent, RouterModule],
-             9.    templateUrl: './app.component.html',
-            10.    styleUrl: './app.component.css'
-            11.  })
-            12.  export class AppComponent {
-            13.    title:string = 'homes';
-            14.  }
+             2.  import { RouterOutlet } from '@angular/router';             
+             3.  import { RouterModule } from '@angular/router';
+             4.  
+             5.  @Component({
+             6.    selector: 'app-root',
+             7.    imports: [RouterOutlet, RouterModule],
+             8.    templateUrl: './app.component.html',
+             9.    styleUrl: './app.component.css'
+            10.  })
+            11.  export class AppComponent {
+            12.    title:string = 'homes';
+            13.  }
 
---- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' para agregar las rutas e incluir los links para incluir 'routerLink', 
-           quedando así:
+--- 05.05. Modificar el código del archivo 'app01/src/app/app.component.html' en las líneas 2 y 8
+           
+             2.    <a routerLink="/">
+             8.      <router-outlet></router-outlet>
+           
+           para incluir en una etiqueta 'a' el 'routerLink' y el selector '<router-outlet />', quedando así:
 
              1.  <main class="main">
              2.    <a routerLink="/">
@@ -757,7 +765,13 @@
              9.    </section>
             10.  </main>
 
---- 05.06. Modificar el código del archivo 'app01/src/app/app.routes.ts' para incluir las rutas y en 'details' agregarle los 'id', quedando así:
+--- 05.06. Modificar el código del archivo 'app01/src/app/app.routes.ts' en las líneas 2, 3 y desde la 5
+
+             2.  import { HomeComponent } from './components/home/home.component';
+             3.  import { DetailsComponent } from './components/details/details.component';
+             5.  export const routes: Routes = []
+
+           Para incluir los componentes 'HomeComponent', 'DetailsComponent' y las rutas, quedando así:
 
              1.  import { Routes } from '@angular/router';
              2.  import { HomeComponent } from './components/home/home.component';
@@ -768,7 +782,12 @@
              7.      {path:'details/:id', component: DetailsComponent, title:'Home Details'},
              8.  ];
 
---- 05.07. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' para importar 'RouterModule', quedando así:
+--- 05.07. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' en las líneas 3 y 7
+
+             3.  import { RouterModule } from '@angular/router';
+             7.    imports: [RouterModule],
+
+           Para importar 'RouterModule', quedando así:
 
              1.  import { Component, Input } from '@angular/core';
              2.  import { Housinglocation } from '../housinglocation';
@@ -784,8 +803,8 @@
             12.    @Input() housingLocation!: HousingLocation;
             13.  }
 
---- 05.08. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.html' para agregar 'routerLink' en la 
-           línea 10, quedando así:
+--- 05.08. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.html' en la línea 10 para agregar 'routerLink', 
+           quedando así:
 
              1.  <section class="listing">
              2.      <img 
@@ -803,10 +822,10 @@
            enrutar, usar servicios, agregar componentes, capturar 'id' entre otros; quedando así:
 
              1.  import { Component, inject } from '@angular/core';
-             2.  import { ActivatedRoute } from '@angular/router';
-             3.  import { HousingService } from '../housing.service';
-             4.  import { HousingLocation } from '../housing-location';
-             5.  import { CommonModule } from '@angular/common';
+             2.  import { CommonModule } from '@angular/common';
+             3.  import { ActivatedRoute } from '@angular/router';
+             4.  import { HousingService } from '../housing.service';
+             5.  import { HousingLocation } from '../housing-location';
              6.  
              7.  @Component({
              8.    selector: 'app-details',
@@ -884,7 +903,14 @@
            125.
            126.  }
 
---- 06.02. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' para definir el formulario, quedando así:
+--- 06.02. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' en las siguientes líneas para: 
+
+             6.  import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';    // Importar el Formulario, sus controles y Reactividad
+            10.    imports: [CommonModule, ReactiveFormsModule],                                  // Incluir la imporctación del Formulario Reactivo 
+            24.    formAngular = new FormGroup({});                                               // Crear el Formulario Reactivo
+            30.    onSubmit(){}                                                                   // Enviar los datos del Formulario
+
+           Quedando así:
 
              1.  import { Component, inject } from '@angular/core';
              2.  import { ActivatedRoute } from '@angular/router';
@@ -904,16 +930,16 @@
             16.    housingService = inject(HousingService);
             17.    housingLocation: HousingLocation | undefined;
             18.  
-            19.    formAngular = new FormGroup({
-            20.      firstName: new FormControl(''),
-            21.      lastName: new FormControl(''),
-            22.      email: new FormControl(''),
-            23.    });
-            24.  
-            25.    constructor(){
-            26.      const housingLocationId = Number(this.route.snapshot.params['id']);
-            27.      this.housingLocation = this.housingService.getHousingLocationById(housingLocationId)
-            28.    }
+            19.    constructor(){
+            20.      const housingLocationId = Number(this.route.snapshot.params['id']);
+            21.      this.housingLocation = this.housingService.getHousingLocationById(housingLocationId)
+            22.    }
+            23.  
+            24.    formAngular = new FormGroup({
+            25.      firstName: new FormControl(''),
+            26.      lastName: new FormControl(''),
+            27.      email: new FormControl(''),
+            28.    });
             29.  
             30.    onSubmit(){
             31.      this.housingService.submitApplication(
@@ -924,7 +950,7 @@
             36.    }
             37.  }
 
---- 06.03. Modificar código del archivo 'app01/src/app/components/details/details.component.html' para añadir el formulario, quedando así:
+--- 06.03. Modificar código del archivo 'app01/src/app/components/details/details.component.html' en la línea 20 para añadir el formulario, quedando así:
 
              1.  <article>
              2.      <img
@@ -952,14 +978,20 @@
             24.              <input type="text" id="first-name" formControlName="firstName" />
             25.              <label for="last-name">Last Name</label>
             26.              <input type="text" id="last-name" formControlName="lastName" />
-            27.              <label for="email">First Name</label>
-            28.              <input type="text" id="email" formControlName="email" />
+            27.              <label for="email">Email</label>
+            28.              <input type="email" id="email" formControlName="email" />
             29.              <button type="submit" class="primary">Apply now </button>
             30.          </form>
             31.      </section>
             32.  </article>
 
---- 06.04. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' para definir el formulario de búsqueda, quedando así:
+--- 06.04. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en las siguientes líneas para: definir el formulario de búsqueda, quedando así:
+
+            16.    filteredLocationList: HousingLocation[] = [];              // Crear una instancia de la Interfaz para filtrar el arreglo de objetos
+            20.      this.filteredLocationList = this.housingLocationList     // Incluir la creación del objeto desde el constructor
+            23.    filterResults(text:string){}                               // Mostrar toda la lista o solo un elemento
+
+          Quedando así:
 
              1.  import { Component, inject } from '@angular/core';
              2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
@@ -980,7 +1012,7 @@
             17.  
             18.    constructor(){
             19.      this.housingLocationList = this.housingService.getAllHousingLocations();
-            20.      this.filteredLocationList = this.housingLocationList
+            20.      this.filteredLocationList = this.housingLocationList;
             21.    }
             22.  
             23.    filterResults(text:string){
@@ -995,7 +1027,13 @@
             32.  
             33.  }
 
---- 06.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' para incluir el método de filtro de búsqueda, quedando así:
+--- 06.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en las siguientes líneas
+             
+             3.          <input type="text" placeholder="Filter by city" #filter/>                                      // Para incluir el atributo de filtrado (Angular)
+             4.          <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>    // Para incluir el método de filtro
+             8.          *ngFor="let housingLocation of filteredLocationList"                                           // Para recorrer el arreglo
+
+            Quedando así:
 
              1.  <section>
              2.      <form>

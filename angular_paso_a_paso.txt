@@ -934,8 +934,11 @@
 |-- 06. Reactive Forms ----------------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 06.01. Incluir en el código del archivo 'app01/src/app/components/housing.service.ts', una función en la línea 122 para enviar valores de un 
-           formulario, quedando así:
+--- 06.01. Modificar el código del archivo 'app01/src/app/components/housing.service.ts' desde la línea:
+ 
+           122.    submitApplication(firstName:string, lastName:string, email:string){}     // Método para enviar datos desde el formulario
+           
+           Quedando así:           
 
              1.  import { Injectable } from '@angular/core';
              2.  import { HousingLocation } from './housing-location';
@@ -964,10 +967,10 @@
            125.
            126.  }
 
---- 06.02. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' en las siguientes líneas para: 
+--- 06.02. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' en las líneas: 
 
              6.  import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';    // Importar el Formulario, sus controles y Reactividad
-            10.    imports: [CommonModule, ReactiveFormsModule],                                  // Incluir la imporctación del Formulario Reactivo 
+            10.    imports: [CommonModule, ReactiveFormsModule],                                  // Incluir la importación del Formulario Reactivo 
             24.    formAngular = new FormGroup({});                                               // Crear el Formulario Reactivo
             30.    onSubmit(){}                                                                   // Enviar los datos del Formulario
 
@@ -1011,7 +1014,13 @@
             36.    }
             37.  }
 
---- 06.03. Modificar código del archivo 'app01/src/app/components/details/details.component.html' en la línea 20 para añadir el formulario, quedando así:
+--- 06.03. Modificar código del archivo 'app01/src/app/components/details/details.component.html' desde las líneas:
+            
+            20.      <section>                                                    // Apertura de sección del formulario
+            21.          <h2>Apply Now to live here</h2>                          // Título del Formulario
+            22.          <form [formGroup]="formAngular" (submit)="onSubmit()">   // Inicio del Formulario e implementación del método de envío
+
+           Quedando así:
 
              1.  <article>
              2.      <img
@@ -1046,7 +1055,7 @@
             31.      </section>
             32.  </article>
 
---- 06.04. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en las siguientes líneas para: definir el formulario de búsqueda, quedando así:
+--- 06.04. Modificar el código del archivo 'app01/src/app/components/home/home.component.ts' en las líneas:
 
             16.    filteredLocationList: HousingLocation[] = [];              // Crear una instancia de la Interfaz para filtrar el arreglo de objetos
             20.      this.filteredLocationList = this.housingLocationList     // Incluir la creación del objeto desde el constructor
@@ -1088,11 +1097,11 @@
             32.  
             33.  }
 
---- 06.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en las siguientes líneas
+--- 06.05. Modificar el código al archivo 'app01/src/app/components/home/home.component.html' en las líneas
              
-             3.          <input type="text" placeholder="Filter by city" #filter/>                                      // Para incluir el atributo de filtrado (Angular)
-             4.          <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>    // Para incluir el método de filtro
-             8.          *ngFor="let housingLocation of filteredLocationList"                                           // Para recorrer el arreglo
+             3.          <input type="text" placeholder="Filter by city" #filter/>                                    // Incluir atributo de filtrado
+             4.          <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>  // Incluir método filtrado
+             8.          *ngFor="let housingLocation of filteredLocationList"                                         // Recorrer el arreglo
 
             Quedando así:
 

@@ -873,9 +873,14 @@
 
 --- 05.09. Modificar código del archivo 'app01/src/app/components/details/details.component.ts' en las líneas:
 
-           para realizar las importaciones, inyectar dependencias, 
-           enrutar, usar servicios, agregar componentes, capturar 'id' entre otros; quedando así:
-
+             1.  import { Component, inject } from '@angular/core';     // Importar 'inject' para introducir código
+             2.  import { CommonModule } from '@angular/common';        // Importar 'CommonModule' para un arreglo a partir de la Interfaz
+             3.  import { ActivatedRoute } from '@angular/router';      // Importar 'ActivatedRoute' para determinar las rutas activas
+             4.  import { HousingService } from '../housing.service';   // Importar 'HousingService' para llamar al servicio
+             5.  import { HousingLocation } from '../housing-location'; // Importar 'HousingLocation' para llamar la Interfaz
+             9.    imports: [CommonModule],                             // Incluir en el componente el arreglo de objetos
+            13.  export class DetailsComponent {}                       // Incluir inyección, arreglos, rutas, servicios e interfaz
+           
            Quedando así:           
 
              1.  import { Component, inject } from '@angular/core';
@@ -901,8 +906,7 @@
             21.    }
             22.  }
 
---- 05.10. Modificar código del archivo 'app01/src/app/components/details/details.component.html' para agregar 'routerLink' en la 
-           línea 10, quedando así:
+--- 05.10. Modificar código del archivo 'app01/src/app/components/details/details.component.html', quedando así:
 
              1.  <article>
              2.      <img

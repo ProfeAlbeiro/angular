@@ -1295,10 +1295,10 @@
         
         NOTA: Si no está instalado Angular en el computador, seguir el apartado '01. Presentación y creación del proyecto'
 
---- 07. Abrir otra terminal y ejecutar el servidor de 'angular':
+--- 05. Abrir otra terminal y ejecutar el servidor de 'angular':
 
              PS C:\Users\ADMIN\Desktop\angular\app01> ng serve -o
 
---- 08. Abrir otra terminal y ejecutar el servidor 'jsonserver':
+--- 06. Abrir otra terminal y ejecutar el servidor 'jsonserver':
 
              PS C:\Users\ADMIN\Desktop\angular\sources\jsonserver> npx json-server db.json

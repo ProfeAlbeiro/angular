@@ -1283,7 +1283,7 @@
 
 --- 01. Clonar el proyecto desde github en cualquier parte del computador (Ejp, Escritorio)
 
---- 02. Abrir el proyecto en Visual Studion Code
+--- 02. Abrir el proyecto en Visual Studio Code
 
 --- 03. Abrir una terminal y ubicarse en el proyecto:
       

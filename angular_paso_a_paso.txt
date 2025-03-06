@@ -833,23 +833,25 @@
 --- 05.07. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.ts' en las líneas:
 
              3.  import { RouterModule } from '@angular/router';    // Importar la función de 'RouterModule' para enrutar
-             7.    imports: [RouterModule],                         // Integrar la función 'RouterModule' al componente
+             4.  import { CommonModule } from '@angular/common';    // Importar la función de 'CommonModule' para compartir con 'home'
+             7.    imports: [RouterModule, CommonModule],           // Integrar 'RouterModule' y 'CommonModule' al componente
 
            Quedando así:
 
              1.  import { Component, Input } from '@angular/core';
-             2.  import { Housinglocation } from '../housinglocation';
+             2.  import { HousingLocation } from '../housing-location';
              3.  import { RouterModule } from '@angular/router';
-             4.
-             5.  @Component({
-             6.    selector: 'app-housing-location',
-             7.    imports: [RouterModule],
-             8.    templateUrl: './housing-location.component.html',
-             9.    styleUrl: './housing-location.component.css'
-            10.  })
-            11.  export class HousingLocationComponent {
-            12.    @Input() housingLocation!: HousingLocation;
-            13.  }
+             4.  import { CommonModule } from '@angular/common';
+             5. 
+             6.  @Component({
+             7.    selector: 'app-housing-location',
+             8.    imports: [RouterModule, CommonModule],
+             9.    templateUrl: './housing-location.component.html',
+            10.    styleUrl: './housing-location.component.css'
+            11.  })
+            12.  export class HousingLocationComponent {
+            13.    @Input() housingLocation!: HousingLocation;
+            14.  }
 
 --- 05.08. Modificar código del archivo 'app01/src/app/components/housing-location/housing-location.component.html' en la línea:
 

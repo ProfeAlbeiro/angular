@@ -67,8 +67,7 @@
              PS C:\Users\ADMIN\Desktop\angular> npm install -g @angular/cli
 
 --- 01.09. Verificar las versiones de node.js y angular desde la terminal:
-
-             PS C:\Users\ADMIN\Desktop\angular> node --version
+             
              PS C:\Users\ADMIN\Desktop\angular> ng version
 
 --- 01.10. Crear un nuevo proyecto de Angular desde la terminal:

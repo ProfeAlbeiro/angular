@@ -36,19 +36,23 @@
 
 --- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir lo siguiente:
 
-             PS C:\Windows\system32> Get-ExecutionPolicy
-             PS C:\Windows\system32> Set-ExecutionPolicy Unrestricted
+             PS C:\..\..> Get-ExecutionPolicy
+             Restricted
 
-             Cambio de directiva de ejecución
-             La directiva de ejecución te ayuda a protegerte de scripts en los que no confías.
-             Si cambias dicha directiva, podrías exponerte a los riesgos de seguridad descritos
-             en el tema de la Ayuda about_Execution_Policies en
-             https:/go.microsoft.com/fwlink/?LinkID=135170.
-             ¿Quieres cambiar la directiva de ejecución?
-             [S] Sí  [O] Sí a todo  [N] No  [T] No a todo  [U] Suspender  [?] Ayuda
-             (el valor predeterminado es "N"): S
+          NOTA:   ⦿   Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma:
 
---- 01.05. Crear una carpeta para los proyectos de Angula en el computador (carpeta raíz):
+             PS C:\..\..> Set-ExecutionPolicy -Scope CurrentUser
+
+             cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
+             Proporcione valores para los parámetros siguientes:
+             ExecutionPolicy: Unrestricted
+
+--- 01.04. En el 'PowerShell' como 'administrador' y escribir lo siguiente:
+
+             PS C:\..\..> node --version
+             PS C:\..\..> npm --version
+
+--- 01.05. Crear una carpeta para los proyectos de Angular en el computador (carpeta raíz):
 
              'Escritorio/angular'
 

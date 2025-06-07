@@ -7,7 +7,7 @@
 ||| --  --   EJECUCIÓN                                                                                                                                 |||
 ||| --  --   AMBIENTE                                                                                                                                  |||
 ||| --  01.  PROYECTO                                                                                                                                  |||
-||| --  02.  COMPONENTES                                                                                                                               |||
+||| --  02.  COMPONENTS                                                                                                                                |||
 ||| --  03.  INTERFACES                                                                                                                                |||
 ||| --  04.  SERVICES                                                                                                                                  |||
 ||| --  05.  ROUTING                                                                                                                                   |||
@@ -137,9 +137,8 @@
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
-
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.01.  Presentación y creación del proyecto: -------------------------------------------------------------------------------------------------------|
+|-- 01.01.  Creación del proyecto: ----------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear la carpeta del proyecto en el computador (carpeta raíz):
@@ -173,7 +172,12 @@
 
                     PS C:\..\..\Desktop\angular> cd app01
 
-            10. Ejecutar el Servidor desde la terminal:
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.02.  Ejecutar el servidor: -----------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Ejecutar el Servidor desde la terminal:
 
                     PS C:\..\..\Desktop\angular\app01> ng serve -o
 
@@ -188,7 +192,12 @@
                     ➜  Local:   http://localhost:4200/
                     ➜  press h + enter to show help
 
-            11. Modificar el código del archivo 'app01/src/app/app.component.ts':
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.02.  Modificar le código en el componente principal: ---------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            01. Modificar el código del archivo 'app01/src/app/app.component.ts':
                     
                     01   import { Component } from '@angular/core';
                     02   import { RouterOutlet } from '@angular/router';
@@ -212,44 +221,48 @@
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
-
-                    A.   En la línea 11, se cambia a 'title:number = 35' para cambiar el título de bienvenida de la página inicial al número 35.
+                    A.   En la línea 11, se modifica el código a 'title:number = 35', para cambiar el título de bienvenida de la página inicial al 
+                         número 35.
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||----------------------------------------------------------------- 02.  COMPONENTS ------------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02. Componentes -------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.01.  Modificar 'html' y 'css' del componente principal: ------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+            01. Crear en la carpeta 'app01/public' la carpeta 'assets' y cargar las siguientes imágenes:
 
---- 02.01. Abrir una nueva terminal para ejecutar más comandos -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+                    https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/logo.svg
+                    https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/location-pin.svg
 
---- 02.02. Ingresar nuevamente a la carpeta 'app01' desde la terminal:
+            02. Agregar los estilos globales al archivo 'app01/src/styles.css', desde el siguiente enlace:
 
-             PS C:\Users\ADMIN\Desktop\angular> cd app01
+                    https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/styles.css
 
---- 02.03. Crear en la carpeta 'app01/public' la carpeta 'assets' y cargar las siguientes imágenes:
+            03. Modificar el código del archivo 'app01/src/app/app.component.html', de la siguiente forma:
+                    
+                    01   <main class="main">
+                    02     <header class="brand-home">
+                    03       <img class="brand-logo" src="assets/logo.svg" alt="logo" />
+                    04     </header>
+                    05     <section class="content">
+                    06 
+                    07     </section>
+                    08   </main>
+                    09 
+                    10   <router-outlet />
 
-             https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/logo.svg
-             https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/location-pin.svg
 
---- 02.04. Agregar los estilos globales al archivo 'app01/src/styles.css', desde el siguiente enlace:
-
-             https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/styles.css
-
---- 02.05. Modificar el código del archivo 'app01/src/app/app.component.html', de la siguiente forma:
-
-             1.  <main class="main">
-             2.    <header class="brand-home">
-             3.      <img class="brand-logo" src="assets/logo.svg" alt="logo" />
-             4.    </header>
-             5.    <section class="content">
-             6.
-             7.    </section>
-             8.  </main>
-             9.
-            10.  <router-outlet />
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.02.  Carpeta 'app01/public/assets': --------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 --- 02.06. Crear el componente 'home' desde la terminal:
 

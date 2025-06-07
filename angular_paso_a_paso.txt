@@ -1,121 +1,222 @@
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|----------------------------------------------------------------- ANGULAR PASO A PASO ------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- Bibliografía https://angular.dev/tutorials ----------------------------------------------------------------------------------------------------------|
-|--------------- https://www.youtube.com/playlist?list=PLrAw40DbN0l2XNbdFx0GvoRdzsyqTsdmP ---------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||--------------------------------------------------------------- ANGULAR PASO A PASO ----------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||                                                                                                                                                    |||
+||| --  --   EJECUCIÓN                                                                                                                                 |||
+||| --  --   AMBIENTE                                                                                                                                  |||
+||| --  01.  PROYECTO                                                                                                                                  |||
+||| --  02.  COMPONENTES                                                                                                                               |||
+||| --  03.  INTERFACES                                                                                                                                |||
+||| --  04.  SERVICES                                                                                                                                  |||
+||| --  05.  ROUTING                                                                                                                                   |||
+||| --  06.  REACTIVE FORMS                                                                                                                            |||
+||| --  07.  HTTP FETCH Y JSON SERVER                                                                                                                  |||
+|||                                                                                                                                                    |||
+||| --  AUTOR:  ALBEIRO RAMOS. SENA, 2025.                                                                                                             |||
+|||                                                                                                                                                    |||
+||| --  Bibliografía  https://angular.dev/tutorials                                                                                                    |||
+|||                   https://www.youtube.com/playlist?list=PLrAw40DbN0l2XNbdFx0GvoRdzsyqTsdmP                                                         |||
+|||                                                                                                                                                    |||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||-------------------------------------------------------------------- EJECUCIÓN ---------------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01. Presentación y creación del proyecto ------------------------------------------------------------------------------------------------------------|
+|-- ------  Recomendaciones para poner en marcha el proyecto: -------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 01.01. Instalar Visual Studio Code -> https://code.visualstudio.com/download
+            01. Garantizar el ambiente de desarrollo (Ver apartado 'AMBIENTE').
+            
+            02. Clonar el proyecto desde github en cualquier parte del computador (Ejp, Escritorio).
+            
+            03. Abrir el proyecto en Visual Studio Code.
+            
+            04. Abrir una terminal y ubicarse en el proyecto:
 
---- 01.02. Instalar las siguientes extensiones en Visual Studio Code:
+                    PS C:\..\..> cd app01
 
-             Auto Close Tag
-             Auto Complete Tag
-             Auto Rename Tag
-             Code Runner
-             HTML CSS Support
-             IntelliSense for CSS class names in HTML
-             JavaScript (ES6) code snippets
-             Live Server
-             Material Icon Theme
-             Path IntelliSense
-             Prettier - Code formatter
+            05. Instalar dependencias de Angular desde la terminal:
 
-             Angular Essentials (Version 18)
-             Angular Language Service
-             Angular Snippets (Version 18)
-             TypeScript Importer
+                    PS C:\..\app01> npm install
 
---- 01.03. Instalar node.js:
+            06. Ejecutar el servidor de 'angular':
 
-             https://nodejs.org/es/
+                    PS C:\..\app01> ng serve -o
 
---- 01.04. Abrir el 'PowerShell' como 'administrador' y escribir lo siguiente:
+            07. Abrir una terminal y ubicarse en el servidor json:
 
-             PS C:\..\..> Get-ExecutionPolicy
-             Restricted
+                    PS C:\..\..> cd jsonserver
 
-          NOTA:   ⦿   Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma:
+            08. Ejecutar el servidor 'jsonserver':
 
-             PS C:\..\..> Set-ExecutionPolicy -Scope CurrentUser
+                    PS C:\..\jsonserver> npx json-server db.json
 
-             cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
-             Proporcione valores para los parámetros siguientes:
-             ExecutionPolicy: Unrestricted
 
---- 01.04. En el 'PowerShell' como 'administrador' y escribir lo siguiente:
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||-------------------------------------------------------------------- AMBIENTE ----------------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
-             PS C:\..\..> node --version
-             PS C:\..\..> npm --version
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- ------  Instalar Visual Studio Code: ----------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 01.05. Crear una carpeta para los proyectos de Angular en el computador (carpeta raíz):
+            01. Descargar 'Visual Studio Code': https://code.visualstudio.com/download.
 
-             'Escritorio/angular'
+            02. Instalar Visual Studio Code.
 
---- 01.06. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'angular'
+                    ⦿   En el asistente de instalación dejar marcado:   ☑ 'Agregar PATH…'.                    
 
---- 01.07. Abrir una nueva terminal en vs code:
+            03. Abrir Visual Studio Code.
+            
+            04. Instalar las siguientes extensiones en Visual Studio Code:
+                    
+                    ⦿   Auto Close Tag
+                    ⦿   Auto Complete Tag
+                    ⦿   Auto Rename Tag
+                    ⦿   Code Runner
+                    ⦿   HTML CSS Support
+                    ⦿   IntelliSense for CSS class names in HTML
+                    ⦿   JavaScript (ES6) code snippets
+                    ⦿   Live Server
+                    ⦿   Material Icon Theme
+                    ⦿   Path IntelliSense
+                    ⦿   Prettier - Code formatter
 
-             'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
+                    ⦿   Angular Essentials (Version 18)
+                    ⦿   Angular Language Service
+                    ⦿   Angular Snippets (Version 18)
+                    ⦿   TypeScript Importer
 
---- 01.08. Instalar Angular escribiendo desde la terminal:
 
-             PS C:\Users\ADMIN\Desktop\angular> npm install -g @angular/cli
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- ------  Instalar Node Js: ---------------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 01.09. Verificar las versiones de node.js y angular desde la terminal:
+            01. Descargar 'node.js': https://nodejs.org/es/.
+
+            02. Instalar node.js.
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- ------  PowerShell. Directivas: ---------------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Abrir el PowerShell de Windows
+            
+            01. Ejecutar el siguiente comando
+
+                    PS C:\..\..> Get-ExecutionPolicy
+                    Restricted
+
+            NOTA:   ⦿   Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma:
+
+                    PS C:\..\..> Set-ExecutionPolicy -Scope CurrentUser
+
+                    cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
+                    Proporcione valores para los parámetros siguientes:
+                    ExecutionPolicy: Unrestricted
+
+            02. Verificar la versión de 'node' y 'npm':
+
+                    PS C:\..\..> node --version
+                    PS C:\..\..> npm --version
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------------ 01.  PROYECTO -------------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.01.  Presentación y creación del proyecto: -------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Crear la carpeta del proyecto en el computador (carpeta raíz):
+
+                    C:\..\..\Desktop\angular
+
+            02. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'angular'.
+
+            04. Abrir una terminal en Visual Studio Code: 
+            
+                    'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'            
+            
+            05. Instalar Angular escribiendo desde la terminal:
+            
+                    PS C:\..\..\Desktop\angular> npm install -g @angular/cli
              
-             PS C:\Users\ADMIN\Desktop\angular> ng version
+            06. Verificar las versiones de node.js y angular desde la terminal:
 
---- 01.10. Crear un nuevo proyecto de Angular desde la terminal:
+                    PS C:\..\..\Desktop\angular> ng version
 
-             PS C:\Users\ADMIN\Desktop\angular> ng new app01
+            07. Verificar las versiones de node.js y angular desde la terminal:
 
---- 01.11. Seleccionar:
+                    PS C:\..\..\Desktop\angular> ng new app01
 
-             ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
-             ? Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N) n
+            08. Seleccionar:
 
---- 01.12. Ingresar a la carpeta 'app01' desde la terminal:
+                    ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
+                    ? Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N) n
 
-             PS C:\Users\ADMIN\Desktop\angular> cd app01
+            09. Ingresar a la carpeta 'app01' desde la terminal:
 
---- 01.13. Ejecutar el Servidor desde la terminal:
+                    PS C:\..\..\Desktop\angular> cd app01
 
-             PS C:\Users\ADMIN\Desktop\angular\app01> ng serve -o
+            10. Ejecutar el Servidor desde la terminal:
 
-             Would you like to share pseudonymous usage data about this project with the Angular Team
-             at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
-             details and how to change this setting, see https://angular.dev/cli/analytics.
+                    PS C:\..\..\Desktop\angular\app01> ng serve -o
 
-                 (y/N) y
+                    Would you like to share pseudonymous usage data about this project with the Angular Team
+                    at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
+                    details and how to change this setting, see https://angular.dev/cli/analytics.
 
-             Watch mode enabled. Watching for file changes...
-             NOTE: Raw file sizes do not reflect development server per-request transformations.
-             ➜  Local:   http://localhost:4200/
-             ➜  press h + enter to show help
+                        (y/N) y
 
---- 01.14. Modificar código del archivo 'app01/src/app/app.component.ts', en la línea:
+                    Watch mode enabled. Watching for file changes...
+                    NOTE: Raw file sizes do not reflect development server per-request transformations.
+                    ➜  Local:   http://localhost:4200/
+                    ➜  press h + enter to show help
 
-            11.  title:number = 35;       // Para cambiar el título de bienvenida de la página inicial al número 35
+            11. Modificar el código del archivo 'app01/src/app/app.component.ts':
+                    
+                    01   import { Component } from '@angular/core';
+                    02   import { RouterOutlet } from '@angular/router';
+                    03 
+                    04   @Component({
+                    05     selector: 'app-root',
+                    06     imports: [RouterOutlet],
+                    07     templateUrl: './app.component.html',
+                    08     styleUrl: './app.component.css'
+                    09   })
+                    10   export class AppComponent {
+                    11     title:number = 35;
+                    12   }
 
-           Quedando así:
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   El código de este archivo, representa el componente principal que llama a los archivos 'html' y 'css' y demás elementos de
+                         configuración.
 
-             1.  import { Component } from '@angular/core';
-             2.  import { RouterOutlet } from '@angular/router';
-             3.
-             4.  @Component({
-             5.    selector: 'app-root',
-             6.    imports: [RouterOutlet],
-             7.    templateUrl: './app.component.html',
-             8.    styleUrl: './app.component.css'
-             9.  })
-            10.  export class AppComponent {
-            11.    title:number = 35;
-            12.  }
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+
+                    A.   En la línea 11, se cambia a 'title:number = 35' para cambiar el título de bienvenida de la página inicial al número 35.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1282,32 +1383,3 @@
             40.  }
 
 
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- Recomendaciones para poner en marcha el proyecto ----------------------------------------------------------------------------------------------------|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-
---- 01. Clonar el proyecto desde github en cualquier parte del computador (Ejp, Escritorio)
-
---- 02. Abrir el proyecto en Visual Studio Code
-
---- 03. Abrir una terminal y ubicarse en el proyecto:
-
-          PS ..\..> cd app01
-
---- 04. Instalar dependencias de Angular desde la terminal:
-
-          PS ..\app01> npm install
-
-        NOTA: Si no está instalado Angular en el computador, seguir el apartado '01. Presentación y creación del proyecto'
-
---- 05. Abrir otra terminal y ejecutar el servidor de 'angular':
-
-          PS ..\app01> ng serve -o
-
---- 06. Abrir una terminal y ubicarse en el servidor json:
-
-          PS ..\..> cd jsonserver
-
---- 07. Abrir otra terminal y ejecutar el servidor 'jsonserver':
-
-          PS ..\jsonserver> npx json-server db.json

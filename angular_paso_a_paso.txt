@@ -263,16 +263,16 @@
                     08   </main>
                     09 
                     10   <router-outlet />
-                
+
                 ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
                 |                                                                                                                                      |
                   EXPLICACIÓN:   
                     
-                    ⦿   XXXXXXXXXXXX.
+                    ⦿   El componente 'app.html' incluye una imagen.
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
-                    A.   XXXXXXXXXXXXXXXXXXXX.
+                    A.  Se incluye todo el código desde la línea 01 a la 10 para la aplicación del componente 'app.html'
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
@@ -448,28 +448,49 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||----------------------------------------------------------------- 03.  INTERFACES ------------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03. Interfaces --------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.01.  Crear la interface HousingLocation: ---------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 03.01. Crear una interface desde la terminal:
+            01. Crear una interface desde la terminal:
 
-             PS C:\Users\ADMIN\Desktop\angular\frontend> ng generate interface components/housingLocation
+                    PS C:\..\..\Desktop\angular\frontend> ng generate interface components/housingLocation
 
---- 03.02. Modificar código del archivo 'frontend/src/app/components/housinglocation.ts' para definir los atributos, quedando así:
+            02. Codificar el archivo 'frontend/src/app/components/housing-location.ts':
+                    
+                    01   export interface HousingLocation {
+                    02     id: number;
+                    03     name: string;
+                    04     city: string;
+                    05     state: string;
+                    06     photo: string;
+                    07     availableUnits: number;
+                    08     wifi: boolean;
+                    09     laundry: boolean;
+                    10   }
 
-             1.  export interface HousingLocation {
-             2.      id: number;
-             3.      name: string;
-             4.      city: string;
-             5.      state: string;
-             6.      photo: string;
-             7.      availableUnits: number;
-             8.      wifi: boolean;
-             9.      laundry: boolean;
-            10.  }
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   La interfaces son los modelos del proyecto.
 
---- 03.03. Modificar código del archivo 'frontend/src/app/components/home/home.ts' en las líneas:
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  Se incluye todo el código desde la línea 01 a la 10 de la interface 'housing-location.ts'
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+            03. Modificar código del archivo 'frontend/src/app/components/home/home.ts':
+
+
+--- 03.03.  en las líneas:
 
             3.  import { HousingLocation } from '../housinglocation';                         // Importar la Interface 'HousingLocation'
             12.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';   // Consumir una API Externa de imágenes

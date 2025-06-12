@@ -1,4 +1,4 @@
-housingLocationList: HousingLocation[] = [
+housingLocationList: HousingLocationInterface[] = [
     {
       id: 0,
       name: 'Acme Fresh Start Housing',

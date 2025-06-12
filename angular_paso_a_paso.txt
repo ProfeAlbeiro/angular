@@ -479,7 +479,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            03. Modificar código del archivo 'frontend/src/app/components/home/home.ts':
+            03. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
 
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -512,66 +512,231 @@
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
-                    A.  En la línea 03, se importa la Interface 'HousingLocationInterface'
-                    B.  En la línea 11, consume una API externa de imágenes
-                    c.  En la línea 13, se crea una instancia de 'HousingLocationInterface'
+                    A.  En la línea 03, se importa la Interface 'HousingLocationInterface'.
+
+                    B.  En la línea 11, consume una API externa de imágenes.
+
+                    C.  En la línea 13, se crea una instancia de 'HousingLocationInterface'.
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            04. Modificar código del archivo 'frontend/src/app/components/housing-location/housing-location.ts' en las líneas:
+            04. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.ts':
+
+                    01   import { Component, Input } from '@angular/core';
+                    02   import { HousingLocationInterface } from '../housing-location-interface';
+                    03   @Component({
+                    04     selector: 'app-housing-location',
+                    05     imports: [],
+                    06     templateUrl: './housing-location.html',
+                    07     styleUrl: './housing-location.css'
+                    08   })
+                    09   export class HousingLocation {
+                    10     @Input() housingLocation!: HousingLocationInterface;
+                    11   }
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 01, se importa el decorador @Input.
+
+                    B.  En la línea 02, se importa la Interface 'HousingLocationInterface'.
+
+                    C.  En la línea 10, se crea una instancia de 'HousingLocationInterface' y se usa el decorador @Input() para heredar los datos del
+                        componente padre.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
+            05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
 
-             1.  import { Component, Input } from '@angular/core';        // Importar el decorador @Input
-             2.  import { Housinglocation } from '../housinglocation';    // Importar la Interface
-            11.    @Input() housingLocation!: HousingLocation;            // Crear una instancia de 'HousingLocation', usar el decorador @Input()
-                                                                          // y heradar datos del componente Padre
+                    01   <section>
+                    02     <form>
+                    03       <input type="text" placeholder="Filter by city" />
+                    04       <button type="button" class="primary">Search</button>
+                    05     </form>
+                    06     <section class="results">
+                    07       <app-housing-location [housingLocation]="housingLocation"></app-housing-location>
+                    08     </section>
+                    09   <section>
 
-           Quedando así:
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   La interfaces son los modelos del proyecto.
 
-             1.  import { Component, Input } from '@angular/core';
-             2.  import { Housinglocation } from '../housinglocation';
-             3.
-             4.  @Component({
-             5.    selector: 'app-housing-location',
-             6.    imports: [],
-             7.    templateUrl: './housing-location.html',
-             8.    styleUrl: './housing-location.css'
-             9.  })
-            10.  export class HousingLocationComponent {
-            11.    @Input() housingLocation!: HousingLocation;
-            12.  }
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  Se incluye todo el código desde la línea 01 a la 10 de la interface 'housing-location.ts'
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
---- 03.05. Modificar el código al archivo 'frontend/src/app/components/home/home.html' en la línea:
 
-             7.      <app-housing-location [housingLocation]="housingLocation"></app-housing-location>  // Pasar los datos del Padre al Hijo
+            06. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.html':
 
-           Quedando así:
+                    01   <section class="listing">
+                    02     <img
+                    03       class="listing-photo"
+                    04       [src]="housingLocation.photo"
+                    05       alt="Exterior photo of {{ housingLocation.name }}"
+                    06       crossorigin
+                    07     />
+                    08     <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+                    09     <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
+                    10   </section>
 
-             1.  <section>
-             2.    <form>
-             3.      <input type="text" placeholder="Filter by city" />
-             4.      <button class="primary" type="button">Search</button>
-             5.    </form>
-             6.    <section class="results">
-             7.      <app-housing-location [housingLocation]="housingLocation"></app-housing-location>
-             8.    </section>
-             9.  <section>
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
---- 03.06. Modificar código del archivo 'frontend/src/app/components/housing-location/housing-location.html', de la siguiente forma:
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-             1.  <section class="listing">
-             2.      <img
-             3.          class="listing-photo"
-             4.          [src]="housingLocation.photo"
-             5.          alt="Exterior photo of {{ housingLocation.name }}"
-             6.          crossorigin
-             7.      />
-             8.      <h2 class="listing-heading">{{ housingLocation.name }}</h2>
-             9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
-            10.  </section>
+            07. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
+
+                    01   import { Component } from '@angular/core';
+                    02   import { HousingLocation } from '../housing-location/housing-location';
+                    03   import { HousingLocationInterface } from '../housing-location-interface';
+                    04   import { CommonModule } from '@angular/common';
+                    05   @Component({
+                    06     selector: 'app-home',
+                    07     imports: [CommonModule, HousingLocation],
+                    08     templateUrl: './home.html',
+                    09     styleUrl: './home.css'
+                    10   })
+                    11   export class Home {
+                    12     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+                    13     housingLocationList: HousingLocationInterface[] = [
+                    14       {
+                    15         id: 0,
+                    16         name: 'Acme Fresh Start Housing',
+                    17         city: 'Chicago',
+                    18         state: 'IL',
+                    19         photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
+                    20         availableUnits: 4,
+                    21         wifi: true,
+                    22         laundry: true,
+                    23       },
+                    24       {
+                    25         id: 1,
+                    26         name: 'A113 Transitional Housing',
+                    27         city: 'Santa Monica',
+                    28         state: 'CA',
+                    29         photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
+                    30         availableUnits: 0,
+                    31         wifi: false,
+                    32         laundry: true,
+                    33       },
+                    34       {
+                    35         id: 2,
+                    36         name: 'Warm Beds Housing Support',
+                    37         city: 'Juneau',
+                    38         state: 'AK',
+                    39         photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
+                    40         availableUnits: 1,
+                    41         wifi: false,
+                    42         laundry: false,
+                    43       },
+                    44       {
+                    45         id: 3,
+                    46         name: 'Homesteady Housing',
+                    47         city: 'Chicago',
+                    48         state: 'IL',
+                    49         photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
+                    50         availableUnits: 1,
+                    51         wifi: true,
+                    52         laundry: false,
+                    53       },
+                    54       {
+                    55         id: 4,
+                    56         name: 'Happy Homes Group',
+                    57         city: 'Gary',
+                    58         state: 'IN',
+                    59         photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
+                    60         availableUnits: 1,
+                    61         wifi: true,
+                    62         laundry: false,
+                    63       },
+                    64       {
+                    65         id: 5,
+                    66         name: 'Hopeful Apartment Group',
+                    67         city: 'Oakland',
+                    68         state: 'CA',
+                    69         photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
+                    70         availableUnits: 2,
+                    71         wifi: true,
+                    72         laundry: true,
+                    73       },
+                    74       {
+                    75         id: 6,
+                    76         name: 'Seriously Safe Towns',
+                    77         city: 'Oakland',
+                    78         state: 'CA',
+                    79         photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
+                    80         availableUnits: 5,
+                    81         wifi: true,
+                    82         laundry: true,
+                    83       },
+                    84       {
+                    85         id: 7,
+                    86         name: 'Hopeful Housing Solutions',
+                    87         city: 'Oakland',
+                    88         state: 'CA',
+                    89         photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
+                    90         availableUnits: 2,
+                    91         wifi: true,
+                    92         laundry: true,
+                    93       },
+                    94       {
+                    95         id: 8,
+                    96         name: 'Seriously Safe Towns',
+                    97         city: 'Oakland',
+                    98         state: 'CA',
+                    99         photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
+                   100         availableUnits: 10,
+                   101         wifi: false,
+                   102         laundry: false,
+                   103       },
+                   104       {
+                   105         id: 9,
+                   106         name: 'Capital Safe Towns',
+                   107         city: 'Portland',
+                   108         state: 'OR',
+                   109         photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+                   110         availableUnits: 6,
+                   111         wifi: true,
+                   112         laundry: true,
+                   113       },
+                   114     ];
+                   115   }
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
 
 --- 03.07. Modificar código del archivo 'frontend/src/app/components/home/home.ts' en las líneas:
+
+
+
 
              4.  import { CommonModule } from '@angular/common';        // Importar la funcionalidad de crear un arreglo de objetos
              8.    imports: [CommonModule, HousingLocationComponent],   // Integrar la creación de un arreglo de objetos
@@ -596,7 +761,7 @@
             11.  })
             12.  export class HomeComponent {
             13.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-            14.    housinglocationList: Housinglocation [] = [
+            14.    housinglocationList: HousingLocationInterface[] = [
             15.      {
             16.        id: 1,
             17.        name: 'Acme Fresh Start Housing',
@@ -706,18 +871,18 @@
 
            Quedando así:
 
-             1.  <section>
-             2.      <form>
-             3.          <input type="text" placeholder="Filter by city" />
-             4.          <button class="primary" type="button">Search</button>
-             5.      </form>
-             6.      <section class="results">
-             7.          <app-housing-location
-             8.              *ngFor="let housingLocation of housingLocationList"
-             9.              [housingLocation]="housingLocation">
-            10.          </app-housing-location>
-            11.      </section>
-            12.  </section>
+            01   <section>
+            02       <form>
+            03           <input type="text" placeholder="Filter by city" />
+            04           <button class="primary" type="button">Search</button>
+            05       </form>
+            06       <section class="results">
+            07           <app-housing-location
+            08               *ngFor="let housingLocation of housingLocationList"
+            09               [housingLocation]="housingLocation">
+            10           </app-housing-location>
+            11       </section>
+            12   </section>
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|

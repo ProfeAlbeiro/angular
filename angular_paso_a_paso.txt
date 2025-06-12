@@ -4,7 +4,7 @@
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||                                                                                                                                                    |||
-||| --  --   EJECUCIÓN                                                                                                                                 |||
+||| --  --   PUESTA EN MARCHA                                                                                                                          |||
 ||| --  --   AMBIENTE                                                                                                                                  |||
 ||| --  01.  PROYECTO                                                                                                                                  |||
 ||| --  02.  COMPONENTS                                                                                                                                |||
@@ -24,7 +24,7 @@
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||-------------------------------------------------------------------- EJECUCIÓN ---------------------------------------------------------------------|||
+|||----------------------------------------------------------------- PUESTA EN MARCHA -----------------------------------------------------------------|||
 |||----------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -749,7 +749,7 @@
                     07       <app-housing-location 
                     08         *ngFor="let housingLocation of housingLocationList"
                     09         [housingLocation]="housingLocation">
-                    10     </app-housing-location>
+                    10       </app-housing-location>
                     11     </section>
                     12   <section>              
 
@@ -1417,127 +1417,162 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
+            03. Modificar el código del archivo 'frontend/src/app/components/details/details.html':
 
+                    01   <article>
+                    02   <img
+                    03       class="listing-photo"
+                    04       [src]="housingLocation?.photo"
+                    05       alt="Exterior photo of {{ housingLocation?.name }}"
+                    06       crossorigin
+                    07   />
+                    08   <section class="listing-description">
+                    09       <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
+                    10       <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
+                    11   </section>
+                    12   <section class="listing-features">
+                    13       <h2 class="section-heading">About this housing location</h2>
+                    14       <ul>
+                    15       <li>Units available: {{ housingLocation?.availableUnits }}</li>
+                    16       <li>Does this location have wifi: {{ housingLocation?.wifi }}</li>
+                    17       <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
+                    18       </ul>
+                    19   </section>
+                    20   <section>
+                    21       <h2>Apply now to live here</h2>
+                    22       <form [formGroup]="formAngular" (submit)="onSubmit()">
+                    23       <label for="first-name">First Name</label>
+                    24       <input type="text" id="first-name" formControlName="firstName" />
+                    25       <label for="last-name">Last Name</label>
+                    26       <input type="text" id="last-name" formControlName="lastName" />
+                    27       <label for="email">Email</label>
+                    28       <input type="email" id="email" formControlName="email" />
+                    29       <button type="submit" class="primary">Apply now </button>
+                    30       </form>
+                    31   </section>
+                    32   </article>
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  De la línea 20 a la 31, se abre y cierra una 'section'.
+                    
+                    B.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                    
+                    C.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                    
+                    D.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
             
+            04. Modificar el código del archivo 'frontend/src/app/components/details/details.component.html':
+
+                    01   import { Component, inject } from '@angular/core';
+                    02   import { HousingLocation } from '../housing-location/housing-location';
+                    03   import { HousingLocationInterface } from '../housing-location-interface';
+                    04   import { CommonModule } from '@angular/common';
+                    05   import { Housing } from '../housing';
+                    06   @Component({
+                    07     selector: 'app-home',
+                    08     imports: [CommonModule, HousingLocation],
+                    09     templateUrl: './home.html',
+                    10     styleUrl: './home.css'
+                    11   })
+                    12   export class Home {
+                    13     housingLocationList: HousingLocationInterface[] = [];
+                    14     housingService: Housing = inject(Housing);
+                    15     filteredLocationList: HousingLocationInterface[] = [];
+                    16     constructor() {
+                    17       this.housingLocationList = this.housingService.getAllHousingLocations();
+                    18       this.filteredLocationList = this.housingLocationList;
+                    19     }
+                    20     filterResults(text:string){
+                    21       if (!text) {
+                    22         this.filteredLocationList = this.housingLocationList;
+                    23         return;
+                    24       } else {
+                    25         this.filteredLocationList = this.housingLocationList.filter((HousingLocation) =>
+                    26           HousingLocation?.city.toLowerCase().includes(text.toLowerCase())
+                    27         )
+                    28       }
+                    29     }
+                    30   }
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 15, se crea una instancia de la Interfaz para filtrar el arreglo de objetos.
+                    
+                    B.  En la línea 22, se incluye la creación del objeto desde el constructor.
+
+                    C.  De la línea 20 a las 29, se crea un método para mostrar toda la lista o un solo elemento.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+            05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
+
+                    01   <section>
+                    02     <form>
+                    03       <input type="text" placeholder="Filter by city" #filter/>
+                    04       <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>
+                    05     </form>
+                    06     <section class="results">
+                    07       <app-housing-location 
+                    08         *ngFor="let housingLocation of filteredLocationList"
+                    09         [housingLocation]="housingLocation">
+                    10       </app-housing-location>
+                    11     </section>
+                    12   <section>
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 03, se incluye un atributo filtrado.
+                    
+                    B.  En la línea 04, se incluye el método filtrado.
+
+                    C.  En la línea 08, se incluye 'filteredLocationList' para recorrer el arreglo.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||---------------------------------------------------------- 07.  HTTP FETCH Y JSON SERVER -----------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 06. Reactive Forms ----------------------------------------------------------------------------------------------------------------------------------|
+|-- 07.01.  Crear el Servidor Json Server: --------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-
-
---- 06.03. Modificar código del archivo 'frontend/src/app/components/details/details.component.html' desde las líneas:
-
-            20.      <section>                                                    // Apertura de sección del formulario
-            21.          <h2>Apply Now to live here</h2>                          // Título del Formulario
-            22.          <form [formGroup]="formAngular" (submit)="onSubmit()">   // Inicio del Formulario e implementación del método de envío
-
-           Quedando así:
-
-             1.  <article>
-             2.      <img
-             3.          class="listing-photo"
-             4.          [src]="housingLocation?.photo"
-             5.          alt="Exterior photo of {{ housingLocation?.name }}"
-             6.          crossorigin
-             7.      />
-             8.      <section class="listing-description">
-             9.          <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
-            10.          <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
-            11.      </section>
-            12.      <section class="listing-features">
-            13.          <h2 class="section-heading">About this housing location</h2>
-            14.          <ul>
-            15.              <li>Units available: {{ housingLocation?.availableUnits }}</li>
-            16.              <li>Does this location have wifi: {{ housingLocation?.wifi }}</li>
-            17.              <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
-            18.          </ul>
-            19.      </section>
-            20.      <section>
-            21.          <h2>Apply now to live here</h2>
-            22.          <form [formGroup]="formAngular" (submit)="onSubmit()">
-            23.              <label for="first-name">First Name</label>
-            24.              <input type="text" id="first-name" formControlName="firstName" />
-            25.              <label for="last-name">Last Name</label>
-            26.              <input type="text" id="last-name" formControlName="lastName" />
-            27.              <label for="email">Email</label>
-            28.              <input type="email" id="email" formControlName="email" />
-            29.              <button type="submit" class="primary">Apply now </button>
-            30.          </form>
-            31.      </section>
-            32.  </article>
-
---- 06.04. Modificar el código del archivo 'frontend/src/app/components/home/home.ts' en las líneas:
-
-            16.    filteredLocationList: HousingLocation[] = [];              // Crear una instancia de la Interfaz para filtrar el arreglo de objetos
-            20.      this.filteredLocationList = this.housingLocationList     // Incluir la creación del objeto desde el constructor
-            23.    filterResults(text:string){}                               // Mostrar toda la lista o solo un elemento
-
-           Quedando así:
-
-             1.  import { Component, inject } from '@angular/core';
-             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
-             3.  import { HousingLocation } from '../housing-location';
-             4.  import { CommonModule } from '@angular/common';
-             5.  import { HousingService } from '../housing.service';
-             6.
-             7.  @Component({
-             8.    selector: 'app-home',
-             9.    imports: [CommonModule, HousingLocationComponent],
-            10.    templateUrl: './home.html',
-            11.    styleUrl: './home.css'
-            12.  })
-            13.  export class HomeComponent {
-            14.    housingLocationList: HousingLocation[] = [];
-            15.    housingService: HousingService = inject(HousingService);
-            16.    filteredLocationList: HousingLocation[] = [];
-            17.
-            18.    constructor(){
-            19.      this.housingLocationList = this.housingService.getAllHousingLocations();
-            20.      this.filteredLocationList = this.housingLocationList;
-            21.    }
-            22.
-            23.    filterResults(text:string){
-            24.      if (!text) {
-            25.        this.filteredLocationList = this.housingLocationList;
-            26.        return;
-            27.      }
-            28.      this.filteredLocationList = this.housingLocationList.filter((housingLocation) =>
-            29.        housingLocation?.city.toLowerCase().includes(text.toLowerCase())
-            30.      )
-            31.    }
-            32.
-            33.  }
-
---- 06.05. Modificar el código al archivo 'frontend/src/app/components/home/home.html' en las líneas
-
-             3.          <input type="text" placeholder="Filter by city" #filter/>                                    // Incluir atributo de filtrado
-             4.          <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>  // Incluir método filtrado
-             8.          *ngFor="let housingLocation of filteredLocationList"                                         // Recorrer el arreglo
-
-           Quedando así:
-
-             1.  <section>
-             2.      <form>
-             3.          <input type="text" placeholder="Filter by city" #filter/>
-             4.          <button type="button" class="primary" (click)="filterResults(filter.value)">Search</button>
-             5.      </form>
-             6.      <section class="results">
-             7.          <app-housing-location
-             8.          *ngFor="let housingLocation of filteredLocationList"
-             9.              [housingLocation]="housingLocation">
-            10.          </app-housing-location>
-            11.      </section>
-            12.  </section>
+            01. Crear una carpeta denominada 'jsonserver' fuera del proyecto, ejemplo 'angular/backend'.
+            
+            02. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'.
+                    
+            03. Cambiar el nombre de la terminal a 'backend', seleccionándola en la parte inferior derecha y presionando F2 / Rename...                    
 
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 07. Http Fetch y Json Server ------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 07.01. Crear una carpeta denominada 'jsonserver' fuera del proyecto, ejemplo 'angular/jsonserver':
-
---- 07.02. Abrir una nueva terminal en vs code -> 'Terminal / New Terminal' ó 'Ctrl + Shift + ñ'
 
 --- 07.03. Ingresar a la carpeta 'jsonserver' desde la terminal:
 

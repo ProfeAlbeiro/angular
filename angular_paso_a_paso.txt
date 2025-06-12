@@ -1049,7 +1049,7 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.01.  Crear el enrutador: ----------------------------------------------------------------------------------------------------------------|
+|-- 03.01.  Crear el enrutador: -------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear el componente 'details' desde la terminal:                    
@@ -1170,194 +1170,261 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
+            07. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.ts':
+
+                    01   import { Component, Input } from '@angular/core';
+                    02   import { HousingLocationInterface } from '../housing-location-interface';
+                    03   import { RouterModule } from '@angular/router';
+                    04   import { CommonModule } from '@angular/common';
+                    05   @Component({
+                    06     selector: 'app-housing-location',
+                    07     imports: [RouterModule, CommonModule],
+                    08     templateUrl: './housing-location.html',
+                    09     styleUrl: './housing-location.css'
+                    10   })
+                    11   export class HousingLocation {
+                    12     @Input() housingLocation!: HousingLocationInterface;
+                    13   }
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 03, se importa la función de 'RouterModule' para enrutar.
+                    
+                    B.  En la línea 04, se importa la función de 'CommonModule' para compartir con 'home'.
+                    
+                    C.  En la línea 07, se integra 'RouterModule' y 'CommonModule' al componente.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+            08. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.html':
+
+                    01   <section class="listing">
+                    02     <img
+                    03       class="listing-photo"
+                    04       [src]="housingLocation.photo"
+                    05       alt="Exterior photo of {{ housingLocation.name }}"
+                    06       crossorigin
+                    07     />
+                    08     <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+                    09     <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
+                    10     <a [routerLink]="['/details', housingLocation.id]" routerLinkActive="router-link-active">Learn More</a>
+                    11   </section>
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 03, se importa la función de 'RouterModule' para enrutar.
+                    
+                    B.  En la línea 04, se importa la función de 'CommonModule' para compartir con 'home'.
+                    
+                    C.  En la línea 10, se agrega el router link para cargar el componente 'Details'.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+            09. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
+
+                    01   import { CommonModule } from '@angular/common';
+                    02   import { Component, inject } from '@angular/core';
+                    03   import { ActivatedRoute } from '@angular/router';
+                    04   import { Housing } from '../housing';
+                    05   import { HousingLocationInterface } from '../housing-location-interface';
+                    06   @Component({
+                    07     selector: 'app-details',
+                    08     imports: [CommonModule],
+                    09     templateUrl: './details.html',
+                    10     styleUrl: './details.css'
+                    11   })
+                    12   export class Details {
+                    13     route: ActivatedRoute = inject(ActivatedRoute);
+                    14     housingService = inject(Housing);
+                    15     housingLocation: HousingLocationInterface | undefined;
+                    16     constructor(){
+                    17       const housinLocationId = Number(this.route.snapshot.params['id']);
+                    18       this.housingLocation = this.housingService.getHousingLocantionById(housinLocationId);
+                    19     }
+                    20   }
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 01, se importa 'CommonModule' para crear un arreglo a partir de la Interfaz.
+                    
+                    B.  En la línea 02, se importa 'inject' para introducir código.
+                    
+                    C.  En la línea 03, se importa 'ActivatedRoute' para determinar las rutas activas.
+                    
+                    D.  En la línea 04, se importa 'Housing' para llamar al servicio.
+                    
+                    E.  En la línea 05, se importa 'HousingLocationInterface' para llamar la Interfaz.
+                    
+                    F.  En la línea 08, se 'CommonModule' como componente común.
+                    
+                    G.  Desde la Línea 12 a la 20, se incluye la inyección, el arreglo, las rutas, el servicio y la interfaz.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+            10. Modificar el código del archivo 'frontend/src/app/components/details/details.html':
+
+                    01   <article>
+                    02     <img
+                    03       class="listing-photo"
+                    04       [src]="housingLocation?.photo"
+                    05       alt="Exterior photo of {{ housingLocation?.name }}"
+                    06       crossorigin
+                    07     />
+                    08     <section class="listing-description">
+                    09       <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
+                    10       <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
+                    11     </section>
+                    12     <section class="listing-features">
+                    13       <h2 class="section-heading">About this housing location</h2>
+                    14       <ul>
+                    15         <li>Units available: {{ housingLocation?.availableUnits }}</li>
+                    16         <li>Does this location have wifi: {{ housingLocation?.wifi }}</li>
+                    17         <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
+                    18       </ul>
+                    19     </section>
+                    20   </article>
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||--------------------------------------------------------------- 06.  REACTIVE FORMS ----------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 05. Routing -----------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.01.  Crear un formulario reactivo: ---------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-             
 
---- 05.07. Modificar código del archivo 'frontend/src/app/components/housing-location/housing-location.ts' en las líneas:
+            01. Modificar el código del archivo 'frontend/src/app/components/housing.ts':
+                    
+                    01   import { Injectable } from '@angular/core';
+                    02   import { HousingLocationInterface } from './housing-location-interface';
+                    03   @Injectable({
+                    04     providedIn: 'root'
+                    05   })
+                    06   export class Housing {
+                    07     constructor() { }
+                    08     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+                    09 >   housingLocationList: HousingLocationInterface[] = [
+                   110     ];
+                   111     getAllHousingLocations(): HousingLocationInterface[] {
+                   112       return this.housingLocationList;
+                   113     }
+                   114     getHousingLocantionById(id:number): HousingLocationInterface | undefined {
+                   115       return this.housingLocationList.find((housingLocation) => housingLocation.id === id);
+                   116     }
+                   117     submitApplication(firstName:string, lastName:string, email:string){
+                   118       console.log(`FirstName: ${firstName} - LastName: ${lastName} - Email: ${email}`)
+                   119     }                   
+                   120   }
 
-             3.  import { RouterModule } from '@angular/router';    // Importar la función de 'RouterModule' para enrutar
-             4.  import { CommonModule } from '@angular/common';    // Importar la función de 'CommonModule' para compartir con 'home'
-             7.    imports: [RouterModule, CommonModule],           // Integrar 'RouterModule' y 'CommonModule' al componente
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-           Quedando así:
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  De la línea 117 a 119, se crea una función para capturar datos desde el formulario y mostralo en la consola.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-             1.  import { Component, Input } from '@angular/core';
-             2.  import { HousingLocation } from '../housing-location';
-             3.  import { RouterModule } from '@angular/router';
-             4.  import { CommonModule } from '@angular/common';
-             5. 
-             6.  @Component({
-             7.    selector: 'app-housing-location',
-             8.    imports: [RouterModule, CommonModule],
-             9.    templateUrl: './housing-location.html',
-            10.    styleUrl: './housing-location.css'
-            11.  })
-            12.  export class HousingLocationComponent {
-            13.    @Input() housingLocation!: HousingLocation;
-            14.  }
 
---- 05.08. Modificar código del archivo 'frontend/src/app/components/housing-location/housing-location.html' en la línea:
+            02. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
 
-            10.      <a [routerLink]="['/details', housingLocation.id]" routerLinkActive="router-link-active" >Learn More</a> // Agregar 'routerLink'
+                    01   import { CommonModule } from '@angular/common';
+                    02   import { Component, inject } from '@angular/core';
+                    03   import { ActivatedRoute } from '@angular/router';
+                    04   import { Housing } from '../housing';
+                    05   import { HousingLocationInterface } from '../housing-location-interface';
+                    06   import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+                    07   @Component({
+                    08     selector: 'app-details',
+                    09     imports: [CommonModule, ReactiveFormsModule],
+                    10     templateUrl: './details.html',
+                    11     styleUrl: './details.css'
+                    12   })
+                    13   export class Details {
+                    14     route: ActivatedRoute = inject(ActivatedRoute);
+                    15     housingService = inject(Housing);
+                    16     housingLocation: HousingLocationInterface | undefined;
+                    17     constructor(){
+                    18       const housinLocationId = Number(this.route.snapshot.params['id']);
+                    19       this.housingLocation = this.housingService.getHousingLocantionById(housinLocationId);
+                    20     }
+                    21     formAngular = new FormGroup({
+                    22       firsName: new FormControl(''),
+                    23       lastName: new FormControl(''),
+                    24       email: new FormControl(''),
+                    25     });
+                    26     onSubmit(){
+                    27       this.housingService.submitApplication(
+                    28         this.formAngular.value.firsName ?? '',
+                    29         this.formAngular.value.lastName ?? '',
+                    30         this.formAngular.value.email ?? '',
+                    31       )
+                    32     }
+                    33   }
 
-           Quedando así:
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-             1.  <section class="listing">
-             2.      <img
-             3.          class="listing-photo"
-             4.          [src]="housingLocation.photo"
-             5.          alt="Exterior photo of {{ housingLocation.name }}"
-             6.          crossorigin
-             7.      />
-             8.      <h2 class="listing-heading">{{ housingLocation.name }}</h2>
-             9.      <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
-            10.      <a [routerLink]="['/details', housingLocation.id]" routerLinkActive="router-link-active" >Learn More</a>
-            11.  </section>
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 06, se importa el formulario, sus controles y la reactividad.
+                    
+                    B.  En la línea 09, se incluye la importación del formulario reactivo.
+                    
+                    C.  De la línea 21 a la 25, se crea el formulario reactivo.
+                    
+                    D.  De la línea 26 a la 32, se envían los datos del formulario.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
---- 05.09. Modificar código del archivo 'frontend/src/app/components/details/details.component.ts' en las líneas:
 
-             1.  import { Component, inject } from '@angular/core';     // Importar 'inject' para introducir código
-             2.  import { CommonModule } from '@angular/common';        // Importar 'CommonModule' para un arreglo a partir de la Interfaz
-             3.  import { ActivatedRoute } from '@angular/router';      // Importar 'ActivatedRoute' para determinar las rutas activas
-             4.  import { HousingService } from '../housing.service';   // Importar 'HousingService' para llamar al servicio
-             5.  import { HousingLocation } from '../housing-location'; // Importar 'HousingLocation' para llamar la Interfaz
-             9.    imports: [CommonModule],                             // Incluir en el componente el arreglo de objetos
-            13.  export class DetailsComponent {}                       // Incluir inyección, arreglos, rutas, servicios e interfaz
 
-           Quedando así:
-
-             1.  import { Component, inject } from '@angular/core';
-             2.  import { CommonModule } from '@angular/common';
-             3.  import { ActivatedRoute } from '@angular/router';
-             4.  import { HousingService } from '../housing.service';
-             5.  import { HousingLocation } from '../housing-location';
-             6.
-             7.  @Component({
-             8.    selector: 'app-details',
-             9.    imports: [CommonModule],
-            10.    templateUrl: './details.component.html',
-            11.    styleUrl: './details.component.css'
-            12.  })
-            13.  export class DetailsComponent {
-            14.    route: ActivatedRoute = inject(ActivatedRoute);
-            15.    housingService = inject(HousingService);
-            16.    housingLocation: HousingLocation | undefined;
-            17.
-            18.    constructor(){
-            19.      const housingLocationId = Number(this.route.snapshot.params['id']);
-            20.      this.housingLocation = this.housingService.getHousingLocationById(housingLocationId)
-            21.    }
-            22.  }
-
---- 05.10. Modificar código del archivo 'frontend/src/app/components/details/details.component.html', quedando así:
-
-             1.  <article>
-             2.      <img
-             3.          class="listing-photo"
-             4.          [src]="housingLocation?.photo"
-             5.          alt="Exterior photo of {{ housingLocation?.name }}"
-             6.          crossorigin
-             7.      />
-             8.      <section class="listing-description">
-             9.          <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
-            10.          <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
-            11.      </section>
-            12.      <section class="listing-features">
-            13.          <h2 class="section-heading">About this housing location</h2>
-            14.          <ul>
-            15.              <li>Units available: {{ housingLocation?.availableUnits }}</li>
-            16.              <li>Does this location have wifi: {{ housingLocation?.wifi }}</li>
-            17.              <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
-            18.          </ul>
-            19.      </section>
-            20.  </article>
-
+            
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 06. Reactive Forms ----------------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 06.01. Modificar el código del archivo 'frontend/src/app/components/housing.service.ts' desde la línea:
 
-           122.    submitApplication(firstName:string, lastName:string, email:string){}     // Método para enviar datos desde el formulario
-
-           Quedando así:
-
-             1.  import { Injectable } from '@angular/core';
-             2.  import { HousingLocation } from './housing-location';
-             3.
-             4.  @Injectable({
-             5.    providedIn: 'root'
-             6.  })
-             7.  export class HousingService {
-             8.
-             9.    constructor() { }
-            10.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-            11.>   housinglocationList: Housinglocation [] = [
-           112.    ];
-           113.
-           114.    getAllHousingLocations(): HousingLocation[] {
-           115.      return this.housingLocationList;
-           116.    }
-           117.
-           118.    getHousingLocationById(id:number): HousingLocation | undefined {
-           119.      return this.housingLocationList.find((housingLocation) => housingLocation.id === id);
-           120.    }
-           121.
-           122.    submitApplication(firstName:string, lastName:string, email:string){
-           123.      console.log(`FirstName: ${firstName} - LastName: ${lastName} - Email: ${email}`);
-           124.    }
-           125.
-           126.  }
-
---- 06.02. Modificar código del archivo 'frontend/src/app/components/details/details.component.ts' en las líneas:
-
-             6.  import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';    // Importar el Formulario, sus controles y Reactividad
-            10.    imports: [CommonModule, ReactiveFormsModule],                                  // Incluir la importación del Formulario Reactivo
-            24.    formAngular = new FormGroup({});                                               // Crear el Formulario Reactivo
-            30.    onSubmit(){}                                                                   // Enviar los datos del Formulario
-
-           Quedando así:
-
-             1.  import { Component, inject } from '@angular/core';
-             2.  import { ActivatedRoute } from '@angular/router';
-             3.  import { HousingService } from '../housing.service';
-             4.  import { HousingLocation } from '../housing-location';
-             5.  import { CommonModule } from '@angular/common';
-             6.  import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-             7.
-             8.  @Component({
-             9.    selector: 'app-details',
-            10.    imports: [CommonModule, ReactiveFormsModule],
-            11.    templateUrl: './details.component.html',
-            12.    styleUrl: './details.component.css'
-            13.  })
-            14.  export class DetailsComponent {
-            15.    route: ActivatedRoute = inject(ActivatedRoute);
-            16.    housingService = inject(HousingService);
-            17.    housingLocation: HousingLocation | undefined;
-            18.
-            19.    constructor(){
-            20.      const housingLocationId = Number(this.route.snapshot.params['id']);
-            21.      this.housingLocation = this.housingService.getHousingLocationById(housingLocationId)
-            22.    }
-            23.
-            24.    formAngular = new FormGroup({
-            25.      firstName: new FormControl(''),
-            26.      lastName: new FormControl(''),
-            27.      email: new FormControl(''),
-            28.    });
-            29.
-            30.    onSubmit(){
-            31.      this.housingService.submitApplication(
-            32.        this.formAngular.value.firstName ?? '',
-            33.        this.formAngular.value.lastName ?? '',
-            34.        this.formAngular.value.email ?? '',
-            35.      )
-            36.    }
-            37.  }
 
 --- 06.03. Modificar código del archivo 'frontend/src/app/components/details/details.component.html' desde las líneas:
 

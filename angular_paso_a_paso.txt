@@ -447,7 +447,7 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.01.  Crear la interface HousingLocation: ---------------------------------------------------------------------------------------------------------|
+|-- 03.01.  Crear la interface HousingLocationInterface: ------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear una interface desde la terminal:
@@ -603,6 +603,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
             07. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
+                (Descargar el arreglo: https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js).
 
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -728,308 +729,217 @@
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
-                    A.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                    A.  En la línea 04, se importa la funcionalidad para crear un arreglo de objetos.
+
+                    B.  En la línea 07, se integra la creación de un arreglo de objetos.
+
+                    C.  En la línea 13, se crea una instancia de la interface 'HousingLocationInterface' tipo arreglo de objetos.
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
---- 03.07. Modificar código del archivo 'frontend/src/app/components/home/home.ts' en las líneas:
+            08. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
+
+                    01   <section>
+                    02     <form>
+                    03       <input type="text" placeholder="Filter by city" />
+                    04       <button type="button" class="primary">Search</button>
+                    05     </form>
+                    06     <section class="results">
+                    07       <app-housing-location 
+                    08         *ngFor="let housingLocation of housingLocationList"
+                    09         [housingLocation]="housingLocation">
+                    10     </app-housing-location>
+                    11     </section>
+                    12   <section>              
+
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  En la línea 08, se incluye un ciclo *ngFor (snippets) y recorrer el arreglo
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------------ 04.  SERVICES -------------------------------------------------------------------|||
+|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.01.  Crear el servicio 'housing': ----------------------------------------------------------------------------------------------------------------|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-             4.  import { CommonModule } from '@angular/common';        // Importar la funcionalidad de crear un arreglo de objetos
-             8.    imports: [CommonModule, HousingLocationComponent],   // Integrar la creación de un arreglo de objetos
-            14.    housinglocationList: Housinglocation []              // Crear una instancia de interfaz tipo arreglo de objetos
+            01. Crear el servicio 'housing' sin incluir el archivo *.spec.ts desde la terminal:
+                    
+                    PS C:\..\..\Desktop\angular\frontend> ng generate service components/housing --skip-tests
 
-           NOTA: En el siguiente enlace está el arreglo de objetos de ejemplo:
-                 https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js
-                 Tenga en cuenta que se cambia el nombre de objeto 'housinglocation' al arreglo 'housingLocationList'
+            02. Cortar el código del archivo 'frontend/src/app/components/home/home.ts', desde la línea 12 hasta la 114, quedando así::
 
-           Quedando así:
+                    01   import { Component } from '@angular/core';
+                    02   import { HousingLocation } from '../housing-location/housing-location';
+                    03   import { HousingLocationInterface } from '../housing-location-interface';
+                    04   import { CommonModule } from '@angular/common';
+                    05   @Component({
+                    06     selector: 'app-home',
+                    07     imports: [CommonModule, HousingLocation],
+                    08     templateUrl: './home.html',
+                    09     styleUrl: './home.css'
+                    10   })
+                    11   export class Home {  
+                    12   }
 
-             1.  import { Component } from '@angular/core';
-             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
-             3.  import { HousingLocation } from '../housingLocation';
-             4.  import { CommonModule } from '@angular/common';
-             5.
-             6.  @Component({
-             7.    selector: 'app-home',
-             8.    imports: [CommonModule, HousingLocationComponent],
-             9.    templateUrl: './home.html',
-            10.    styleUrl: './home.css'
-            11.  })
-            12.  export class HomeComponent {
-            13.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-            14.    housinglocationList: HousingLocationInterface[] = [
-            15.      {
-            16.        id: 1,
-            17.        name: 'Acme Fresh Start Housing',
-            18.        city: 'Chicago',
-            19.        state: 'IL',
-            20.        photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
-            21.        availableUnits: 4,
-            22.        wifi: true,
-            23.        laundry: true,
-            24.      },
-            25.      {
-            26.        id: 2,
-            27.        name: 'A113 Transitional Housing',
-            28.        city: 'Santa Monica',
-            29.        state: 'CA',
-            30.        photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
-            31.        availableUnits: 0,
-            32.        wifi: false,
-            33.        laundry: true,
-            34.      },
-            35.      {
-            36.        id: 3,
-            37.        name: 'Warm Beds Housing Support',
-            38.        city: 'Juneau',
-            39.        state: 'AK',
-            40.        photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
-            41.        availableUnits: 1,
-            42.        wifi: false,
-            43.        laundry: false,
-            44.      },
-            45.      {
-            46.        id: 4,
-            47.        name: 'Homesteady Housing',
-            48.        city: 'Chicago',
-            49.        state: 'IL',
-            50.        photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
-            51.        availableUnits: 1,
-            52.        wifi: true,
-            53.        laundry: false,
-            54.      },
-            55.      {
-            56.        id: 5,
-            57.        name: 'Happy Homes Group',
-            58.        city: 'Gary',
-            59.        state: 'IN',
-            60.        photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
-            61.        availableUnits: 1,
-            62.        wifi: true,
-            63.        laundry: false,
-            64.      },
-            65.      {
-            66.        id: 6,
-            67.        name: 'Hopeful Apartment Group',
-            68.        city: 'Oakland',
-            69.        state: 'CA',
-            70.        photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
-            71.        availableUnits: 2,
-            72.        wifi: true,
-            73.        laundry: true,
-            74.      },
-            75.      {
-            76.        id: 7,
-            77.        name: 'Seriously Safe Towns',
-            78.        city: 'Oakland',
-            79.        state: 'CA',
-            80.        photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
-            81.        availableUnits: 5,
-            82.        wifi: true,
-            83.        laundry: true,
-            84.      },
-            85.      {
-            86.        id: 8,
-            87.        name: 'Hopeful Housing Solutions',
-            88.        city: 'Oakland',
-            89.        state: 'CA',
-            90.        photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
-            91.        availableUnits: 2,
-            92.        wifi: true,
-            93.        laundry: true,
-            94.      },
-            95.      {
-            96.        id: 9,
-            97.        name: 'Seriously Safe Towns',
-            98.        city: 'Oakland',
-            99.        state: 'CA',
-           100.        photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
-           101.        availableUnits: 10,
-           102.        wifi: false,
-           103.        laundry: false,
-           104.      },
-           105.      {
-           106.        id: 10,
-           107.        name: 'Capital Safe Towns',
-           108.        city: 'Portland',
-           109.        state: 'OR',
-           110.        photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
-           111.        availableUnits: 6,
-           112.        wifi: true,
-           113.        laundry: true,
-           114.      },
-           115.    ];
-           116.  }
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
---- 03.08. Modificar el código al archivo 'frontend/src/app/components/home/home.html' en la línea:
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  Desde la línea 12 a la 114 se corta el código, porque el arreglo de objetos debe ser llamado desde un 'service'.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-             8.              *ngFor="let housingLocation of housingLocationList"      // Incluir ciclo for (snippets) y recorrer el arreglo
+            03. Pegar el código del paso anterior en el archivo 'frontend/src/app/components/housing.service.ts' debajo del 'constructor(){ }':
 
-           Quedando así:
+                    01   import { Injectable } from '@angular/core';
+                    02   import { HousingLocationInterface } from './housing-location-interface';
+                    03   @Injectable({
+                    04     providedIn: 'root'
+                    05   })
+                    06   export class Housing {
+                    07     constructor() { }
+                    08     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+                    09     housingLocationList: HousingLocationInterface[] = [
+                    10       {
+                    11         id: 0,
+                    12         name: 'Acme Fresh Start Housing',
+                    13         city: 'Chicago',
+                    14         state: 'IL',
+                    15         photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
+                    16         availableUnits: 4,
+                    17         wifi: true,
+                    18         laundry: true,
+                    19       },
+                    20       {
+                    21         id: 1,
+                    22         name: 'A113 Transitional Housing',
+                    23         city: 'Santa Monica',
+                    24         state: 'CA',
+                    25         photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
+                    26         availableUnits: 0,
+                    27         wifi: false,
+                    28         laundry: true,
+                    29       },
+                    30       {
+                    31         id: 2,
+                    32         name: 'Warm Beds Housing Support',
+                    33         city: 'Juneau',
+                    34         state: 'AK',
+                    35         photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
+                    36         availableUnits: 1,
+                    37         wifi: false,
+                    38         laundry: false,
+                    39       },
+                    40       {
+                    41         id: 3,
+                    42         name: 'Homesteady Housing',
+                    43         city: 'Chicago',
+                    44         state: 'IL',
+                    45         photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
+                    46         availableUnits: 1,
+                    47         wifi: true,
+                    48         laundry: false,
+                    49       },
+                    50       {
+                    51         id: 4,
+                    52         name: 'Happy Homes Group',
+                    53         city: 'Gary',
+                    54         state: 'IN',
+                    55         photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
+                    56         availableUnits: 1,
+                    57         wifi: true,
+                    58         laundry: false,
+                    59       },
+                    60       {
+                    61         id: 5,
+                    62         name: 'Hopeful Apartment Group',
+                    63         city: 'Oakland',
+                    64         state: 'CA',
+                    65         photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
+                    66         availableUnits: 2,
+                    67         wifi: true,
+                    68         laundry: true,
+                    69       },
+                    70       {
+                    71         id: 6,
+                    72         name: 'Seriously Safe Towns',
+                    73         city: 'Oakland',
+                    74         state: 'CA',
+                    75         photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
+                    76         availableUnits: 5,
+                    77         wifi: true,
+                    78         laundry: true,
+                    79       },
+                    80       {
+                    81         id: 7,
+                    82         name: 'Hopeful Housing Solutions',
+                    83         city: 'Oakland',
+                    84         state: 'CA',
+                    85         photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
+                    86         availableUnits: 2,
+                    87         wifi: true,
+                    88         laundry: true,
+                    89       },
+                    90       {
+                    91         id: 8,
+                    92         name: 'Seriously Safe Towns',
+                    93         city: 'Oakland',
+                    94         state: 'CA',
+                    95         photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
+                    96         availableUnits: 10,
+                    97         wifi: false,
+                    98         laundry: false,
+                    99       },
+                   100       {
+                   101         id: 9,
+                   102         name: 'Capital Safe Towns',
+                   103         city: 'Portland',
+                   104         state: 'OR',
+                   105         photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+                   106         availableUnits: 6,
+                   107         wifi: true,
+                   108         laundry: true,
+                   109       },
+                   110     ];
+                   111   }
 
-            01   <section>
-            02       <form>
-            03           <input type="text" placeholder="Filter by city" />
-            04           <button class="primary" type="button">Search</button>
-            05       </form>
-            06       <section class="results">
-            07           <app-housing-location
-            08               *ngFor="let housingLocation of housingLocationList"
-            09               [housingLocation]="housingLocation">
-            10           </app-housing-location>
-            11       </section>
-            12   </section>
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.  Desde la línea XX se pega el código XX.
+                    
+                    B.  En la línea 02, se importa la interface 'HousingLocationInterface'.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 04. Services ----------------------------------------------------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
---- 04.01. Crear un servicio desde la terminal (sin incluir el archivo *.spec.ts), que separe la lógica y los datos de los componentes y que; a su vez,
-           puedan ser utilizados por varios componentes:
 
-             PS C:\Users\ADMIN\Desktop\angular\frontend> ng generate service components/housing --skip-tests
-
---- 04.02. Cortar el código del archivo 'frontend/src/app/components/home/home.ts', desde la línea 13 hasta la 115, quedando así:
-
-             1.  import { Component } from '@angular/core';
-             2.  import { HousingLocationComponent } from '../housing-location/housing-location.component';
-             3.  import { Housinglocation } from '../housinglocation';
-             4.  import { CommonModule } from '@angular/common';
-             5.
-             6.  @Component({
-             7.    selector: 'app-home',
-             8.    imports: [CommonModule, HousingLocationComponent],
-             9.    templateUrl: './home.html',
-            10.    styleUrl: './home.css'
-            11.  })
-            12.  export class HomeComponent {
-            13.
-            14.  }
-
---- 04.03. Pegar el código cortado en el paso anterior en el archivo 'frontend/src/app/components/housing.service.ts' en la línea 9 y en la línea:
-
-             2.  import { HousingLocation } from './housing-location';        // Importar la Interface 'HousingLocation'
-
-           Quedando así:
-
-             1.  import { Injectable } from '@angular/core';
-             2.  import { HousingLocation } from './housing-location';
-             3.
-             4.  @Injectable({
-             5.    providedIn: 'root'
-             6.  })
-             7.  export class HousingService {
-             8.
-             9.    constructor() { }
-            10.    readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-            11.    housinglocationList: Housinglocation [] = [
-            12.      {
-            13.        id: 1,
-            14.        name: 'Acme Fresh Start Housing',
-            15.        city: 'Chicago',
-            16.        state: 'IL',
-            17.        photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
-            18.        availableUnits: 4,
-            19.        wifi: true,
-            20.        laundry: true,
-            21.      },
-            22.      {
-            23.        id: 2,
-            24.        name: 'A113 Transitional Housing',
-            25.        city: 'Santa Monica',
-            26.        state: 'CA',
-            27.        photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
-            28.        availableUnits: 0,
-            29.        wifi: false,
-            30.        laundry: true,
-            31.      },
-            32.      {
-            33.        id: 3,
-            34.        name: 'Warm Beds Housing Support',
-            35.        city: 'Juneau',
-            36.        state: 'AK',
-            37.        photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
-            38.        availableUnits: 1,
-            39.        wifi: false,
-            40.        laundry: false,
-            41.      },
-            42.      {
-            43.        id: 4,
-            44.        name: 'Homesteady Housing',
-            45.        city: 'Chicago',
-            46.        state: 'IL',
-            47.        photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
-            48.        availableUnits: 1,
-            49.        wifi: true,
-            50.        laundry: false,
-            51.      },
-            52.      {
-            53.        id: 5,
-            54.        name: 'Happy Homes Group',
-            55.        city: 'Gary',
-            56.        state: 'IN',
-            57.        photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
-            58.        availableUnits: 1,
-            59.        wifi: true,
-            60.        laundry: false,
-            61.      },
-            62.      {
-            63.        id: 6,
-            64.        name: 'Hopeful Apartment Group',
-            65.        city: 'Oakland',
-            66.        state: 'CA',
-            67.        photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
-            68.        availableUnits: 2,
-            69.        wifi: true,
-            70.        laundry: true,
-            71.      },
-            72.      {
-            73.        id: 7,
-            74.        name: 'Seriously Safe Towns',
-            75.        city: 'Oakland',
-            76.        state: 'CA',
-            77.        photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
-            78.        availableUnits: 5,
-            79.        wifi: true,
-            80.        laundry: true,
-            81.      },
-            82.      {
-            83.        id: 8,
-            84.        name: 'Hopeful Housing Solutions',
-            85.        city: 'Oakland',
-            86.        state: 'CA',
-            87.        photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
-            88.        availableUnits: 2,
-            89.        wifi: true,
-            90.        laundry: true,
-            91.      },
-            92.      {
-            93.        id: 9,
-            94.        name: 'Seriously Safe Towns',
-            95.        city: 'Oakland',
-            96.        state: 'CA',
-            97.        photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
-            98.        availableUnits: 10,
-            99.        wifi: false,
-           100.        laundry: false,
-           101.      },
-           102.      {
-           103.        id: 10,
-           104.        name: 'Capital Safe Towns',
-           105.        city: 'Portland',
-           106.        state: 'OR',
-           107.        photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
-           108.        availableUnits: 6,
-           109.        wifi: true,
-           110.        laundry: true,
-           111.      },
-           112.    ];
-           113.  }
 
 --- 04.04. Modificar el código del archivo 'frontend/src/app/components/home/home.ts' en las líneas:
 

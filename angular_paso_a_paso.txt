@@ -1062,7 +1062,11 @@
 
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/details.css
 
-            03. Modificar el código del archivo 'frontend/src/main.ts':
+            03. Incorporar la zona desde la terminal:                    
+                    
+                    PS C:\..\..\Desktop\angular\frontend> npm i zone.js
+
+            04. Modificar el código del archivo 'frontend/src/main.ts':
 
                     01   import 'zone.js';
                     02   import { bootstrapApplication } from '@angular/platform-browser';

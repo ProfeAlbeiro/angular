@@ -165,7 +165,7 @@
 
             07. Crear un proyecto de angular desde la terminal:
 
-                    PS C:\..\..\Desktop\angular> ng new frontend
+                    PS C:\..\..\Desktop\angular> ng new frontend_angular
 
             NOTA:   ⦿   Seleccionar:
 

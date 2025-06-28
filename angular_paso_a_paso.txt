@@ -157,7 +157,7 @@
             
             05. Instalar Angular escribiendo desde la terminal:
             
-                    PS C:\..\..\Desktop\angular> npm i @angular/cli@20.0.1
+                    PS C:\..\..\Desktop\angular> npm install -g @angular/cli@20.0.1
              
             06. Verificar las versiones de node.js y angular desde la terminal:
 

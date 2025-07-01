@@ -1778,3 +1778,7 @@
             04. XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
                     PS C:\..\frontend_angular> npx angular-cli-ghpages --dir=dist/frontend_angular/browser/
+            
+            05. XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+                    PS C:\..\frontend_angular> 

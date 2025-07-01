@@ -34,7 +34,7 @@
 |-- ------  Recomendaciones para poner en marcha el proyecto: -------------------------------------------------------------------------------------------|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Garantizar el ambiente de desarrollo (Ver apartado 'CONFIGURACIÓN AMBIENTE').
+            01. Garantizar el ambiente de desarrollo (Ver apartado 'CONFIGURACIÓN ENTORNO').
             
             02. Clonar el proyecto desde github en cualquier parte del computador (Ejp, Escritorio).
             

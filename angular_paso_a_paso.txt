@@ -1477,7 +1477,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
             
-            04. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.component.html':
+            04. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.ts':
 
                     01   import { Component, inject } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';

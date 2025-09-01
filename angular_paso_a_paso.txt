@@ -456,7 +456,7 @@
 
                     PS C:\..\..\Desktop\angular\frontend_angular> ng generate interface components/housingLocationInterface
 
-            02. Codificar el archivo 'frontend_angular/src/app/components/housing-location.ts':
+            02. Codificar el archivo 'frontend_angular/src/app/components/housing-location-interface.ts':
                     
                     01   export interface HousingLocationInterface {
                     02     id: number;
@@ -477,7 +477,7 @@
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
-                    A.  Se incluye todo el código desde la línea 01 a la 10 de la interface 'housing-location.ts'
+                    A.  Se incluye todo el código desde la línea 01 a la 10 de la interface 'housing-location-interface.ts'
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 

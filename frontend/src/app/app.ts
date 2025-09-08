@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Home } from './components/home/home';
 @Component({
-    selector: 'app-root',
-    imports: [RouterOutlet],
-    templateUrl: './app.html',
-    styleUrl: './app.css'
+  selector: 'app-root',
+  imports: [RouterOutlet, Home],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class App {
-    protected title:number = 35;
+  protected title:number = 35;
 }

@@ -34,6 +34,7 @@
 ||| --      02.03.  Modificar el componente 'frontend/src/app/app.ts'                                                                                                  |||
 ||| --  03. COMPONENTES                                                                                                                                                |||
 ||| --      03.01.  Modificar la página inicial del proyecto                                                                                                           |||
+||| --      03.02.  Crear el Componente 'home'                                                                                                                         |||
 |||                                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -197,7 +198,7 @@
 
             02. Ejecutar el Servidor desde la terminal:
 
-                    ⦿   PS C:\..\..\Desktop\angular\frontend_angular> ng serve -o
+                    ⦿   PS C:\..\..\Desktop\angular\frontend> ng serve -o
 
                           Would you like to share pseudonymous usage data about this project with the Angular Team
                           at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
@@ -269,7 +270,7 @@
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/logo.svg
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/location-pin.svg
 
-            03. Modificar los estilos globales 'frontend/src/styles.css':
+            03. Modificar los estilos globales del proyecto 'frontend/src/styles.css':
 
                     01   * {
                     02     margin: 10;
@@ -295,7 +296,20 @@
                     22     border-radius: 8px;
                     23   }
 
-            04. Modificar el código de 'frontend/src/app/app.html':
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                    B.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+            04. Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html':
                     
                     01   <main class="main">
                     02     <header class="brand-home">
@@ -310,7 +324,8 @@
                 |                                                                                                                                      |
                   EXPLICACIÓN:   
                     
-                    ⦿   El archivo 'app.html', es la plantilla principal del componente raíz (App).
+                    ⦿   El archivo 'app.html', es la plantilla principal del componente raíz (App). Se modifica totalmente el código que viene por
+                         defecto.
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
@@ -320,26 +335,74 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.02.  Componente 'home': --------------------------------------------------------------------------------------------------------------------------|
+|-- 03.02.  Crear el Componente 'home': ---------------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Abrir otra terminal en Visual Studio Code ('Terminal / New Terminal' ó 'Ctrl + Shift + ñ')
             
             02. Cambiar el nombre de la terminal a 'commands', seleccionándola en la parte inferior derecha y presionando F2 / Rename...
 
-            02. Ingresar a la carpeta 'frontend_angular' desde la terminal:
+            03. Ingresar a la carpeta 'frontend' desde la terminal:
 
-                    PS C:\..\..\Desktop\angular> cd frontend_angular
+                    ⦿   PS C:\..\..\Desktop\angular> cd frontend
 
-            03. Crear el componente 'home' desde la terminal:
+            04. Crear el componente 'home' desde la terminal:
 
-                    PS C:\..\..\Desktop\angular\frontend_angular> ng generate component components/home
+                    ⦿   PS C:\..\..\Desktop\angular\frontend> ng generate component components/home
             
-            04. Agregar estilos al archivo 'frontend_angular/src/app/components/home/home.css', desde el siguiente enlace:
+            05. Modificar los estilos del componente 'home' en 'frontend/src/app/components/home/home.css':
+                    
+                    01   .results {
+                    02     display: grid;
+                    03     column-gap: 14px;
+                    04     row-gap: 14px;
+                    05     grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
+                    06     margin-top: 50px;
+                    07     justify-content: space-around;
+                    08   }
+                    09   input[type="text"] {
+                    10     border: solid 1px var(--primary-color);
+                    11     padding: 10px;
+                    12     border-radius: 8px;
+                    13     margin-right: 4px;
+                    14     display: inline-block;
+                    15     width: 30%;
+                    16   }
+                    17   button {
+                    18     padding: 10px;
+                    19     border: solid 1px var(--primary-color);
+                    20     background: var(--primary-color);
+                    21     color: white;
+                    22     border-radius: 8px;
+                    23   }
+                    24   @media (min-width: 500px) and (max-width: 768px) {
+                    25     .results {
+                    26         grid-template-columns: repeat(2, 1fr);
+                    27     }
+                    28     input[type="text"] {
+                    29         width: 70%;
+                    30     }
+                    31   }
+                    32   @media (max-width: 499px) {
+                    33     .results {
+                    34         grid-template-columns: 1fr;
+                    35     }
+                    36   }
 
-                    https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/home.css
+                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
+                |                                                                                                                                      |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-            05. Modificar el código del archivo 'frontend_angular/src/app/app.ts':                    
+                |--------------------------------------------------------------------------------------------------------------------------------------|
+                
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                    B.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                      |
+                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+
+            06. Modificar la Clase del componente principal en 'frontend/src/app/app.ts':                    
                     
                     01   import { Component } from '@angular/core';
                     02   import { RouterOutlet } from '@angular/router';
@@ -370,7 +433,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
           
-            06. Modificar el código del archivo 'frontend_angular/src/app/app.html':
+            07. Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html':
                     
                     01   <main class="main">
                     02     <header class="brand-home">
@@ -386,15 +449,15 @@
                 |                                                                                                                                      |
                   EXPLICACIÓN:   
                     
-                    ⦿   El componente 'app.ts' incluye al componente 'home.ts'.
+                    ⦿   El html 'app.html' llama al componente 'app-home'.
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
-                    A.  En la línea 06, se llama al selector 'app-home' del componente 'app/components/home.ts' en la línea 04  selector: 'app-home'
+                    A.  En la línea 06, se llama al selector 'app-home' del componente 'app/components/home.ts' en la línea 04 'selector: 'app-home''
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            07. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.html':
+            08. Modificar la estructura y contenido del componenten 'home' en 'frontend/src/app/components/home/home.html':
 
                     01   <section>
                     02     <form>
@@ -424,13 +487,13 @@
 
             01. Crear el componente 'housingLocation' desde la terminal:
 
-                    PS C:\..\..\Desktop\angular\frontend_angular> ng g c components/housingLocation
+                    PS C:\..\..\Desktop\angular\frontend> ng g c components/housingLocation
 
-            02. Agregar estilos al archivo 'frontend_angular/src/app/components/housing-location/housing-location.css', desde el siguiente enlace:
+            02. Agregar estilos al archivo 'frontend/src/app/components/housing-location/housing-location.css', desde el siguiente enlace:
 
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/housing-location.css
 
-            03. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.ts':
+            03. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
                     
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -460,7 +523,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            04. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.html'
+            04. Modificar el código del archivo 'frontend/src/app/components/home/home.html'
 
                     01   <section>
                     02     <form>
@@ -498,9 +561,9 @@
 
             01. Crear una interface desde la terminal:
 
-                    PS C:\..\..\Desktop\angular\frontend_angular> ng generate interface components/housingLocationInterface
+                    PS C:\..\..\Desktop\angular\frontend> ng generate interface components/housingLocationInterface
 
-            02. Codificar el archivo 'frontend_angular/src/app/components/housing-location-interface.ts':
+            02. Codificar el archivo 'frontend/src/app/components/housing-location-interface.ts':
                     
                     01   export interface HousingLocationInterface {
                     02     id: number;
@@ -525,7 +588,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            03. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.ts':
+            03. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
 
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -566,7 +629,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            04. Modificar el código del archivo 'frontend_angular/src/app/components/housing-location/housing-location.ts':
+            04. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.ts':
 
                     01   import { Component, Input } from '@angular/core';
                     02   import { HousingLocationInterface } from '../housing-location-interface';
@@ -598,7 +661,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            05. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.html':
+            05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
 
                     01   <section>
                     02     <form>
@@ -623,7 +686,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            06. Modificar el código del archivo 'frontend_angular/src/app/components/housing-location/housing-location.html':
+            06. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.html':
 
                     01   <section class="listing">
                     02     <img
@@ -648,7 +711,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            07. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.ts':
+            07. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
                 (Descargar el arreglo: https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js).
 
                     01   import { Component } from '@angular/core';
@@ -784,7 +847,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            08. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.html':
+            08. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
 
                     01   <section>
                     02     <form>
@@ -824,9 +887,9 @@
 
             01. Crear el servicio 'housing' sin incluir el archivo *.spec.ts desde la terminal:
                     
-                    PS C:\..\..\Desktop\angular\frontend_angular> ng generate service components/housing --skip-tests
+                    PS C:\..\..\Desktop\angular\frontend> ng generate service components/housing --skip-tests
 
-            02. Cortar el código del archivo 'frontend_angular/src/app/components/home/home.ts', desde la línea 12 hasta la 114:
+            02. Cortar el código del archivo 'frontend/src/app/components/home/home.ts', desde la línea 12 hasta la 114:
 
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -853,7 +916,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            03. Pegar el código del paso anterior en el archivo 'frontend_angular/src/app/components/housing.ts' debajo del 'constructor(){ }':
+            03. Pegar el código del paso anterior en el archivo 'frontend/src/app/components/housing.ts' debajo del 'constructor(){ }':
 
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
@@ -982,7 +1045,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
             
-            04. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.ts':
+            04. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
 
                     01   import { Component, inject } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -1018,7 +1081,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            05. Modificar el código del archivo 'frontend_angular/src/app/components/housing.ts':
+            05. Modificar el código del archivo 'frontend/src/app/components/housing.ts':
 
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
@@ -1052,7 +1115,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            05. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.ts':
+            05. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
                     
                     01   import { Component, inject } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -1100,17 +1163,17 @@
 
             01. Crear el componente 'details' desde la terminal:                    
                     
-                    PS C:\..\..\Desktop\angular\frontend_angular> ng g c components/details
+                    PS C:\..\..\Desktop\angular\frontend> ng g c components/details
 
-            02. Agregar estilos al archivo 'frontend_angular/src/app/components/details/details.css', desde el siguiente enlace:
+            02. Agregar estilos al archivo 'frontend/src/app/components/details/details.css', desde el siguiente enlace:
 
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/details.css
 
             03. Incorporar la zona desde la terminal:                    
                     
-                    PS C:\..\..\Desktop\angular\frontend_angular> npm i zone.js
+                    PS C:\..\..\Desktop\angular\frontend> npm i zone.js
 
-            04. Modificar el código del archivo 'frontend_angular/src/main.ts':
+            04. Modificar el código del archivo 'frontend/src/main.ts':
 
                     01   import 'zone.js';
                     02   import { bootstrapApplication } from '@angular/platform-browser';
@@ -1137,7 +1200,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            04. Modificar el código del archivo 'frontend_angular/src/app/app.ts':
+            04. Modificar el código del archivo 'frontend/src/app/app.ts':
 
                     01   import { Component } from '@angular/core';
                     02   import { RouterModule, RouterOutlet } from '@angular/router';
@@ -1167,7 +1230,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            05. Modificar el código del archivo 'frontend_angular/src/app/app.html':
+            05. Modificar el código del archivo 'frontend/src/app/app.html':
 
                     01   <main class="main">
                     02     <a routerLink="/">
@@ -1195,7 +1258,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            06. Modificar el código del archivo 'frontend_angular/src/app/app.routes.ts':
+            06. Modificar el código del archivo 'frontend/src/app/app.routes.ts':
 
                     01   import { Routes } from '@angular/router';
                     02   import { Home } from './components/home/home';
@@ -1221,7 +1284,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            07. Modificar el código del archivo 'frontend_angular/src/app/components/housing-location/housing-location.ts':
+            07. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.ts':
 
                     01   import { Component, Input } from '@angular/core';
                     02   import { HousingLocationInterface } from '../housing-location-interface';
@@ -1253,7 +1316,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            08. Modificar el código del archivo 'frontend_angular/src/app/components/housing-location/housing-location.html':
+            08. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.html':
 
                     01   <section class="listing">
                     02     <img
@@ -1284,7 +1347,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            09. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.ts':
+            09. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
 
                     01   import { CommonModule } from '@angular/common';
                     02   import { Component, inject } from '@angular/core';
@@ -1331,7 +1394,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            10. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.html':
+            10. Modificar el código del archivo 'frontend/src/app/components/details/details.html':
 
                     01   <article>
                     02     <img
@@ -1377,7 +1440,7 @@
 |-- 03.01.  Crear un formulario reactivo: ---------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Modificar el código del archivo 'frontend_angular/src/app/components/housing.ts':
+            01. Modificar el código del archivo 'frontend/src/app/components/housing.ts':
                     
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
@@ -1413,7 +1476,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            02. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.ts':
+            02. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
 
                     01   import { CommonModule } from '@angular/common';
                     02   import { Component, inject } from '@angular/core';
@@ -1468,7 +1531,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            03. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.html':
+            03. Modificar el código del archivo 'frontend/src/app/components/details/details.html':
 
                     01   <article>
                     02   <img
@@ -1521,7 +1584,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
             
-            04. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.ts':
+            04. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
 
                     01   import { Component, inject } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -1570,7 +1633,7 @@
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
-            05. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.html':
+            05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
 
                     01   <section>
                     02     <form>
@@ -1644,7 +1707,7 @@
 |-- 07.02.  Ajustar archivos para conectar con el servidor y la db: -------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Modificar el código del archivo 'frontend_angular/src/app/components/housing.ts' 
+            01. Modificar el código del archivo 'frontend/src/app/components/housing.ts' 
 
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
@@ -1685,7 +1748,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            02. Modificar el código del archivo 'frontend_angular/src/app/components/home/home.ts' 
+            02. Modificar el código del archivo 'frontend/src/app/components/home/home.ts' 
 
                     01   import { Component, inject } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
@@ -1733,7 +1796,7 @@
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 
 
-            03. Modificar el código del archivo 'frontend_angular/src/app/components/details/details.ts' 
+            03. Modificar el código del archivo 'frontend/src/app/components/details/details.ts' 
 
                     01   import { CommonModule } from '@angular/common';
                     02   import { Component, inject } from '@angular/core';
@@ -1795,7 +1858,7 @@
 |-- 08.01.  Subir a github: -----------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. En 'angular.json' verificar que exista la dependencia '"baseHref": "/frontend_angular_pruebas/",'. Línea 16:
+            01. En 'angular.json' verificar que exista la dependencia '"baseHref": "/frontend_pruebas/",'. Línea 16:
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -1808,20 +1871,20 @@
                     13     "build": {
                     14       "builder": "@angular/build:application",
                     15       "options": {
-                    16         "baseHref": "/frontend_angular/", 
+                    16         "baseHref": "/frontend/", 
                     17         "browser": "src/main.ts",
 
             02. Instalar el paquete angular-cli-ghpages para facilitar el despliegue:
 
-                    PS C:\..\frontend_angular> npm install -g angular-cli-ghpages
+                    PS C:\..\frontend> npm install -g angular-cli-ghpages
 
-            03. Construir el proyecto para producción, en carpeta 'dist/frontend_angular/browser/'
+            03. Construir el proyecto para producción, en carpeta 'dist/frontend/browser/'
 
-                    PS C:\..\frontend_angular> ng build --configuration production 
+                    PS C:\..\frontend> ng build --configuration production 
 
             04. Subir el proyecto a GitHub Pages
 
-                    PS C:\..\frontend_angular> npx angular-cli-ghpages --dir=dist/frontend_angular/browser/
+                    PS C:\..\frontend> npx angular-cli-ghpages --dir=dist/frontend/browser/
             
             05. Comprobar la configuración del repositorio en GitHub: 'Settings / Pages / Branch: gh-pages / Folder: / (root) / Save'
 

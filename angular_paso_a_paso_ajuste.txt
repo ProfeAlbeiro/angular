@@ -295,7 +295,7 @@
                     22     border-radius: 8px;
                     23   }
 
-            04. Modificar el código del archivo 'frontend_angular/src/app/app.html', de la siguiente forma:
+            04. Modificar el código de 'frontend/src/app/app.html':
                     
                     01   <main class="main">
                     02     <header class="brand-home">
@@ -310,7 +310,7 @@
                 |                                                                                                                                      |
                   EXPLICACIÓN:   
                     
-                    ⦿   El componente 'app.html' incluye una imagen.
+                    ⦿   El archivo 'app.html', es la plantilla principal del componente raíz (App).
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 

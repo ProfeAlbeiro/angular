@@ -15,9 +15,9 @@
 ||| --  08.  DESPLIEGUE (EN CONSTRUCCIÓN)                                                                                                                              |||
 |||                                                                                                                                                                    |||
 ||| --  ANEXOS: TENER EN CUENTA                                                                                                                                        |||
-||| --  ------- AX_01. Subir el Proyecto a Github                                                                                                                      |||
-||| --  ------- AX_02. Clonar un proyecto de Github                                                                                                                    |||
-||| --  ------- AX_03. Puesta en Marcha del Proyecto                                                                                                                   |||
+||| --          AX_01. Subir el Proyecto a Github                                                                                                                      |||
+||| --          AX_02. Clonar un proyecto de Github                                                                                                                    |||
+||| --          AX_03. Puesta en Marcha del Proyecto                                                                                                                   |||
 |||                                                                                                                                                                    |||
 ||| --  Bibliografía  https://angular.dev/tutorials                                                                                                                    |||
 |||                   https://www.youtube.com/playlist?list=PLrAw40DbN0l2XNbdFx0GvoRdzsyqTsdmP                                                                         |||

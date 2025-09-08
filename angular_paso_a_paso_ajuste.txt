@@ -4,15 +4,15 @@
 |||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||                                                                                                                                                                    |||
-||| --  01.  ENTORNO DE DESARROLLO                                                                                                                                     |||
-||| --  01.  ESTRUCTURA DEL PROYECTO                                                                                                                                   |||
-||| --  02.  COMPONENTES                                                                                                                                               |||
-||| --  03.  INTERFACES                                                                                                                                                |||
-||| --  04.  SERVICIOS                                                                                                                                                 |||
-||| --  05.  ENRUTAMIENTO                                                                                                                                              |||
-||| --  06.  FORMULARIOS REACTIVOS                                                                                                                                     |||
-||| --  07.  HTTP FETCH Y JSON SERVER                                                                                                                                  |||
-||| --  08.  DESPLIEGUE (EN CONSTRUCCIÓN)                                                                                                                              |||
+||| --  01. ENTORNO DE DESARROLLO                                                                                                                                      |||
+||| --  02. ESTRUCTURA DEL PROYECTO                                                                                                                                    |||
+||| --  03. COMPONENTES                                                                                                                                                |||
+||| --  04. INTERFACES                                                                                                                                                 |||
+||| --  05. SERVICIOS                                                                                                                                                  |||
+||| --  06. ENRUTAMIENTO                                                                                                                                               |||
+||| --  07. FORMULARIOS REACTIVOS                                                                                                                                      |||
+||| --  08. HTTP FETCH Y JSON SERVER                                                                                                                                   |||
+||| --  09. DESPLIEGUE (EN CONSTRUCCIÓN)                                                                                                                               |||
 |||                                                                                                                                                                    |||
 ||| --  ANEXOS: TENER EN CUENTA                                                                                                                                        |||
 ||| --          AX_01. Subir el Proyecto a Github                                                                                                                      |||
@@ -27,11 +27,15 @@
 ||| --  01. ENTORNO DE DESARROLLO                                                                                                                                      |||
 ||| --      01.01.  Instalar Visual Studio Code                                                                                                                        |||
 ||| --      01.02.  Instalar Node Js                                                                                                                                   |||
-||| --      01.03.  PowerShell. Directivas                                                                                                                             |||
+||| --      01.03.  Modificar Directivas en PowerShell                                                                                                                 |||
 ||| --  02. ESTRUCTURA DEL PROYECTO                                                                                                                                    |||
-||| --      02.01.  Carpetas y Archivos                                                                                                                                |||
-||| --      02.02.                                                                                                                                     |||
-||| --      02.03.                                                                                                                               |||
+||| --      02.01.  Crear el Proyecto                                                                                                                                  |||
+||| --      02.02.  Ejecutar el servidor                                                                                                                               |||
+||| --      02.03.  Modificar el componente 'frontend/src/app/app.ts'                                                                                                  |||
+||| --  03. COMPONENTES                                                                                                                                                |||
+||| --      03.01.  Modificar la página inicial del proyecto                                                                                                           |||
+|||                                                                                                                                                                    |||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -82,102 +86,143 @@
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.03.  PowerShell. Directivas: -------------------------------------------------------------------------------------------------------------------------------------|
+|-- 01.03.  Modificar Directivas en PowerShell: -------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Abrir el PowerShell de Windows
             
             02. Ejecutar el siguiente comando
 
-                    PS C:\..\..> Get-ExecutionPolicy
-                    Restricted
+                    ⦿   PS C:\..\..> Get-ExecutionPolicy
+                    ⦿   Restricted
+
+            03. Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma:
+
+                    ⦿   PS C:\..\..> Set-ExecutionPolicy -Scope CurrentUser
+
+                          cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
+                          Proporcione valores para los parámetros siguientes:
+                          ExecutionPolicy: Unrestricted
+
+            04. Verificar la versión de 'node' y 'npm':
+
+                    ⦿   PS C:\..\..> node --version
+                    ⦿   PS C:\..\..> npm --version
 
 
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------------- 02. ESTRUCTURA DEL PROYECTO --------------------------------------------------------------------|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
+                                                                                                                                                      # C = Carpetas
+                                                                                                                                                      # A = Archivos
 
-            NOTA:   ⦿   Si aparece 'Restricted', hay que cambiarla a 'Unrestricted' de la siguiente forma:
+                              frontend/                                       # C. Raíz del Proyecto.
+          (NO CREAR)          ├── .vscode                                     # C. Configuraciones específicas de Visual Studio Code (atajos, depuración, formato).
+          (NO CREAR)          ├── node_modules                                # C. Contiene todas las dependencias instaladas con npm (no se edita manualmente).
+          (NO CREAR)          ├── public                                      # C. Recursos estáticos (imágenes, íconos, manifest.json, etc.).
+          (NO CREAR)          ├── src                                         # C. Carpeta principal del código fuente de Angular.
+          (NO CREAR)          │   ├── app/                                    # C. Carpeta de la aplicación principal (componentes, servicios, módulos).
+          (NO CREAR)          │   │   ├── app.config.server.ts                # A. Configuración para el renderizado del lado del servidor (SSR:Angular Universal).
+          (NO CREAR)          │   │   ├── app.config.ts                       # A. Configuración general de la aplicación (módulos, dependencias, providers).
+          (NO CREAR)          │   │   ├── app.css                             # A. Estilos globales específicos del componente raíz.
+          (NO CREAR)          │   │   ├── app.html                            # A. Plantilla principal 'html' del componente raíz (App).
+          (NO CREAR)          │   │   ├── app.routes.server.ts                # A. Rutas usadas en el lado del servidor (Angular Universal).
+          (NO CREAR)          │   │   ├── app.routes.ts                       # A. Definición de rutas de la aplicación en el navegador.
+          (NO CREAR)          │   │   ├── app.spec.ts                         # A. Archivo de pruebas unitarias para App.
+          (NO CREAR)          │   │   └── app.ts                              # A. Clase principal del componente raíz (App).
+          (NO CREAR)          │   ├── index.html                              # A. Página HTML que carga Angular. Aquí se inserta la app (<app-root></app-root>).
+          (NO CREAR)          │   ├── main.server.ts                          # A. Punto de entrada de Angular Universal para renderizado en servidor.
+          (NO CREAR)          │   ├── main.ts                                 # A. Punto de entrada de la app en el navegador. Inicializa Angular y arranca AppModule.
+          (NO CREAR)          │   ├── styles.css                              # A. Estilos globales de toda la aplicación.
+          (NO CREAR)          │   └── server.ts                               # A. Archivo para configurar el servidor (Node.js + Express).   
+          (NO CREAR)          ├── .editorconfig                               # A. Reglas de estilo para editores de código (indentación, fin de línea, etc.).
+          (NO CREAR)          ├── .gitignore                                  # A. Indica qué archivos/carpetas ignorar en Git (ej: node_modules).
+          (NO CREAR)          ├── angular.json                                # A. Configuración principal Angular (build, serve, rutas de assets, estilos globales).
+          (NO CREAR)          ├── package-lock.json                           # A. Versión exacta de las dependencias instaladas (bloquea versiones).
+          (NO CREAR)          ├── package.json                                # A. Lista de dependencias, scripts (ng serve, ng build, etc.) y metadatos del proyecto.
+          (NO CREAR)          ├── README.md                                   # A. Documentación inicial del proyecto.
+          (NO CREAR)          ├── tsconfig.app.json                           # A. Configuración de TypeScript específica para la aplicación (src/app).
+          (NO CREAR)          ├── tsconfig.json                               # A. Configuración base de TypeScript para todo el proyecto.
+          (NO CREAR)          └── tsconfig.spec.json                          # A. Configuración de TypeScript para pruebas unitarias (Karma/Jasmine).
 
-                    PS C:\..\..> Set-ExecutionPolicy -Scope CurrentUser
-
-                    cmdlet Set-ExecutionPolicy en la posición 1 de la canalización de comandos
-                    Proporcione valores para los parámetros siguientes:
-                    ExecutionPolicy: Unrestricted
-
-            02. Verificar la versión de 'node' y 'npm':
-
-                    PS C:\..\..> node --version
-                    PS C:\..\..> npm --version
-
-
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||------------------------------------------------------------------ 01.  PROYECTO -------------------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.01.  Creación del proyecto: ----------------------------------------------------------------------------------------------------------------------|
+|-- 02.01.  Crear el Proyecto: ------------------------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear la carpeta del proyecto en el computador (carpeta raíz):
+            01. Crear la carpeta 'angular' en Windows:
 
-                    C:\..\..\Desktop\angular
+                    ⦿   C:\..\..\Desktop\angular>
 
             02. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'angular'.
 
-            04. Abrir una terminal en Visual Studio Code ('Terminal / New Terminal' ó 'Ctrl + Shift + ñ')
+            03. Abrir una terminal en Visual Studio Code ('Terminal / New Terminal' ó 'Ctrl + Shift + ñ')
             
-            05. Instalar Angular escribiendo desde la terminal:
+            04. Instalar Angular escribiendo desde la terminal:
             
-                    PS C:\..\..\Desktop\angular> npm install -g @angular/cli@20.0.1
+                    ⦿   PS C:\..\..\Desktop\angular> npm install -g @angular/cli@20.0.1
              
-            06. Verificar las versiones de node.js y angular desde la terminal:
+            05. Verificar las versiones de node.js y angular desde la terminal:
 
-                    PS C:\..\..\Desktop\angular> ng version
+                    ⦿   PS C:\..\..\Desktop\angular> ng version
 
-            07. Crear un proyecto de angular desde la terminal:
+            06. Crear un proyecto de angular desde la terminal:
 
-                    PS C:\..\..\Desktop\angular> ng new frontend_angular
+                    ⦿   PS C:\..\..\Desktop\angular> ng new frontend
 
-            NOTA:   ⦿   Seleccionar:
+                          ? Do you want to create a 'zoneless' application without zone.js (Developer Preview)? (y/N) y                          
+                          ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
+                          ? Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N) y
 
-                    ✔ Do you want to create a 'zoneless' application without zone.js (Developer Preview)? y
-                    ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
-                    ? Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? (y/N) y
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
+                  NOTA:   
+                    
+                    ⦿   Para cambiar el nombre de la terminal, seleccionela en la parte inferior derecha y presionando F2 / Rename...
+                    ⦿   Nómbrela: 'frontend'
 
-            09. Cambiar el nombre de la terminal a 'frontend', seleccionándola en la parte inferior derecha y presionando F2 / Rename...
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
+
             
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.02.  Ejecutar el servidor: -----------------------------------------------------------------------------------------------------------------------|
+|-- 02.02.  Ejecutar el servidor: ---------------------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Ingresar a la carpeta 'frontend' desde la terminal:
 
-                    PS C:\..\..\Desktop\angular> cd frontend_angular
+                    ⦿   PS C:\..\..\Desktop\angular> cd frontend
 
             02. Ejecutar el Servidor desde la terminal:
 
-                    PS C:\..\..\Desktop\angular\frontend_angular> ng serve -o
+                    ⦿   PS C:\..\..\Desktop\angular\frontend_angular> ng serve -o
 
-                    Would you like to share pseudonymous usage data about this project with the Angular Team
-                    at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
-                    details and how to change this setting, see https://angular.dev/cli/analytics.
+                          Would you like to share pseudonymous usage data about this project with the Angular Team
+                          at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
+                          details and how to change this setting, see https://angular.dev/cli/analytics.
 
-                        (y/N) y
+                              (y/N) y
 
-                    Watch mode enabled. Watching for file changes...
-                    NOTE: Raw file sizes do not reflect development server per-request transformations.
-                    ➜  Local:   http://localhost:4200/
-                    ➜  press h + enter to show help
+                          Watch mode enabled. Watching for file changes...
+                          NOTE: Raw file sizes do not reflect development server per-request transformations.
+                          ➜  Local:   http://localhost:4200/
+                          ➜  press h + enter to show help
 
-            NOTA:   ⦿   Con 'CTRL + C', se detiene la ejecución del servidor
-
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 01.02.  Modificar el código en el componente principal: ---------------------------------------------------------------------------------------------|
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
-            01. Modificar el código del archivo 'frontend_angular/src/app/app.ts':                    
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
+                  NOTA:   
                     
+                    ⦿   Con 'CTRL + C', se detiene la ejecución del servidor en La Terminal
+
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
+                
+
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 02.03.  Modificar el componente 'frontend/src/app/app.ts': ----------------------------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
                     01   import { Component } from '@angular/core';
                     02   import { RouterOutlet } from '@angular/router';
                     03   @Component({
@@ -190,41 +235,67 @@
                     10     protected title:number = 35;
                     11   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   El código de este archivo, representa el componente principal que llama a los archivos 'html' y 'css' y demás elementos de
                          configuración.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
-                
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
+
                     A.   En la línea 11, se modifica el código a 'protected title:number = 35;', para cambiar el título de bienvenida de la página 
                          inicial al número 35.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||----------------------------------------------------------------- 02.  COMPONENTS ------------------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------------------- 03. COMPONENTES --------------------------------------------------------------------------|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.01.  Modificar 'html' y 'css' del componente principal: ------------------------------------------------------------------------------------------|
+|-- 03.01.  Modificar la página inicial del proyecto: -------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
             
-            01. Crear en carpeta 'assets' en la carpeta 'frontend_angular/public' y descargar las siguientes imágenes:
+            01. Crear la carpeta 'assets' en la carpeta 'frontend/public'
+            
+            02. Descargar las siguientes imágenes en la carpeta 'frontend/public/assets':
 
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/logo.svg
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/location-pin.svg
 
-            02. Agregar los estilos globales al archivo 'frontend_angular/src/styles.css', desde el siguiente enlace:
+            03. Modificar los estilos globales 'frontend/src/styles.css':
 
-                    https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/styles.css
+                    01   * {
+                    02     margin: 10;
+                    03     padding: 10;
+                    04   }
+                    05
+                    06 
+                    07   body {
+                    08     font-family: 'Be Vietnam Pro', sans-serif;
+                    09   }
+                    10   :root {
+                    11     --primary-color: #605DC8;
+                    12     --secondary-color: #8B89E6;
+                    13     --accent-color: #e8e7fa;
+                    14     --shadow-color: #E8E8E8;
+                    15   }
+                    16 
+                    17   button.primary {
+                    18     padding: 10px;
+                    19     border: solid 1px var(--primary-color);
+                    20     background: var(--primary-color);
+                    21     color: white;
+                    22     border-radius: 8px;
+                    23   }
 
-            03. Modificar el código del archivo 'frontend_angular/src/app/app.html', de la siguiente forma:
+            04. Modificar el código del archivo 'frontend_angular/src/app/app.html', de la siguiente forma:
                     
                     01   <main class="main">
                     02     <header class="brand-home">
@@ -243,7 +314,7 @@
 
                 |--------------------------------------------------------------------------------------------------------------------------------------|
                 
-                    A.  Se incluye todo el código desde la línea 01 a la 10 para la aplicación del componente 'app.html'
+                    A.  Se incluye todo el código desde la línea 01 a la 08 para la aplicación del componente 'app.html'
                 |                                                                                                                                      |
                 └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
 

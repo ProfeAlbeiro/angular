@@ -74,6 +74,8 @@
 ||| --      06.09.  Modificar estructura y contenido del componente 'housing-location' en 'frontend/src/app/components/housing-location/housing-location.html'         |||
 ||| --      06.10.  Modificar la Clase del componente 'details' en 'frontend/src/app/components/details/details.ts'                                                    |||
 ||| --      06.11.  Modificar la estructura y contenido del componente 'details' en 'frontend/src/app/components/details/details.html'                                 |||
+||| --  07. FORMULARIOS REACTIVOS                                                                                                                                      |||
+||| --      07.01.  Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts'                                                        |||
 |||                                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -1724,31 +1726,38 @@
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.01.  Crear un formulario reactivo: ---------------------------------------------------------------------------------------------------------------|
+|-- 07.01.  Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts': ----------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. Modificar el código del archivo 'frontend/src/app/components/housing-service.ts':
                     
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
                     03   @Injectable({
                     04     providedIn: 'root'
                     05   })
-                    06   export class Housing {
-                    07     constructor() { }
-                    08     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-                    09 >   housingLocationList: HousingLocationInterface[] = [
-                   110     ];
-                   111     getAllHousingLocations(): HousingLocationInterface[] {
-                   112       return this.housingLocationList;
-                   113     }
-                   114     getHousingLocantionById(id:number): HousingLocationInterface | undefined {
-                   115       return this.housingLocationList.find((housingLocation) => housingLocation.id === id);
-                   116     }
-                   117     submitApplication(firstName:string, lastName:string, email:string){
-                   118       console.log(`FirstName: ${firstName} - LastName: ${lastName} - Email: ${email}`)
-                   119     }                   
-                   120   }
+                    06
+                    07   export class Housing {
+                    08  
+                    09     constructor() { }
+                    10
+                    11     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+                    12
+                    13 >   housingLocationList: HousingLocationInterface[] = [
+                   114     ];
+                   115
+                   116     getAllHousingLocations(): HousingLocationInterface[] {
+                   117       return this.housingLocationList;
+                   118     }
+                   119
+                   120     getHousingLocantionById(id:number): HousingLocationInterface | undefined {
+                   121       return this.housingLocationList.find((housingLocation) => housingLocation.id === id);
+                   122     }
+                   123
+                   124     submitApplication(firstName:string, lastName:string, email:string){
+                   125       console.log(`FirstName: ${firstName} - LastName: ${lastName} - Email: ${email}`)
+                   126     }
+                   127
+                   128   }
+
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -1758,46 +1767,52 @@
 
                 |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
-                    A.  De la línea 117 a 119, se crea una función para capturar datos desde el formulario y mostralo en la consola.
+                    A.  De la línea 124 a 126, se crea una función para capturar datos desde el formulario y mostralo en la consola.
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-
-            02. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 07.02.  Modificar la Clase del componente 'details' en 'frontend/src/app/components/details/details.ts': ------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import { CommonModule } from '@angular/common';
                     02   import { Component, inject } from '@angular/core';
                     03   import { ActivatedRoute } from '@angular/router';
-                    04   import { Housing } from '../housing';
+                    04   import { HousingService } from '../housing-service';
                     05   import { HousingLocationInterface } from '../housing-location-interface';
                     06   import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-                    07   @Component({
-                    08     selector: 'app-details',
-                    09     imports: [CommonModule, ReactiveFormsModule],
-                    10     templateUrl: './details.html',
-                    11     styleUrl: './details.css'
-                    12   })
-                    13   export class Details {
-                    14     route: ActivatedRoute = inject(ActivatedRoute);
-                    15     housingService = inject(Housing);
-                    16     housingLocation: HousingLocationInterface | undefined;
-                    17     constructor(){
-                    18       const housinLocationId = Number(this.route.snapshot.params['id']);
-                    19       this.housingLocation = this.housingService.getHousingLocantionById(housinLocationId);
-                    20     }
-                    21     formAngular = new FormGroup({
-                    22       firstName: new FormControl(''),
-                    23       lastName: new FormControl(''),
-                    24       email: new FormControl(''),
-                    25     });
-                    26     onSubmit(){
-                    27       this.housingService.submitApplication(
-                    28         this.formAngular.value.firsName ?? '',
-                    29         this.formAngular.value.lastName ?? '',
-                    30         this.formAngular.value.email ?? '',
-                    31       )
-                    32     }
-                    33   }
+                    07
+                    08   @Component({
+                    09     selector: 'app-details',
+                    10     imports: [CommonModule, ReactiveFormsModule],
+                    11     templateUrl: './details.html',
+                    12     styleUrl: './details.css'
+                    13   })
+                    14
+                    15   export class Details {
+                    16     route: ActivatedRoute = inject(ActivatedRoute);
+                    17     housingService = inject(HousingService);
+                    18     housingLocation: HousingLocationInterface | undefined;
+                    19     constructor(){
+                    20       const housinLocationId = Number(this.route.snapshot.params['id']);
+                    21       this.housingLocation = this.housingService.getHousingLocantionById(housinLocationId);
+                    22     }
+                    23
+                    24     formAngular = new FormGroup({
+                    25       firstName: new FormControl(''),
+                    26       lastName: new FormControl(''),
+                    27       email: new FormControl(''),
+                    28     });
+                    29
+                    30     onSubmit(){
+                    31       this.housingService.submitApplication(
+                    32         this.formAngular.value.firstName ?? '',
+                    33         this.formAngular.value.lastName ?? '',
+                    34         this.formAngular.value.email ?? '',
+                    35       )
+                    36     }
+                    37
+                    38   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |

@@ -38,6 +38,8 @@
 ||| --      03.03.  Crear el Componente 'housingLocation'                                                                                                              |||
 ||| --  04. INTERFACES                                                                                                                                                 |||
 ||| --      04.01.  Crear la interface 'HousingLocationInterface'                                                                                                      |||
+||| --  05. SERVICIOS                                                                                                                                                  |||
+||| --      05.01.  Crear el servicio 'housing-service'                                                                                                                |||
 |||                                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -682,19 +684,21 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            04. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.ts':
+            04. Modificar la Clase del componente 'housing-location' en 'frontend/src/app/components/housing-location/housing-location.ts':
 
                     01   import { Component, Input } from '@angular/core';
                     02   import { HousingLocationInterface } from '../housing-location-interface';
-                    03   @Component({
-                    04     selector: 'app-housing-location',
-                    05     imports: [],
-                    06     templateUrl: './housing-location.html',
-                    07     styleUrl: './housing-location.css'
-                    08   })
-                    09   export class HousingLocation {
-                    10     @Input() housingLocation!: HousingLocationInterface;
-                    11   }
+                    03
+                    04   @Component({
+                    05     selector: 'app-housing-location',
+                    06     imports: [],
+                    07     templateUrl: './housing-location.html',
+                    08     styleUrl: './housing-location.css'
+                    09   })
+                    10
+                    11   export class HousingLocation {
+                    12     @Input() housingLocation!: HousingLocationInterface;
+                    13   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -714,7 +718,7 @@
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
-            05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
+            05. Modificar la estructura y contenido del componente 'home' en 'frontend/src/app/components/home/home.html':
 
                     01   <section>
                     02     <form>
@@ -739,7 +743,7 @@
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
-            06. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.html':
+            06. Modificar estructura y contenido del componente 'housing-location' en 'frontend/src/app/components/housing-location/housing-location.html':
 
                     01   <section class="listing">
                     02     <img
@@ -764,124 +768,127 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            07. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
-                (Descargar el arreglo: https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js).
+            07. Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts':                
 
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
                     03   import { HousingLocationInterface } from '../housing-location-interface';
                     04   import { CommonModule } from '@angular/common';
-                    05   @Component({
-                    06     selector: 'app-home',
-                    07     imports: [CommonModule, HousingLocation],
-                    08     templateUrl: './home.html',
-                    09     styleUrl: './home.css'
-                    10   })
-                    11   export class Home {
-                    12     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-                    13     housingLocationList: HousingLocationInterface[] = [
-                    14       {
-                    15         id: 0,
-                    16         name: 'Acme Fresh Start Housing',
-                    17         city: 'Chicago',
-                    18         state: 'IL',
-                    19         photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
-                    20         availableUnits: 4,
-                    21         wifi: true,
-                    22         laundry: true,
-                    23       },
-                    24       {
-                    25         id: 1,
-                    26         name: 'A113 Transitional Housing',
-                    27         city: 'Santa Monica',
-                    28         state: 'CA',
-                    29         photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
-                    30         availableUnits: 0,
-                    31         wifi: false,
-                    32         laundry: true,
-                    33       },
-                    34       {
-                    35         id: 2,
-                    36         name: 'Warm Beds Housing Support',
-                    37         city: 'Juneau',
-                    38         state: 'AK',
-                    39         photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
-                    40         availableUnits: 1,
-                    41         wifi: false,
-                    42         laundry: false,
-                    43       },
-                    44       {
-                    45         id: 3,
-                    46         name: 'Homesteady Housing',
-                    47         city: 'Chicago',
-                    48         state: 'IL',
-                    49         photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
-                    50         availableUnits: 1,
-                    51         wifi: true,
-                    52         laundry: false,
-                    53       },
-                    54       {
-                    55         id: 4,
-                    56         name: 'Happy Homes Group',
-                    57         city: 'Gary',
-                    58         state: 'IN',
-                    59         photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
-                    60         availableUnits: 1,
-                    61         wifi: true,
-                    62         laundry: false,
-                    63       },
-                    64       {
-                    65         id: 5,
-                    66         name: 'Hopeful Apartment Group',
-                    67         city: 'Oakland',
-                    68         state: 'CA',
-                    69         photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
-                    70         availableUnits: 2,
-                    71         wifi: true,
-                    72         laundry: true,
-                    73       },
-                    74       {
-                    75         id: 6,
-                    76         name: 'Seriously Safe Towns',
-                    77         city: 'Oakland',
-                    78         state: 'CA',
-                    79         photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
-                    80         availableUnits: 5,
-                    81         wifi: true,
-                    82         laundry: true,
-                    83       },
-                    84       {
-                    85         id: 7,
-                    86         name: 'Hopeful Housing Solutions',
-                    87         city: 'Oakland',
-                    88         state: 'CA',
-                    89         photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
-                    90         availableUnits: 2,
-                    91         wifi: true,
-                    92         laundry: true,
-                    93       },
-                    94       {
-                    95         id: 8,
-                    96         name: 'Seriously Safe Towns',
-                    97         city: 'Oakland',
-                    98         state: 'CA',
-                    99         photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
-                   100         availableUnits: 10,
-                   101         wifi: false,
-                   102         laundry: false,
-                   103       },
-                   104       {
-                   105         id: 9,
-                   106         name: 'Capital Safe Towns',
-                   107         city: 'Portland',
-                   108         state: 'OR',
-                   109         photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
-                   110         availableUnits: 6,
-                   111         wifi: true,
-                   112         laundry: true,
-                   113       },
-                   114     ];
-                   115   }
+                    05
+                    06   @Component({
+                    07     selector: 'app-home',
+                    08     imports: [CommonModule, HousingLocation],
+                    09     templateUrl: './home.html',
+                    10     styleUrl: './home.css'
+                    11   })
+                    12
+                    13   export class Home {
+                    14
+                    15     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+                    16
+                    17     housingLocationList: HousingLocationInterface[] = [
+                    18       {
+                    19         id: 0,
+                    20         name: 'Acme Fresh Start Housing',
+                    21         city: 'Chicago',
+                    22         state: 'IL',
+                    23         photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
+                    24         availableUnits: 4,
+                    25         wifi: true,
+                    26         laundry: true,
+                    27       },
+                    28       {
+                    29         id: 1,
+                    30         name: 'A113 Transitional Housing',
+                    31         city: 'Santa Monica',
+                    32         state: 'CA',
+                    33         photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
+                    34         availableUnits: 0,
+                    35         wifi: false,
+                    36         laundry: true,
+                    37       },
+                    38       {
+                    39         id: 2,
+                    40         name: 'Warm Beds Housing Support',
+                    41         city: 'Juneau',
+                    42         state: 'AK',
+                    43         photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
+                    44         availableUnits: 1,
+                    45         wifi: false,
+                    46         laundry: false,
+                    47       },
+                    48       {
+                    49         id: 3,
+                    50         name: 'Homesteady Housing',
+                    51         city: 'Chicago',
+                    52         state: 'IL',
+                    53         photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
+                    54         availableUnits: 1,
+                    55         wifi: true,
+                    56         laundry: false,
+                    57       },
+                    58       {
+                    59         id: 4,
+                    60         name: 'Happy Homes Group',
+                    61         city: 'Gary',
+                    62         state: 'IN',
+                    63         photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
+                    64         availableUnits: 1,
+                    65         wifi: true,
+                    66         laundry: false,
+                    67       },
+                    68       {
+                    69         id: 5,
+                    70         name: 'Hopeful Apartment Group',
+                    71         city: 'Oakland',
+                    72         state: 'CA',
+                    73         photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
+                    74         availableUnits: 2,
+                    75         wifi: true,
+                    76         laundry: true,
+                    77       },
+                    78       {
+                    79         id: 6,
+                    80         name: 'Seriously Safe Towns',
+                    81         city: 'Oakland',
+                    82         state: 'CA',
+                    83         photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
+                    84         availableUnits: 5,
+                    85         wifi: true,
+                    86         laundry: true,
+                    87       },
+                    88       {
+                    89         id: 7,
+                    90         name: 'Hopeful Housing Solutions',
+                    91         city: 'Oakland',
+                    91         state: 'CA',
+                    93         photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
+                    94         availableUnits: 2,
+                    95         wifi: true,
+                    96         laundry: true,
+                    97       },
+                    98       {
+                    99         id: 8,
+                   100         name: 'Seriously Safe Towns',
+                   101         city: 'Oakland',
+                   102         state: 'CA',
+                   103         photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
+                   104         availableUnits: 10,
+                   105         wifi: false,
+                   106         laundry: false,
+                   107       },
+                   108       {
+                   109         id: 9,
+                   110         name: 'Capital Safe Towns',
+                   111         city: 'Portland',
+                   112         state: 'OR',
+                   113         photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+                   114         availableUnits: 6,
+                   115         wifi: true,
+                   116         laundry: true,
+                   117       },
+                   118     ];
+                   119   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -900,7 +907,7 @@
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
-            08. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
+            08. Modificar la estructura y contenido del componente 'home' en 'frontend/src/app/components/home/home.html':
 
                     01   <section>
                     02     <form>
@@ -928,19 +935,21 @@
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||------------------------------------------------------------------ 04.  SERVICES -------------------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||-------------------------------------------------------------------------- 04. SERVICIOS ---------------------------------------------------------------------------|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.01.  Crear el servicio 'housing': ----------------------------------------------------------------------------------------------------------------|
+|-- 05.01.  Crear el servicio 'housing-service': ------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear el servicio 'housing' sin incluir el archivo *.spec.ts desde la terminal:
                     
-                    PS C:\..\..\angular\frontend> ng generate service components/housing --skip-tests
+                    PS C:\..\..\angular\frontend> ng generate service components/housing-service --skip-tests
 
             02. Cortar el código del archivo 'frontend/src/app/components/home/home.ts', desde la línea 12 hasta la 114:
 

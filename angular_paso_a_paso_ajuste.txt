@@ -35,6 +35,7 @@
 ||| --  03. COMPONENTES                                                                                                                                                |||
 ||| --      03.01.  Modificar la página inicial del proyecto                                                                                                           |||
 ||| --      03.02.  Crear el Componente 'home'                                                                                                                         |||
+||| --      03.03.  Crear el Componente 'housingLocation'                                                                                                              |||
 |||                                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -120,43 +121,43 @@
                                                                                                                                                       # C = Carpetas
                                                                                                                                                       # A = Archivos
 
-                              frontend/                                       # C. Raíz del Proyecto.
-          (NO CREAR)          ├── .vscode                                     # C. Configuraciones específicas de Visual Studio Code (atajos, depuración, formato).
-          (NO CREAR)          ├── node_modules                                # C. Contiene todas las dependencias instaladas con npm (no se edita manualmente).
-          (NO CREAR)          ├── public                                      # C. Recursos estáticos (imágenes, íconos, manifest.json, etc.).
-          (NO CREAR)          ├── src                                         # C. Carpeta principal del código fuente de Angular.
-          (NO CREAR)          │   ├── app/                                    # C. Carpeta de la aplicación principal (componentes, servicios, módulos).
-          (NO CREAR)          │   │   ├── app.config.server.ts                # A. Configuración para el renderizado del lado del servidor (SSR:Angular Universal).
-          (NO CREAR)          │   │   ├── app.config.ts                       # A. Configuración general de la aplicación (módulos, dependencias, providers).
-          (NO CREAR)          │   │   ├── app.css                             # A. Estilos globales específicos del componente raíz.
-          (NO CREAR)          │   │   ├── app.html                            # A. Plantilla principal 'html' del componente raíz (App).
-          (NO CREAR)          │   │   ├── app.routes.server.ts                # A. Rutas usadas en el lado del servidor (Angular Universal).
-          (NO CREAR)          │   │   ├── app.routes.ts                       # A. Definición de rutas de la aplicación en el navegador.
-          (NO CREAR)          │   │   ├── app.spec.ts                         # A. Archivo de pruebas unitarias para App.
-          (NO CREAR)          │   │   └── app.ts                              # A. Clase principal del componente raíz (App).
-          (NO CREAR)          │   ├── index.html                              # A. Página HTML que carga Angular. Aquí se inserta la app (<app-root></app-root>).
-          (NO CREAR)          │   ├── main.server.ts                          # A. Punto de entrada de Angular Universal para renderizado en servidor.
-          (NO CREAR)          │   ├── main.ts                                 # A. Punto de entrada de la app en el navegador. Inicializa Angular y arranca AppModule.
-          (NO CREAR)          │   ├── styles.css                              # A. Estilos globales de toda la aplicación.
-          (NO CREAR)          │   └── server.ts                               # A. Archivo para configurar el servidor (Node.js + Express).   
-          (NO CREAR)          ├── .editorconfig                               # A. Reglas de estilo para editores de código (indentación, fin de línea, etc.).
-          (NO CREAR)          ├── .gitignore                                  # A. Indica qué archivos/carpetas ignorar en Git (ej: node_modules).
-          (NO CREAR)          ├── angular.json                                # A. Configuración principal Angular (build, serve, rutas de assets, estilos globales).
-          (NO CREAR)          ├── package-lock.json                           # A. Versión exacta de las dependencias instaladas (bloquea versiones).
-          (NO CREAR)          ├── package.json                                # A. Lista de dependencias, scripts (ng serve, ng build, etc.) y metadatos del proyecto.
-          (NO CREAR)          ├── README.md                                   # A. Documentación inicial del proyecto.
-          (NO CREAR)          ├── tsconfig.app.json                           # A. Configuración de TypeScript específica para la aplicación (src/app).
-          (NO CREAR)          ├── tsconfig.json                               # A. Configuración base de TypeScript para todo el proyecto.
-          (NO CREAR)          └── tsconfig.spec.json                          # A. Configuración de TypeScript para pruebas unitarias (Karma/Jasmine).
+                        frontend/                                       # C. Raíz del Proyecto.
+                        ├── .vscode                                     # C. Configuraciones específicas de Visual Studio Code (atajos, depuración, formato).
+                        ├── node_modules                                # C. Contiene todas las dependencias instaladas con npm (no se edita manualmente).
+                        ├── public                                      # C. Recursos estáticos (imágenes, íconos, manifest.json, etc.).
+                        ├── src                                         # C. Carpeta principal del código fuente de Angular.
+                        │   ├── app/                                    # C. Carpeta de la aplicación principal (componentes, servicios, módulos).
+                        │   │   ├── app.config.server.ts                # A. Configuración para el renderizado del lado del servidor (SSR:Angular Universal).
+                        │   │   ├── app.config.ts                       # A. Configuración general de la aplicación (módulos, dependencias, providers).
+                        │   │   ├── app.css                             # A. Estilos globales específicos del componente raíz.
+                        │   │   ├── app.html                            # A. Plantilla principal 'html' del componente raíz (App).
+                        │   │   ├── app.routes.server.ts                # A. Rutas usadas en el lado del servidor (Angular Universal).
+                        │   │   ├── app.routes.ts                       # A. Definición de rutas de la aplicación en el navegador.
+                        │   │   ├── app.spec.ts                         # A. Archivo de pruebas unitarias para App.
+                        │   │   └── app.ts                              # A. Clase principal del componente raíz (App).
+                        │   ├── index.html                              # A. Página HTML que carga Angular. Aquí se inserta la app (<app-root></app-root>).
+                        │   ├── main.server.ts                          # A. Punto de entrada de Angular Universal para renderizado en servidor.
+                        │   ├── main.ts                                 # A. Punto de entrada de la app en el navegador. Inicializa Angular y arranca AppModule.
+                        │   ├── styles.css                              # A. Estilos globales de toda la aplicación.
+                        │   └── server.ts                               # A. Archivo para configurar el servidor (Node.js + Express).   
+                        ├── .editorconfig                               # A. Reglas de estilo para editores de código (indentación, fin de línea, etc.).
+                        ├── .gitignore                                  # A. Indica qué archivos/carpetas ignorar en Git (ej: node_modules).
+                        ├── angular.json                                # A. Configuración principal Angular (build, serve, rutas de assets, estilos globales).
+                        ├── package-lock.json                           # A. Versión exacta de las dependencias instaladas (bloquea versiones).
+                        ├── package.json                                # A. Lista de dependencias, scripts (ng serve, ng build, etc.) y metadatos del proyecto.
+                        ├── README.md                                   # A. Documentación inicial del proyecto.
+                        ├── tsconfig.app.json                           # A. Configuración de TypeScript específica para la aplicación (src/app).
+                        ├── tsconfig.json                               # A. Configuración base de TypeScript para todo el proyecto.
+                        └── tsconfig.spec.json                          # A. Configuración de TypeScript para pruebas unitarias (Karma/Jasmine).
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 02.01.  Crear el Proyecto: ------------------------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear la carpeta 'angular' en Windows:
+            01. Crear la carpeta 'angular' en Windows (Por ejemplo, en el Escritorio):
 
-                    ⦿   C:\..\..\Desktop\angular>
+                    ⦿   C:\..\..\angular>
 
             02. Abrir con 'Visual Studio Code' la carpeta creada, es decir,'angular'.
 
@@ -164,15 +165,15 @@
             
             04. Instalar Angular escribiendo desde la terminal:
             
-                    ⦿   PS C:\..\..\Desktop\angular> npm install -g @angular/cli@20.0.1
+                    ⦿   PS C:\..\..\angular> npm install -g @angular/cli@20.0.1
              
             05. Verificar las versiones de node.js y angular desde la terminal:
 
-                    ⦿   PS C:\..\..\Desktop\angular> ng version
+                    ⦿   PS C:\..\..\angular> ng version
 
             06. Crear un proyecto de angular desde la terminal:
 
-                    ⦿   PS C:\..\..\Desktop\angular> ng new frontend
+                    ⦿   PS C:\..\..\angular> ng new frontend
 
                           ? Do you want to create a 'zoneless' application without zone.js (Developer Preview)? (y/N) y                          
                           ❯ CSS             [ https://developer.mozilla.org/docs/Web/CSS                     ]
@@ -184,7 +185,7 @@
                     
                     ⦿   Para cambiar el nombre de la terminal, seleccionela en la parte inferior derecha y presionando F2 / Rename...
                     ⦿   Nómbrela: 'frontend'
-
+                |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             
@@ -194,11 +195,11 @@
 
             01. Ingresar a la carpeta 'frontend' desde la terminal:
 
-                    ⦿   PS C:\..\..\Desktop\angular> cd frontend
+                    ⦿   PS C:\..\..\angular> cd frontend
 
             02. Ejecutar el Servidor desde la terminal:
 
-                    ⦿   PS C:\..\..\Desktop\angular\frontend> ng serve -o
+                    ⦿   PS C:\..\..\angular\frontend> ng serve -o
 
                           Would you like to share pseudonymous usage data about this project with the Angular Team
                           at Google under Google's Privacy Policy at https://policies.google.com/privacy. For more
@@ -216,7 +217,7 @@
                   NOTA:   
                     
                     ⦿   Con 'CTRL + C', se detiene la ejecución del servidor en La Terminal
-
+                |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
                 
 
@@ -296,18 +297,18 @@
                     22     border-radius: 8px;
                     23   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
                     B.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             04. Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html':
                     
@@ -320,19 +321,19 @@
                     07   </main>
                     08   <router-outlet />
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   El archivo 'app.html', es la plantilla principal del componente raíz (App). Se modifica totalmente el código que viene por
                          defecto.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
                     B.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |-- 03.02.  Crear el Componente 'home': ---------------------------------------------------------------------------------------------------------------------------------|
@@ -344,11 +345,11 @@
 
             03. Ingresar a la carpeta 'frontend' desde la terminal:
 
-                    ⦿   PS C:\..\..\Desktop\angular> cd frontend
+                    ⦿   PS C:\..\..\angular> cd frontend
 
             04. Crear el componente 'home' desde la terminal:
 
-                    ⦿   PS C:\..\..\Desktop\angular\frontend> ng generate component components/home
+                    ⦿   PS C:\..\..\angular\frontend> ng generate component components/home
             
             05. Modificar los estilos del componente 'home' en 'frontend/src/app/components/home/home.css':
                     
@@ -389,18 +390,18 @@
                     35     }
                     36   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
                     B.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             06. Modificar la Clase del componente principal en 'frontend/src/app/app.ts':                    
                     
@@ -417,21 +418,21 @@
                     11     protected title:number = 35;
                     12   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   El componente 'app.ts' incluye al componente 'home.ts'.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 06, se modifica el código 'imports: [RouterOutlet, Home]' para asociar el componente 'Home' con
                         'app/components/home.ts' en la línea 09 a 11 con la clase 'export class Home {}'.
                     
                     B.  Si al intentar incluir el componente 'Home', no aparece en la línea 03, import { Home } from './components/home/home'; 
                         ubiquese al final de la palabra 'Home' de la línea 06, presione 'Ctrl + Space' y seleccione el mismo nombre.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
           
             07. Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html':
                     
@@ -445,17 +446,17 @@
                     08   </main>
                     09   <router-outlet />
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   El html 'app.html' llama al componente 'app-home'.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 06, se llama al selector 'app-home' del componente 'app/components/home.ts' en la línea 04 'selector: 'app-home''
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             08. Modificar la estructura y contenido del componenten 'home' en 'frontend/src/app/components/home/home.html':
 
@@ -468,51 +469,96 @@
                     07     </section>
                     08   <section>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   El componente 'home.html' incluye un control de filtro de datos y un botón.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  Se incluye todo el código desde la línea 01 a la 09 para la aplicación del componente 'home.html'
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 02.03.  Componente 'housingLocation': ---------------------------------------------------------------------------------------------------------------|
+|-- 03.03.  Crear el Componente 'housingLocation': ----------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear el componente 'housingLocation' desde la terminal:
 
-                    PS C:\..\..\Desktop\angular\frontend> ng g c components/housingLocation
+                    ⦿   PS C:\..\..\angular\frontend> ng g c components/housingLocation
 
-            02. Agregar estilos al archivo 'frontend/src/app/components/housing-location/housing-location.css', desde el siguiente enlace:
+            02. Modificar los estilos del componente 'housingLocation' en 'frontend/src/app/components/housing-location/housing-location.css':
 
-                    https://github.com/ProfeAlbeiro/angular/blob/main/sources/css/housing-location.css
+                    01   .listing {
+                    02     background: var(--accent-color);
+                    03     border-radius: 30px;
+                    04     padding-bottom: 30px;
+                    05   }
+                    06   .listing-heading {
+                    07     color: var(--primary-color);
+                    08     padding: 10px 20px 0 20px;
+                    09   }
+                    10   .listing-photo {
+                    11     height: 250px;
+                    12     width: 100%;
+                    13     object-fit: cover;
+                    14     border-radius: 30px 30px 0 0;
+                    15   }
+                    16   .listing-location {
+                    17     padding: 10px 20px 20px 20px;
+                    18   }
+                    19   .listing-location::before {
+                    20     content: url("/assets/location-pin.svg") / "";
+                    21   }
+                    22   section.listing a {
+                    23     padding-left: 20px;
+                    24     text-decoration: none;
+                    25     color: var(--primary-color);
+                    26   }
+                    27   section.listing a::after {
+                    28     content: "\203A";
+                    29     margin-left: 5px;
+                    30   }
 
-            03. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
+                
+                    A.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                    B.   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
+
+
+            03. Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts':
                     
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
-                    03   @Component({
-                    04     selector: 'app-home',
-                    05     imports: [HousingLocation],
-                    06     templateUrl: './home.html',
-                    07     styleUrl: './home.css'
-                    08   })
-                    09   export class Home {
-                    10   }
+                    03
+                    04   @Component({
+                    05     selector: 'app-home',
+                    06     imports: [HousingLocation],
+                    07     templateUrl: './home.html',
+                    08     styleUrl: './home.css'
+                    09   })
+                    10
+                    11   export class Home {
+                    12   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   El componente 'home.ts' incluye al componente 'HousingLocation.ts'.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 05, se incluye el código 'imports: [HousingLocation]' para asociar el componente 'HousingLocation' con
                         'app/components/home.ts' en la línea 09 a 11 con la clase 'export class HousingLocation {}'.
@@ -520,10 +566,10 @@
                     B.  Si al incluir 'HousingLocation' en la línea 05, no aparece en la línea 02, el siguiente código: 
                         import { HousingLocation } from '../housing-location/housing-location'; ubiquese al final de la palabra 'HousingLocation' de 
                         la línea 05, presione 'Ctrl + Space' y seleccione el mismo nombre.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            04. Modificar el código del archivo 'frontend/src/app/components/home/home.html'
+            04. Modificar la estructura y contenido del componente 'home' en 'frontend/src/app/components/home/home.html'
 
                     01   <section>
                     02     <form>
@@ -535,18 +581,18 @@
                     08     </section>
                     09   <section>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   El componente 'home.ts' incluye al componente 'housingLocation.ts'.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 07, se llama al selector 'app-housing-location' del componente 'app/components/housing-location.ts' en la línea 
                         04  selector: 'app-housing-location',
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -561,7 +607,7 @@
 
             01. Crear una interface desde la terminal:
 
-                    PS C:\..\..\Desktop\angular\frontend> ng generate interface components/housingLocationInterface
+                    PS C:\..\..\angular\frontend> ng generate interface components/housingLocationInterface
 
             02. Codificar el archivo 'frontend/src/app/components/housing-location-interface.ts':
                     
@@ -576,17 +622,17 @@
                     09     laundry: boolean;
                     10   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   La interfaces son los modelos del proyecto.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  Se incluye todo el código desde la línea 01 a la 10 de la interface 'housing-location-interface.ts'
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             03. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
 
@@ -613,21 +659,21 @@
                     21     };
                     22   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 03, se importa la Interface 'HousingLocationInterface'.
 
                     B.  En la línea 11, consume una API externa de imágenes.
 
                     C.  En la línea 13, se crea una instancia de 'HousingLocationInterface'.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             04. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.ts':
 
@@ -643,13 +689,13 @@
                     10     @Input() housingLocation!: HousingLocationInterface;
                     11   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 01, se importa el decorador @Input.
 
@@ -657,8 +703,8 @@
 
                     C.  En la línea 10, se crea una instancia de 'HousingLocationInterface' y se usa el decorador @Input() para heredar los datos del
                         componente padre.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
@@ -673,17 +719,17 @@
                     08     </section>
                     09   <section>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   La interfaces son los modelos del proyecto.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  Se incluye todo el código desde la línea 01 a la 10 de la interface 'housing-location.ts'
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             06. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.html':
@@ -699,17 +745,17 @@
                     09     <p class="listing-location">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
                     10   </section>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             07. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
                 (Descargar el arreglo: https://github.com/ProfeAlbeiro/angular/blob/main/sources/js/housingLocationList.js).
@@ -830,21 +876,21 @@
                    114     ];
                    115   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 04, se importa la funcionalidad para crear un arreglo de objetos.
 
                     B.  En la línea 07, se integra la creación de un arreglo de objetos.
 
                     C.  En la línea 13, se crea una instancia de la interface 'HousingLocationInterface' tipo arreglo de objetos.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             08. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
@@ -862,17 +908,17 @@
                     11     </section>
                     12   <section>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 08, se incluye un ciclo *ngFor (snippets) y recorrer el arreglo
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -887,7 +933,7 @@
 
             01. Crear el servicio 'housing' sin incluir el archivo *.spec.ts desde la terminal:
                     
-                    PS C:\..\..\Desktop\angular\frontend> ng generate service components/housing --skip-tests
+                    PS C:\..\..\angular\frontend> ng generate service components/housing --skip-tests
 
             02. Cortar el código del archivo 'frontend/src/app/components/home/home.ts', desde la línea 12 hasta la 114:
 
@@ -904,17 +950,17 @@
                     11   export class Home {  
                     12   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  Desde la línea 12 a la 114 se corta el código, porque el arreglo de objetos debe ser llamado desde un 'service'.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             03. Pegar el código del paso anterior en el archivo 'frontend/src/app/components/housing.ts' debajo del 'constructor(){ }':
 
@@ -1030,19 +1076,19 @@
                    110     ];
                    111   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  Desde la línea XX se pega el código XX.
                     
                     B.  En la línea 02, se importa la interface 'HousingLocationInterface'.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             
             04. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
@@ -1063,13 +1109,13 @@
                     14     housingService: Housing = inject(Housing);
                     15   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 02, se importa la función de inyección de código 'inject'.
                     
@@ -1078,8 +1124,8 @@
                     C.  En la línea 13, se crea una instancia de la interfaz 'HousingLocationInterface'.
                     
                     D.  En la línea 15, se crea un instancia del servicio y se inyecta.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             05. Modificar el código del archivo 'frontend/src/app/components/housing.ts':
 
@@ -1101,19 +1147,19 @@
                    116     }
                    117   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 111, se crea una función que obtenga todos los objetos del arreglo.
                     
                     B.  En la línea 118, se crea una función que obtenga un solo objeto por filtro.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             05. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
                     
@@ -1136,19 +1182,19 @@
                     17     }
                     18   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En las líneas 15 y 17, se crea el constructor.
                     
                     B.  En la línea 16, se crea una instancia del servicio para llamar la función 'getAllHousingLocation()'.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -1163,7 +1209,7 @@
 
             01. Crear el componente 'details' desde la terminal:                    
                     
-                    PS C:\..\..\Desktop\angular\frontend> ng g c components/details
+                    PS C:\..\..\angular\frontend> ng g c components/details
 
             02. Agregar estilos al archivo 'frontend/src/app/components/details/details.css', desde el siguiente enlace:
 
@@ -1171,7 +1217,7 @@
 
             03. Incorporar la zona desde la terminal:                    
                     
-                    PS C:\..\..\Desktop\angular\frontend> npm i zone.js
+                    PS C:\..\..\angular\frontend> npm i zone.js
 
             04. Modificar el código del archivo 'frontend/src/main.ts':
 
@@ -1184,21 +1230,21 @@
                     07     providers: [provideRouter(routes)]
                     08   }).catch((err) => console.error(err));
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 03, se importa el archivo e inyección de dependencias 'provideRouter'.
                     
                     B.  En la línea 05, se importa la función de rutas.
                     
                     C.  En las líneas 05, 06 y 07, se implementan las dependencias y las rutas.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             04. Modificar el código del archivo 'frontend/src/app/app.ts':
 
@@ -1214,21 +1260,21 @@
                     10     protected title:string = 'homes';
                     11   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 02, se importa el módulo 'RouterModule' para enrutar.
                     
                     B.  En la línea 05, se incorpora 'RouterModule' para usar.
                     
                     C.  En la línea 10, se cambia el nombre de inicio a 'homes'.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             05. Modificar el código del archivo 'frontend/src/app/app.html':
 
@@ -1243,19 +1289,19 @@
                     09     </section>
                     10   </main>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 02, se enruta el componente inicial.
                     
                     B.  En la línea 08, se habilita el selector de rutas.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             06. Modificar el código del archivo 'frontend/src/app/app.routes.ts':
@@ -1268,21 +1314,21 @@
                     06       {path:'details/:id', component:Details, title: 'Home Details'},
                     07   ];
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 02, se importa el componente 'Home'.
                     
                     B.  En la línea 03, se importa el componente 'Details'.
                     
                     C.  De las línes 04 a la 07, se agrega información al arreglo de rutas.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             07. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.ts':
 
@@ -1300,21 +1346,21 @@
                     12     @Input() housingLocation!: HousingLocationInterface;
                     13   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 03, se importa la función de 'RouterModule' para enrutar.
                     
                     B.  En la línea 04, se importa la función de 'CommonModule' para compartir con 'home'.
                     
                     C.  En la línea 07, se integra 'RouterModule' y 'CommonModule' al componente.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             08. Modificar el código del archivo 'frontend/src/app/components/housing-location/housing-location.html':
 
@@ -1330,21 +1376,21 @@
                     10     <a [routerLink]="['/details', housingLocation.id]" routerLinkActive="router-link-active">Learn More</a>
                     11   </section>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 03, se importa la función de 'RouterModule' para enrutar.
                     
                     B.  En la línea 04, se importa la función de 'CommonModule' para compartir con 'home'.
                     
                     C.  En la línea 10, se agrega el router link para cargar el componente 'Details'.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             09. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
@@ -1370,13 +1416,13 @@
                     19     }
                     20   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 01, se importa 'CommonModule' para crear un arreglo a partir de la Interfaz.
                     
@@ -1391,8 +1437,8 @@
                     F.  En la línea 08, se 'CommonModule' como componente común.
                     
                     G.  Desde la Línea 12 a la 20, se incluye la inyección, el arreglo, las rutas, el servicio y la interfaz.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             10. Modificar el código del archivo 'frontend/src/app/components/details/details.html':
 
@@ -1417,17 +1463,17 @@
                     19     </section>
                     20   </article>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -1463,17 +1509,17 @@
                    119     }                   
                    120   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  De la línea 117 a 119, se crea una función para capturar datos desde el formulario y mostralo en la consola.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             02. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
@@ -1512,13 +1558,13 @@
                     32     }
                     33   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 06, se importa el formulario, sus controles y la reactividad.
                     
@@ -1527,8 +1573,8 @@
                     C.  De la línea 21 a la 25, se crea el formulario reactivo.
                     
                     D.  De la línea 26 a la 32, se envían los datos del formulario.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             03. Modificar el código del archivo 'frontend/src/app/components/details/details.html':
@@ -1566,13 +1612,13 @@
                     31   </section>
                     32   </article>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  De la línea 20 a la 31, se abre y cierra una 'section'.
                     
@@ -1581,8 +1627,8 @@
                     C.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
                     
                     D.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
             
             04. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
 
@@ -1617,21 +1663,21 @@
                     29     }
                     30   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 15, se crea una instancia de la Interfaz para filtrar el arreglo de objetos.
                     
                     B.  En la línea 22, se incluye la creación del objeto desde el constructor.
 
                     C.  De la línea 20 a las 29, se crea un método para mostrar toda la lista o un solo elemento.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
             05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
 
@@ -1648,21 +1694,21 @@
                     11     </section>
                     12   <section>
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  En la línea 03, se incluye un atributo filtrado.
                     
                     B.  En la línea 04, se incluye el método filtrado.
 
                     C.  En la línea 08, se incluye 'filteredLocationList' para recorrer el arreglo.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
 
@@ -1730,13 +1776,13 @@
                     19     }
                     20   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  Se eliminan las líneas de la 08 a la 110.
                     
@@ -1744,8 +1790,8 @@
 
                     C.  De la línea 13 a la 16 y 17 a la 19, se modifican las funciones para traer todos los objetos y el que trae uno, 
                         respectivamente.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             02. Modificar el código del archivo 'frontend/src/app/components/home/home.ts' 
@@ -1783,17 +1829,17 @@
                     31     }
                     32   }
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  De la línea 17 a la 20, se modifica la información del llamado a las funciones desde el contructor.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
             03. Modificar el código del archivo 'frontend/src/app/components/details/details.ts' 
@@ -1835,17 +1881,17 @@
                     35   }
 
 
-                ┌ ------------------------------------------------------------------------------------------------------------------------------------ ┐
-                |                                                                                                                                      |
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
                   EXPLICACIÓN:   
                     
                     ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
 
-                |--------------------------------------------------------------------------------------------------------------------------------------|
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
                 
                     A.  De la línea 18 a la 21, se modifica la información del llamado a las funciones desde el contructor.
-                |                                                                                                                                      |
-                └ ------------------------------------------------------------------------------------------------------------------------------------ ┘
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
@@ -1922,25 +1968,25 @@
             
             04. Abrir una terminal y ubicarse en el proyecto:
 
-                    PS C:\..\..> cd frontend
+                    ⦿   PS C:\..\..> cd frontend
 
             05. Cambiar el nombre de la terminal a 'frontend', seleccionándola en la parte inferior derecha y presionando F2 / Rename...
 
             06. Instalar dependencias de Angular desde la terminal:
 
-                    PS C:\..\frontend> npm install
+                    ⦿   PS C:\..\frontend> npm install
 
             07. Ejecutar el servidor de 'angular':
 
-                    PS C:\..\frontend> ng serve -o
+                    ⦿   PS C:\..\frontend> ng serve -o
 
             08. Abrir una terminal y ubicarse en el servidor json:
 
-                    PS C:\..\..> cd backend
+                    ⦿   PS C:\..\..> cd backend
             
             09. Cambiar el nombre de la terminal a 'backend', seleccionándola en la parte inferior derecha y presionando F2 / Rename...
 
             10. Ejecutar el servidor 'jsonserver':
 
-                    PS C:\..\backend> npx json-server db.json
+                    ⦿   PS C:\..\backend> npx json-server db.json
 

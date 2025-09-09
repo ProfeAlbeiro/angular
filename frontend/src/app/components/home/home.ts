@@ -15,9 +15,24 @@ export class Home {
   
   housingLocationList: HousingLocationInterface[] = [];
   housingService: HousingService = inject(HousingService);
+  filteredLocationList: HousingLocationInterface[] = [];
+  
+  constructor(){
+    this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocationInterface[]) => {
+      this.housingLocationList = housingLocationList;
+      this.filteredLocationList = housingLocationList;
+    })
+  }
 
-  constructor() {
-    this.housingLocationList = this.housingService.getAllHousingLocations();
-  }  
-
+  filterResults(text:string){
+    if (!text) {
+      this.filteredLocationList = this.housingLocationList;
+      return;
+    } else {
+      this.filteredLocationList = this.housingLocationList.filter((HousingLocation) =>
+        HousingLocation?.city.toLowerCase().includes(text.toLowerCase())
+      )
+    }
+  }
+  
 }

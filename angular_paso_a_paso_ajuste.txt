@@ -76,6 +76,16 @@
 ||| --      06.11.  Modificar la estructura y contenido del componente 'details' en 'frontend/src/app/components/details/details.html'                                 |||
 ||| --  07. FORMULARIOS REACTIVOS                                                                                                                                      |||
 ||| --      07.01.  Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts'                                                        |||
+||| --      07.02.  Modificar la Clase del componente 'details' en 'frontend/src/app/components/details/details.ts'                                                    |||
+||| --      07.03.  Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html'                                                        |||
+||| --      07.04.  Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts'                                                             |||
+||| --      07.05.  Modificar la estructura y contenido del componente 'home' en 'frontend/src/app/components/home/home.html'                                          |||
+||| --  08. HTTP FETCH Y JSON SERVER                                                                                                                                   |||
+||| --      08.01.  Crear el Servidor Json Server                                                                                                                      |||
+||| --      08.02.  Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts'                                                        |||
+||| --      08.03.  Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts'                                                             |||
+||| --      08.04.  Modificar la Clase del componente 'details' en 'frontend/src/app/components/details/details.ts'                                                    |||
+||| --      08.05.                                                                                                |||
 |||                                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -1085,7 +1095,7 @@
                     04   @Injectable({
                     05     providedIn: 'root'
                     06   })
-                    07   export class Housing {
+                    07   export class HousingService {
                     08  
                     09     constructor() {}
                     10
@@ -1255,11 +1265,11 @@
 
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
-                    03   @Injectable({
-                    04     providedIn: 'root'
-                    05   })
-                    06
-                    07   export class Housing {
+                    03
+                    04   @Injectable({
+                    05     providedIn: 'root'
+                    06   })
+                    07   export class HousingService {
                     08  
                     09     constructor() { }
                     10
@@ -1735,7 +1745,7 @@
                     04     providedIn: 'root'
                     05   })
                     06
-                    07   export class Housing {
+                    07   export class HousingService{
                     08  
                     09     constructor() { }
                     10
@@ -1832,8 +1842,9 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-
-            03. Modificar el código del archivo 'frontend/src/app/components/details/details.html':
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 07.03.  Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html': ----------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   <article>
                     02   <img
@@ -1886,6 +1897,10 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
             
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 07.04.  Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts': ---------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+         
             04. Modificar el código del archivo 'frontend/src/app/components/details/details.ts':
 
                     01   import { Component, inject } from '@angular/core';
@@ -1893,31 +1908,37 @@
                     03   import { HousingLocationInterface } from '../housing-location-interface';
                     04   import { CommonModule } from '@angular/common';
                     05   import { Housing } from '../housing';
-                    06   @Component({
-                    07     selector: 'app-home',
-                    08     imports: [CommonModule, HousingLocation],
-                    09     templateUrl: './home.html',
-                    10     styleUrl: './home.css'
-                    11   })
-                    12   export class Home {
-                    13     housingLocationList: HousingLocationInterface[] = [];
-                    14     housingService: Housing = inject(Housing);
-                    15     filteredLocationList: HousingLocationInterface[] = [];
-                    16     constructor() {
-                    17       this.housingLocationList = this.housingService.getAllHousingLocations();
-                    18       this.filteredLocationList = this.housingLocationList;
-                    19     }
-                    20     filterResults(text:string){
-                    21       if (!text) {
-                    22         this.filteredLocationList = this.housingLocationList;
-                    23         return;
-                    24       } else {
-                    25         this.filteredLocationList = this.housingLocationList.filter((HousingLocation) =>
-                    26           HousingLocation?.city.toLowerCase().includes(text.toLowerCase())
-                    27         )
-                    28       }
-                    29     }
-                    30   }
+                    06
+                    07   @Component({
+                    08     selector: 'app-home',
+                    09     imports: [CommonModule, HousingLocation],
+                    10     templateUrl: './home.html',
+                    11     styleUrl: './home.css'
+                    12   })
+                    13
+                    14   export class Home {
+                    15
+                    16     housingLocationList: HousingLocationInterface[] = [];
+                    17     housingService: Housing = inject(Housing);
+                    18     filteredLocationList: HousingLocationInterface[] = [];
+                    19
+                    20     constructor() {
+                    21       this.housingLocationList = this.housingService.getAllHousingLocations();
+                    22       this.filteredLocationList = this.housingLocationList;
+                    23     }
+                    24
+                    25     filterResults(text:string){
+                    26       if (!text) {
+                    27         this.filteredLocationList = this.housingLocationList;
+                    28         return;
+                    29       } else {
+                    30         this.filteredLocationList = this.housingLocationList.filter((HousingLocation) =>
+                    31           HousingLocation?.city.toLowerCase().includes(text.toLowerCase())
+                    32         )
+                    33       }
+                    34     }
+                    35
+                    36   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -1935,7 +1956,9 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            05. Modificar el código del archivo 'frontend/src/app/components/home/home.html':
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 07.05.  Modificar la estructura y contenido del componente 'home' en 'frontend/src/app/components/home/home.html': ---------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   <section>
                     02     <form>
@@ -1966,16 +1989,14 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-
-
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||---------------------------------------------------------- 07.  HTTP FETCH Y JSON SERVER -----------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------------- 08. HTTP FETCH Y JSON SERVER -------------------------------------------------------------------|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 07.01.  Crear el Servidor Json Server: --------------------------------------------------------------------------------------------------------------|
+|-- 08.01.  Crear el Servidor Json Server: ------------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear una carpeta denominada 'backend' fuera del proyecto, ejemplo 'angular/backend'.
@@ -1986,51 +2007,56 @@
             
             04. Ingresar a la carpeta 'backend' desde la terminal:
 
-                    PS C:\..\angular> cd backend
+                    ⦿   PS C:\..\angular> cd backend
 
             05. Inicializar un proyecto de node.js desde la terminal:
 
-                    PS C:\..\backend> npm init -y
+                    ⦿   PS C:\..\backend> npm init -y
 
             06. Instalar 'jsonserver' desde la terminal:
 
-                    PS C:\..\backend> npm install json-server
+                    ⦿   PS C:\..\backend> npm install json-server
 
             08. Descargar a la carpeta 'backend' la base de datos 'db.json' desde el siguiente enlace:             
 
-                    https://github.com/ProfeAlbeiro/angular/blob/main/sources/db/db.json
+                         https://github.com/ProfeAlbeiro/angular/blob/main/sources/db/db.json
 
             09. Ejecutar el servidor 'jsonserver' desde la terminal para asociarlo a la base de datos:
 
-                    PS C:\..\backend> npx json-server db.json
+                    ⦿   PS C:\..\backend> npx json-server db.json
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 07.02.  Ajustar archivos para conectar con el servidor y la db: -------------------------------------------------------------------------------------|
+|-- 08.02.  Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts': ----------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. Modificar el código del archivo 'frontend/src/app/components/housing.ts' 
 
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
-                    03   @Injectable({
-                    04   providedIn: 'root'
-                    05   })
-                    06   export class Housing {
-                    07     constructor() { }  
-                    08     url = 'http://localhost:3000/locations';
-                    09     async getAllHousingLocation(): Promise<HousingLocationInterface[]> {
-                    10       const data = await fetch(this.url);
-                    11       return (await data.json());
-                    12     }
-                    13     async getHousingLocationById(id:number): Promise<HousingLocationInterface | undefined> {
-                    14       const data = await fetch(`${this.url}/${id}`);
-                    15       return (await data.json()) ?? {};
+                    03
+                    04   @Injectable({
+                    05   providedIn: 'root'
+                    06   })
+                    07   export class HousingService {
+                    08  
+                    09     constructor() { }  
+                    10
+                    11     url = 'http://localhost:3000/locations';
+                    12
+                    13     async getAllHousingLocation(): Promise<HousingLocationInterface[]> {
+                    14       const data = await fetch(this.url);
+                    15       return (await data.json());
                     16     }
-                    17     submitApplication(firstName:string, lastName:string, email:string){
-                    18       console.log(`FirstName: ${firstName} - LastName: ${lastName} - Email: ${email}`)
-                    19     }
-                    20   }
+                    17
+                    18     async getHousingLocationById(id:number): Promise<HousingLocationInterface | undefined> {
+                    19       const data = await fetch(`${this.url}/${id}`);
+                    20       return (await data.json()) ?? {};
+                    21     }
+                    22
+                    23     submitApplication(firstName:string, lastName:string, email:string){
+                    24       console.log(`FirstName: ${firstName} - LastName: ${lastName} - Email: ${email}`)
+                    25     }
+                    26
+                    27   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -2049,6 +2075,9 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 08.03.  Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts': ---------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             02. Modificar el código del archivo 'frontend/src/app/components/home/home.ts' 
 
@@ -2056,34 +2085,40 @@
                     02   import { HousingLocation } from '../housing-location/housing-location';
                     03   import { HousingLocationInterface } from '../housing-location-interface';
                     04   import { CommonModule } from '@angular/common';
-                    05   import { Housing } from '../housing';
-                    06   @Component({
-                    07     selector: 'app-home',
-                    08     imports: [CommonModule, HousingLocation],
-                    09     templateUrl: './home.html',
-                    10     styleUrl: './home.css'
-                    11   })
-                    12   export class Home {
-                    13     housingLocationList: HousingLocationInterface[] = [];
-                    14     housingService: Housing = inject(Housing);
-                    15     filteredLocationList: HousingLocationInterface[] = [];
-                    16     constructor(){
-                    17       this.housingService.getAllHousingLocation().then((housingLocationList: HousingLocationInterface[]) => {
-                    18         this.housingLocationList = housingLocationList;
-                    19         this.filteredLocationList = housingLocationList;
-                    20       })
-                    21     }
-                    22     filterResults(text:string){
-                    23       if (!text) {
-                    24         this.filteredLocationList = this.housingLocationList;
-                    25         return;
-                    26       } else {
-                    27         this.filteredLocationList = this.housingLocationList.filter((HousingLocation) =>
-                    28           HousingLocation?.city.toLowerCase().includes(text.toLowerCase())
-                    29         )
-                    30       }
-                    31     }
-                    32   }
+                    05   import { HousingService } from '../housing-service';
+                    06 
+                    07   @Component({
+                    08     selector: 'app-home',
+                    09     imports: [CommonModule, HousingLocation],
+                    10     templateUrl: './home.html',
+                    11     styleUrl: './home.css'
+                    12   })
+                    13 
+                    14   export class Home {
+                    15     
+                    16     housingLocationList: HousingLocationInterface[] = [];
+                    17     housingService: HousingService = inject(HousingService);
+                    18     filteredLocationList: HousingLocationInterface[] = [];
+                    19     
+                    20     constructor(){
+                    21       this.housingService.getAllHousingLocations().then((housingLocationList: HousingLocationInterface[]) => {
+                    22         this.housingLocationList = housingLocationList;
+                    23         this.filteredLocationList = housingLocationList;
+                    24       })
+                    25     }
+                    26 
+                    27     filterResults(text:string){
+                    28       if (!text) {
+                    29         this.filteredLocationList = this.housingLocationList;
+                    30         return;
+                    31       } else {
+                    32         this.filteredLocationList = this.housingLocationList.filter((HousingLocation) =>
+                    33           HousingLocation?.city.toLowerCase().includes(text.toLowerCase())
+                    34         )
+                    35       }
+                    36     }
+                    37     
+                    38   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -2097,45 +2132,52 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-
-            03. Modificar el código del archivo 'frontend/src/app/components/details/details.ts' 
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 08.04.  Modificar la Clase del componente 'details' en 'frontend/src/app/components/details/details.ts': ------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   import { CommonModule } from '@angular/common';
                     02   import { Component, inject } from '@angular/core';
                     03   import { ActivatedRoute } from '@angular/router';
-                    04   import { Housing } from '../housing';
+                    04   import { HousingService } from '../housing-service';
                     05   import { HousingLocationInterface } from '../housing-location-interface';
                     06   import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-                    07   @Component({
-                    08     selector: 'app-details',
-                    09     imports: [CommonModule, ReactiveFormsModule],
-                    10     templateUrl: './details.html',
-                    11     styleUrl: './details.css'
-                    12   })
-                    13   export class Details {
-                    14     route: ActivatedRoute = inject(ActivatedRoute);
-                    15     housingService = inject(Housing);
-                    16     housingLocation: HousingLocationInterface | undefined;
-                    17     constructor(){
-                    18       const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
-                    19       this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
-                    20         this.housingLocation = housingLocation;
-                    21       })
-                    22     }
-                    23     formAngular = new FormGroup({
-                    24       firstName: new FormControl(''),
-                    25       lastName: new FormControl(''),
-                    26       email: new FormControl(''),
-                    27     });
-                    28     onSubmit(){
-                    29       this.housingService.submitApplication(
-                    30         this.formAngular.value.firstName ?? '',
-                    31         this.formAngular.value.lastName ?? '',
-                    32         this.formAngular.value.email ?? '',
-                    33       )
-                    34     }
-                    35   }
-
+                    07
+                    08   @Component({
+                    09     selector: 'app-details',
+                    10     imports: [CommonModule, ReactiveFormsModule],
+                    11     templateUrl: './details.html',
+                    12     styleUrl: './details.css'
+                    13   })
+                    14
+                    15   export class Details {
+                    16
+                    17     route: ActivatedRoute = inject(ActivatedRoute);
+                    18     housingService = inject(HousingService);
+                    19     housingLocation: HousingLocationInterface | undefined;
+                    20
+                    21     constructor(){
+                    22       const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+                    23       this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+                    24         this.housingLocation = housingLocation;
+                    25       })
+                    26     }
+                    27
+                    28     formAngular = new FormGroup({
+                    29       firstName: new FormControl(''),
+                    30       lastName: new FormControl(''),
+                    31       email: new FormControl(''),
+                    32     });
+                    33
+                    34     onSubmit(){
+                    35       this.housingService.submitApplication(
+                    36         this.formAngular.value.firstName ?? '',
+                    37         this.formAngular.value.lastName ?? '',
+                    38         this.formAngular.value.email ?? '',
+                    39       )
+                    40     }
+                    41
+                    42   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |

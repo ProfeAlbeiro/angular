@@ -33,9 +33,14 @@
 ||| --      02.02.  Ejecutar el servidor                                                                                                                               |||
 ||| --      02.03.  Modificar el componente 'frontend/src/app/app.ts'                                                                                                  |||
 ||| --  03. COMPONENTES                                                                                                                                                |||
-||| --      03.01.  Modificar la página inicial del proyecto                                                                                                           |||
-||| --      03.02.  Crear el Componente 'home'                                                                                                                         |||
-||| --      03.03.  Crear el Componente 'housingLocation'                                                                                                              |||
+||| --      03.01.  Crear la carpeta 'assets' en la carpeta 'frontend/public'                                                                                          |||
+||| --      03.02.                                                                                                                           |||
+||| --      03.03.                                                           |||
+||| --      03.04.                                                                                                                |||
+||| --      03.05.                                                                                                                |||
+||| --      03.06.                                                                                                                |||
+||| --      03.07.                                                                                                                |||
+||| --      03.08.                                                                                                                |||
 ||| --  04. INTERFACES                                                                                                                                                 |||
 ||| --      04.01.  Crear la interface 'HousingLocationInterface'                                                                                                      |||
 ||| --  05. SERVICIOS                                                                                                                                                  |||
@@ -265,17 +270,18 @@
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.01.  Modificar la página inicial del proyecto: -------------------------------------------------------------------------------------------------------------------|
+|-- 03.01.  Crear la carpeta 'assets' en la carpeta 'frontend/public': --------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
-            01. Crear la carpeta 'assets' en la carpeta 'frontend/public'
-            
-            02. Descargar las siguientes imágenes en la carpeta 'frontend/public/assets':
+
+            01. Descargar las siguientes imágenes en la carpeta 'frontend/public/assets':
 
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/logo.svg
                     https://github.com/ProfeAlbeiro/angular/blob/main/sources/assets/location-pin.svg
 
-            03. Modificar los estilos globales del proyecto 'frontend/src/styles.css':
+
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.02.  Modificar los estilos globales del proyecto 'frontend/src/styles.css': --------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   * {
                     02     margin: 10;
@@ -314,7 +320,9 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            04. Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html':
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.03.  Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html': ----------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
                     
                     01   <main class="main">
                     02     <header class="brand-home">
@@ -341,7 +349,7 @@
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.02.  Crear el Componente 'home': ---------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.04.  Crear el Componente 'home': ---------------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Abrir otra terminal en Visual Studio Code ('Terminal / New Terminal' ó 'Ctrl + Shift + ñ')
@@ -355,8 +363,11 @@
             04. Crear el componente 'home' desde la terminal:
 
                     ⦿   PS C:\..\..\angular\frontend> ng generate component components/home
-            
-            05. Modificar los estilos del componente 'home' en 'frontend/src/app/components/home/home.css':
+
+
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.05.  Modificar los estilos del componente 'home' en 'frontend/src/app/components/home/home.css': -----------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
                     
                     01   .results {
                     02     display: grid;
@@ -408,7 +419,9 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            06. Modificar la Clase del componente principal en 'frontend/src/app/app.ts':                    
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.06.  Modificar la Clase del componente principal en 'frontend/src/app/app.ts': -----------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
                     
                     01   import { Component } from '@angular/core';
                     02   import { RouterOutlet } from '@angular/router';
@@ -438,8 +451,10 @@
                         ubiquese al final de la palabra 'Home' de la línea 06, presione 'Ctrl + Space' y seleccione el mismo nombre.
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
-          
-            07. Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html':
+
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.07.  Modificar la estructura y contenido del componente principal en 'frontend/src/app/app.html': ----------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
                     
                     01   <main class="main">
                     02     <header class="brand-home">
@@ -463,7 +478,9 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            08. Modificar la estructura y contenido del componenten 'home' en 'frontend/src/app/components/home/home.html':
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 03.08.  Modificar la estructura y contenido del componenten 'home' en 'frontend/src/app/components/home/home.html': -------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   <section>
                     02     <form>
@@ -488,7 +505,7 @@
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 03.03.  Crear el Componente 'housingLocation': ----------------------------------------------------------------------------------------------------------------------|
+|-- 03.09.  Crear el Componente 'housingLocation': ----------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Crear el componente 'housingLocation' desde la terminal:
@@ -938,7 +955,7 @@
 
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 |||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||-------------------------------------------------------------------------- 04. SERVICIOS ---------------------------------------------------------------------------|||
+|||-------------------------------------------------------------------------- 05. SERVICIOS ---------------------------------------------------------------------------|||
 |||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -947,24 +964,52 @@
 |-- 05.01.  Crear el servicio 'housing-service': ------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. Crear el servicio 'housing' sin incluir el archivo *.spec.ts desde la terminal:
+            01. Crear el servicio 'housing-service' sin incluir el archivo *.spec.ts desde la terminal:
                     
                     PS C:\..\..\angular\frontend> ng generate service components/housing-service --skip-tests
 
-            02. Cortar el código del archivo 'frontend/src/app/components/home/home.ts', desde la línea 12 hasta la 114:
+            02. Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts':
+
+                    01   import { Injectable } from '@angular/core';
+                    02   import { HousingLocationInterface } from './housing-location-interface';
+                    03 
+                    04   @Injectable({
+                    05     providedIn: 'root'
+                    06   })
+                    07   export class HousingService {
+                    08     
+                    09     constructor(){}
+                    10     
+                    11   }
+
+                ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
+                |                                                                                                                                         |
+                  EXPLICACIÓN:   
+                    
+                    ⦿   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+
+                |---------------------------------------------------------------------------------------------------------------------------------------- |
+                
+                    A.  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.
+                |                                                                                                                                         |
+                └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
+
+            03. Cortar el código de la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts', desde la línea 15 hasta la 118:
 
                     01   import { Component } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
                     03   import { HousingLocationInterface } from '../housing-location-interface';
                     04   import { CommonModule } from '@angular/common';
-                    05   @Component({
-                    06     selector: 'app-home',
-                    07     imports: [CommonModule, HousingLocation],
-                    08     templateUrl: './home.html',
-                    09     styleUrl: './home.css'
-                    10   })
-                    11   export class Home {  
-                    12   }
+                    05
+                    06   @Component({
+                    07     selector: 'app-home',
+                    08     imports: [CommonModule, HousingLocation],
+                    09     templateUrl: './home.html',
+                    10     styleUrl: './home.css'
+                    11   })
+                    12
+                    13   export class Home {  
+                    14   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -978,119 +1023,124 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            03. Pegar el código del paso anterior en el archivo 'frontend/src/app/components/housing.ts' debajo del 'constructor(){ }':
+            04. Pegar el código del paso anterior en la Clase del componente 'housing-service' en 'frontend/src/app/components/housing-service.ts', debajo de 
+                'constructor(){}' desde la línea 11:
 
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
-                    03   @Injectable({
-                    04     providedIn: 'root'
-                    05   })
-                    06   export class Housing {
-                    07     constructor() { }
-                    08     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-                    09     housingLocationList: HousingLocationInterface[] = [
-                    10       {
-                    11         id: 0,
-                    12         name: 'Acme Fresh Start Housing',
-                    13         city: 'Chicago',
-                    14         state: 'IL',
-                    15         photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
-                    16         availableUnits: 4,
-                    17         wifi: true,
-                    18         laundry: true,
-                    19       },
-                    20       {
-                    21         id: 1,
-                    22         name: 'A113 Transitional Housing',
-                    23         city: 'Santa Monica',
-                    24         state: 'CA',
-                    25         photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
-                    26         availableUnits: 0,
-                    27         wifi: false,
-                    28         laundry: true,
-                    29       },
-                    30       {
-                    31         id: 2,
-                    32         name: 'Warm Beds Housing Support',
-                    33         city: 'Juneau',
-                    34         state: 'AK',
-                    35         photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
-                    36         availableUnits: 1,
-                    37         wifi: false,
-                    38         laundry: false,
-                    39       },
-                    40       {
-                    41         id: 3,
-                    42         name: 'Homesteady Housing',
-                    43         city: 'Chicago',
-                    44         state: 'IL',
-                    45         photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
-                    46         availableUnits: 1,
-                    47         wifi: true,
-                    48         laundry: false,
-                    49       },
-                    50       {
-                    51         id: 4,
-                    52         name: 'Happy Homes Group',
-                    53         city: 'Gary',
-                    54         state: 'IN',
-                    55         photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
-                    56         availableUnits: 1,
-                    57         wifi: true,
-                    58         laundry: false,
-                    59       },
-                    60       {
-                    61         id: 5,
-                    62         name: 'Hopeful Apartment Group',
-                    63         city: 'Oakland',
-                    64         state: 'CA',
-                    65         photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
-                    66         availableUnits: 2,
-                    67         wifi: true,
-                    68         laundry: true,
-                    69       },
-                    70       {
-                    71         id: 6,
-                    72         name: 'Seriously Safe Towns',
-                    73         city: 'Oakland',
-                    74         state: 'CA',
-                    75         photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
-                    76         availableUnits: 5,
-                    77         wifi: true,
-                    78         laundry: true,
-                    79       },
-                    80       {
-                    81         id: 7,
-                    82         name: 'Hopeful Housing Solutions',
-                    83         city: 'Oakland',
-                    84         state: 'CA',
-                    85         photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
-                    86         availableUnits: 2,
-                    87         wifi: true,
-                    88         laundry: true,
-                    89       },
-                    90       {
-                    91         id: 8,
-                    92         name: 'Seriously Safe Towns',
-                    93         city: 'Oakland',
-                    94         state: 'CA',
-                    95         photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
-                    96         availableUnits: 10,
-                    97         wifi: false,
-                    98         laundry: false,
-                    99       },
-                   100       {
-                   101         id: 9,
-                   102         name: 'Capital Safe Towns',
-                   103         city: 'Portland',
-                   104         state: 'OR',
-                   105         photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
-                   106         availableUnits: 6,
-                   107         wifi: true,
-                   108         laundry: true,
-                   109       },
-                   110     ];
-                   111   }
+                    03
+                    04   @Injectable({
+                    05     providedIn: 'root'
+                    06   })
+                    07   export class Housing {
+                    08  
+                    09     constructor() {}
+                    10
+                    11     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+                    12
+                    13     housingLocationList: HousingLocationInterface[] = [
+                    14       {
+                    15         id: 0,
+                    16         name: 'Acme Fresh Start Housing',
+                    17         city: 'Chicago',
+                    18         state: 'IL',
+                    19         photo: `${this.baseUrl}/bernard-hermant-CLKGGwIBTaY-unsplash.jpg`,
+                    20         availableUnits: 4,
+                    21         wifi: true,
+                    22         laundry: true,
+                    23       },
+                    24       {
+                    25         id: 1,
+                    26         name: 'A113 Transitional Housing',
+                    27         city: 'Santa Monica',
+                    28         state: 'CA',
+                    29         photo: `${this.baseUrl}/brandon-griggs-wR11KBaB86U-unsplash.jpg`,
+                    30         availableUnits: 0,
+                    31         wifi: false,
+                    32         laundry: true,
+                    33       },
+                    34       {
+                    35         id: 2,
+                    36         name: 'Warm Beds Housing Support',
+                    37         city: 'Juneau',
+                    38         state: 'AK',
+                    39         photo: `${this.baseUrl}/i-do-nothing-but-love-lAyXdl1-Wmc-unsplash.jpg`,
+                    40         availableUnits: 1,
+                    41         wifi: false,
+                    42         laundry: false,
+                    43       },
+                    44       {
+                    45         id: 3,
+                    46         name: 'Homesteady Housing',
+                    47         city: 'Chicago',
+                    48         state: 'IL',
+                    49         photo: `${this.baseUrl}/ian-macdonald-W8z6aiwfi1E-unsplash.jpg`,
+                    50         availableUnits: 1,
+                    51         wifi: true,
+                    52         laundry: false,
+                    53       },
+                    54       {
+                    55         id: 4,
+                    56         name: 'Happy Homes Group',
+                    57         city: 'Gary',
+                    58         state: 'IN',
+                    59         photo: `${this.baseUrl}/krzysztof-hepner-978RAXoXnH4-unsplash.jpg`,
+                    60         availableUnits: 1,
+                    61         wifi: true,
+                    62         laundry: false,
+                    63       },
+                    64       {
+                    65         id: 5,
+                    66         name: 'Hopeful Apartment Group',
+                    67         city: 'Oakland',
+                    68         state: 'CA',
+                    69         photo: `${this.baseUrl}/r-architecture-JvQ0Q5IkeMM-unsplash.jpg`,
+                    70         availableUnits: 2,
+                    71         wifi: true,
+                    72         laundry: true,
+                    73       },
+                    74       {
+                    75         id: 6,
+                    76         name: 'Seriously Safe Towns',
+                    77         city: 'Oakland',
+                    78         state: 'CA',
+                    79         photo: `${this.baseUrl}/phil-hearing-IYfp2Ixe9nM-unsplash.jpg`,
+                    80         availableUnits: 5,
+                    81         wifi: true,
+                    82         laundry: true,
+                    83       },
+                    84       {
+                    85         id: 7,
+                    86         name: 'Hopeful Housing Solutions',
+                    87         city: 'Oakland',
+                    88         state: 'CA',
+                    89         photo: `${this.baseUrl}/r-architecture-GGupkreKwxA-unsplash.jpg`,
+                    90         availableUnits: 2,
+                    91         wifi: true,
+                    92         laundry: true,
+                    93       },
+                    94       {
+                    95         id: 8,
+                    96         name: 'Seriously Safe Towns',
+                    97         city: 'Oakland',
+                    98         state: 'CA',
+                    99         photo: `${this.baseUrl}/saru-robert-9rP3mxf8qWI-unsplash.jpg`,
+                   100         availableUnits: 10,
+                   101         wifi: false,
+                   102         laundry: false,
+                   103       },
+                   104       {
+                   105         id: 9,
+                   106         name: 'Capital Safe Towns',
+                   107         city: 'Portland',
+                   108         state: 'OR',
+                   109         photo: `${this.baseUrl}/webaliser-_TPTXZd9mOo-unsplash.jpg`,
+                   110         availableUnits: 6,
+                   111         wifi: true,
+                   112         laundry: true,
+                   113       },
+                   114     ];
+                   115   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -1105,25 +1155,26 @@
                     B.  En la línea 02, se importa la interface 'HousingLocationInterface'.
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
-
             
-            04. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
+            05. Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts':
 
                     01   import { Component, inject } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
                     03   import { HousingLocationInterface } from '../housing-location-interface';
                     04   import { CommonModule } from '@angular/common';
-                    05   import { Housing } from '../housing';
-                    06   @Component({
-                    07     selector: 'app-home',
-                    08     imports: [CommonModule, HousingLocation],
-                    09     templateUrl: './home.html',
-                    10     styleUrl: './home.css'
-                    11   })
-                    12   export class Home {
-                    13     housingLocationList: HousingLocationInterface[] = [];
-                    14     housingService: Housing = inject(Housing);
-                    15   }
+                    05   import { HousingService } from '../housing-service';
+                    06 
+                    07   @Component({
+                    08     selector: 'app-home',
+                    09     imports: [CommonModule, HousingLocation],
+                    10     templateUrl: './home.html',
+                    11     styleUrl: './home.css'
+                    12   })
+                    13 
+                    14   export class Home {
+                    15     housingLocationList: HousingLocationInterface[] = [];
+                    16     housingService: HousingService = inject(HousingService);
+                    17   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -1143,25 +1194,32 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            05. Modificar el código del archivo 'frontend/src/app/components/housing.ts':
+            06. Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts':
 
                     01   import { Injectable } from '@angular/core';
                     02   import { HousingLocationInterface } from './housing-location-interface';
                     03   @Injectable({
                     04     providedIn: 'root'
                     05   })
-                    06   export class Housing {
-                    07     constructor() { }
-                    08     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
-                    09 >   housingLocationList: HousingLocationInterface[] = [
-                   110     ];
-                   111     getAllHousingLocations(): HousingLocationInterface[] {
-                   112       return this.housingLocationList;
-                   113     }
-                   114     getHousingLocantionById(id:number): HousingLocationInterface | undefined {
-                   115       return this.housingLocationList.find((housingLocation) => housingLocation.id === id);
-                   116     }
-                   117   }
+                    06
+                    07   export class Housing {
+                    08  
+                    09     constructor() { }
+                    10
+                    11     readonly baseUrl = 'https://angular.dev/assets/images/tutorials/common';
+                    12
+                    13 >   housingLocationList: HousingLocationInterface[] = [
+                   114     ];
+                   115
+                   116     getAllHousingLocations(): HousingLocationInterface[] {
+                   117       return this.housingLocationList;
+                   118     }
+                   119
+                   120     getHousingLocantionById(id:number): HousingLocationInterface | undefined {
+                   121       return this.housingLocationList.find((housingLocation) => housingLocation.id === id);
+                   122     }
+                   123
+                   124   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |
@@ -1177,26 +1235,31 @@
                 |                                                                                                                                         |
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
-            05. Modificar el código del archivo 'frontend/src/app/components/home/home.ts':
-                    
+            07. Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts':
+
                     01   import { Component, inject } from '@angular/core';
                     02   import { HousingLocation } from '../housing-location/housing-location';
                     03   import { HousingLocationInterface } from '../housing-location-interface';
                     04   import { CommonModule } from '@angular/common';
-                    05   import { Housing } from '../housing';
-                    06   @Component({
-                    07     selector: 'app-home',
-                    08     imports: [CommonModule, HousingLocation],
-                    09     templateUrl: './home.html',
-                    10     styleUrl: './home.css'
-                    11   })
-                    12   export class Home {
-                    13     housingLocationList: HousingLocationInterface[] = [];
-                    14     housingService: Housing = inject(Housing);
-                    15     constructor() {
-                    16       this.housingLocationList = this.housingService.getAllHousingLocations();
-                    17     }
-                    18   }
+                    05   import { HousingService } from '../housing-service';
+                    06 
+                    07   @Component({
+                    08     selector: 'app-home',
+                    09     imports: [CommonModule, HousingLocation],
+                    10     templateUrl: './home.html',
+                    11     styleUrl: './home.css'
+                    12   })
+                    13 
+                    14   export class Home {
+                    15     
+                    16     housingLocationList: HousingLocationInterface[] = [];
+                    17     housingService: HousingService = inject(HousingService);
+                    18 
+                    19     constructor() {
+                    20       this.housingLocationList = this.housingService.getAllHousingLocations();
+                    21     }  
+                    22 
+                    23   }
 
                 ┌ --------------------------------------------------------------------------------------------------------------------------------------- ┐
                 |                                                                                                                                         |

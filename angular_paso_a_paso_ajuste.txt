@@ -15,9 +15,9 @@
 ||| --  09. DESPLIEGUE (EN CONSTRUCCIÓN)                                                                                                                               |||
 |||                                                                                                                                                                    |||
 ||| --  ANEXOS: TENER EN CUENTA                                                                                                                                        |||
-||| --          AX_01. Subir el Proyecto a Github                                                                                                                      |||
-||| --          AX_02. Clonar un proyecto de Github                                                                                                                    |||
-||| --          AX_03. Puesta en Marcha del Proyecto                                                                                                                   |||
+||| --          AX_01.  Subir el Proyecto a Github                                                                                                                     |||
+||| --          AX_02.  Clonar un proyecto de Github                                                                                                                   |||
+||| --          AX_03.  Puesta en Marcha del Proyecto                                                                                                                  |||
 |||                                                                                                                                                                    |||
 ||| --  Bibliografía  https://angular.dev/tutorials                                                                                                                    |||
 |||                   https://www.youtube.com/playlist?list=PLrAw40DbN0l2XNbdFx0GvoRdzsyqTsdmP                                                                         |||
@@ -85,7 +85,12 @@
 ||| --      08.02.  Modificar el servicio 'housing-service' en 'frontend/src/app/components/housing-service.ts'                                                        |||
 ||| --      08.03.  Modificar la Clase del componente 'home' en 'frontend/src/app/components/home/home.ts'                                                             |||
 ||| --      08.04.  Modificar la Clase del componente 'details' en 'frontend/src/app/components/details/details.ts'                                                    |||
-||| --      08.05.                                                                                                |||
+||| --  09. DESPLIEGUE (EN CONSTRUCCIÓN)                                                                                                                               |||
+||| --      09.01.  Configurar el proyecto Angular para GitHub Pages En 'angular.json' (Línea 16)                                                                      |||
+||| --      09.02.  Instalar el paquete angular-cli-ghpages para facilitar el despliegue                                                                               |||
+||| --      09.03.  Construir el proyecto para producción, en carpeta 'dist/frontend/browser/'                                                                         |||
+||| --      09.04.  Subir el proyecto a GitHub Pages                                                                                                                   |||
+||| --      09.05.  Comprobar la configuración del repositorio en GitHub                                                                                               |||
 |||                                                                                                                                                                    |||
 |||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
@@ -1957,7 +1962,7 @@
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 07.05.  Modificar la estructura y contenido del componente 'home' en 'frontend/src/app/components/home/home.html': ---------------------------------------------------------------------|
+|-- 07.05.  Modificar la estructura y contenido del componente 'home' en 'frontend/src/app/components/home/home.html': --------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
                     01   <section>
@@ -2192,24 +2197,15 @@
                 └ --------------------------------------------------------------------------------------------------------------------------------------- ┘
 
 
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||----------------------------------------------------------------- 08.  DESPLIEGUE ------------------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||----------------------------------------------------------------- 09. DESPLIEGUE (EN CONSTRUCCIÓN) -----------------------------------------------------------------|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 08.01.  Subir a github: -----------------------------------------------------------------------------------------------------------------------------|
+|-- 09.01.  Configurar el proyecto Angular para GitHub Pages En 'angular.json' (Línea 16): ------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. En 'angular.json' verificar que exista la dependencia '"baseHref": "/frontend_pruebas/",'. Línea 16:
-
-
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- 08.02.  Github Pages: -----------------------------------------------------------------------------------------------------------------------------|
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-            
-            01. Configurar el proyecto Angular para GitHub Pages. Línea 16:
 
                     12   "architect": {
                     13     "build": {
@@ -2218,44 +2214,125 @@
                     16         "baseHref": "/frontend/", 
                     17         "browser": "src/main.ts",
 
-            02. Instalar el paquete angular-cli-ghpages para facilitar el despliegue:
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 09.02.  Instalar el paquete angular-cli-ghpages para facilitar el despliegue: ---------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-                    PS C:\..\frontend> npm install -g angular-cli-ghpages
+                    ⦿   PS C:\..\frontend> npm install -g angular-cli-ghpages
 
-            03. Construir el proyecto para producción, en carpeta 'dist/frontend/browser/'
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 09.03.  Construir el proyecto para producción, en carpeta 'dist/frontend/browser/': ---------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-                    PS C:\..\frontend> ng build --configuration production 
+                    ⦿   PS C:\..\frontend> ng build --configuration production 
 
-            04. Subir el proyecto a GitHub Pages
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 09.04.  Subir el proyecto a GitHub Pages: ---------------------------------------------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-                    PS C:\..\frontend> npx angular-cli-ghpages --dir=dist/frontend/browser/
+                    ⦿   PS C:\..\frontend> npx angular-cli-ghpages --dir=dist/frontend/browser/
             
-            05. Comprobar la configuración del repositorio en GitHub: 'Settings / Pages / Branch: gh-pages / Folder: / (root) / Save'
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- 09.05.  Comprobar la configuración del repositorio en GitHub: -------------------------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+            
+                    ⦿   'Settings / Pages / Branch: gh-pages / Folder: / (root) / Save'
 
 
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||---------------------------------------------------------------------- ANEXOS ----------------------------------------------------------------------|||
-|||----------------------------------------------------------------- TENER EN CUENTA ------------------------------------------------------------------|||
-|||----------------------------------------------------------------------------------------------------------------------------------------------------|||
-|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+
+
+
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||------------------------------------------------------------------------------ ANEXOS ------------------------------------------------------------------------------|||
+||| ------------------------------------------------------------------------- TENER EN CUENTA -------------------------------------------------------------------------|||
+|||--------------------------------------------------------------------------------------------------------------------------------------------------------------------|||
+|||\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\|||
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- AX_01. Subir el Proyecto a Github: ------------------------------------------------------------------------------------------------------------------|
+|-- AX_01.  Subir el proyecto a un repositorio 'Github': ----------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-            01. 
+            Para evitar confusiones y seguir los pasos correctamente, la carpeta raíz del proyecto se llamará 'angular'.
+            
+            01. Verificar que no haya una cuenta de 'Github' asociada al computador, para ello, debe abrir el 'Panel de Control', dar clic en 'Cuentas 
+                de usuario / Administrar credenciales de Windows'. Si hay una cuenta asociada 'git:https://github.com', dar clic sobre la cuenta y clic
+                sobre la opción 'Quitar'. 
+            
+            NOTA:   ⦿   De no funcionar este método porque no tiene acceso al Panel de control, pruebe abriendo el 'Windows PowerShell' y digite el 
+                         siguiente comando:
+
+                         PS C:\..\..> echo "protocol=https`nhost=github.com`n" | git credential-manager erase
+            
+            02. Abrir su cuenta de 'Github' y en la parte superior derecha, dar clic al 'Nombre de su cuenta / Your Repositories'. Dar clic a 'New'.
+                En el control de texto 'Repository name', escribir el nombre de la carpeta raíz de su proyecto (ejemplo, 'angular'. La carpeta raíz no debe 
+                tener espacios, ni caracteres compuesto, ni caracteres especiales) y dar clic en 'Create Repository'.
+
+            NOTA:   ⦿   Si no tiene cuenta en 'GitHub', debe crear una.
+            
+            03. Clic derecho sobre la carpeta raíz (ejemplo, 'angular') y seleccionar la opción 'Open Git Bash here'; si no se 
+                encuentra la opción, hay que instalar 'Git'.
+            
+            04. En el 'Git Bash' escribir lo siguiente:
+
+                    $ git config --global user.name "nombre de su cuenta"
+                    $ git config --global user.email "correo de su cuenta"
+
+                    $ git init
+                    $ git branch -M main
+                    $ git remote add origin https://github.com/SenaProfeAlbeiro/angular.git
+                    $ git add .
+                    $ git commit -m "Subiendo Proyecto"
+                    $ git push -u origin main
+
+            05. Va a aparecer una ventana denominada 'Connect to Github', dar clic en la opción 'Sign in with your browser', dar clic en 'Authentication 
+                Succeeded'. Verificar que se haya abierto en el navegador que tiene abierta la cuenta, de lo contrario hay que escribir nuevamente las
+                credenciales de 'Github'. En el 'Git Bash' debe aparecer texto similar al siguiente:
+
+                    Enumerating objects: 3, done.
+                    Counting objects: 100% (3/3), done.
+                    Writing objects: 100% (3/3), 226 bytes | 226.00 KiB/s, done.
+                    Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+                    To https://github.com/SenaProfeAlbeiro/ej01_n_capas_php_sql_html.git
+                    * [new branch]      main -> main
+                    branch 'main' set up to track 'origin/main'.
+            
+            06. Actualizar la ventana del navegador donde se encuentra abierta su cuenta de 'Github'
+            
+            07. Para actualizar la información del proyecto en 'Github', en el 'Git bash' escribir los siguientes comandos:
+
+                    $ git add .
+                    $ git commit -m "Comentario del cambio"
+                    $ git push
+
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-- AX_02.  Clonar un proyecto 'Github': --------------------------------------------------------------------------------------------------------------------------------|
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+
+            01. Abrir su cuenta de 'Github' y en la parte superior derecha, dar clic al 'Nombre de su cuenta / Your Repositories'. 
+
+            02. Dar click al proyecto que desea clonar, en el caso del ejemplo es 'angular'.
+
+            03. Dar click a la opción '<> Code / Copy url to clipboard'.
+
+            04. Ir a una carpeta de Windows, por ejemplo, en el 'Escritorio' (en el caso del ejemplo, 'angular').
+
+            05. Click derecho sobre el área de trabajo y seleccionar la opción 'Open Git Bash here'; si no se encuentra la opción, hay que instalar 
+                'Git'.
+ 
+            06. En el 'Git Bash' pegar el repositorio clonado de 'Github' con 'CTRL + INSERT', quedando como sigue:
+
+                    $ git clone https://github.com/SenaProfeAlbeiro/angular.git
+
+            NOTA:   ⦿   Si el proyecto ya se encuentra en el computador, puede utilizar el siguiente comando para actualizar la información:
+                    
+                    $ git pull
+            
+            07. Abrir el proyecto en Visual Studio Code.
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- AX_02. Clonar un proyecto de Github: ----------------------------------------------------------------------------------------------------------------|
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-            01. 
-
-
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|-- AX_03. Puesta en Marcha del Proyecto: ---------------------------------------------------------------------------------------------------------------|
+|-- AX_03. Puesta en Marcha del Proyecto: -------------------------------------------------------------------------------------------------------------------------------|
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
             01. Garantizar el ambiente de desarrollo (Ver apartado 'CONFIGURACIÓN ENTORNO').

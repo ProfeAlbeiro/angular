@@ -176,34 +176,52 @@
                                                                                                                                                       # C = Carpetas
                                                                                                                                                       # A = Archivos
 
-                        frontend/                                       # C. Raíz del Proyecto.
-                        ├── .vscode                                     # C. Configuraciones específicas de Visual Studio Code (atajos, depuración, formato).
-                        ├── node_modules                                # C. Contiene todas las dependencias instaladas con npm (no se edita manualmente).
-                        ├── public                                      # C. Recursos estáticos (imágenes, íconos, manifest.json, etc.).
-                        ├── src                                         # C. Carpeta principal del código fuente de Angular.
-                        │   ├── app/                                    # C. Carpeta de la aplicación principal (componentes, servicios, módulos).
-                        │   │   ├── app.config.server.ts                # A. Configuración para el renderizado del lado del servidor (SSR:Angular Universal).
-                        │   │   ├── app.config.ts                       # A. Configuración general de la aplicación (módulos, dependencias, providers).
-                        │   │   ├── app.css                             # A. Estilos globales específicos del componente raíz.
-                        │   │   ├── app.html                            # A. Plantilla principal 'html' del componente raíz (App).
-                        │   │   ├── app.routes.server.ts                # A. Rutas usadas en el lado del servidor (Angular Universal).
-                        │   │   ├── app.routes.ts                       # A. Definición de rutas de la aplicación en el navegador.
-                        │   │   ├── app.spec.ts                         # A. Archivo de pruebas unitarias para App.
-                        │   │   └── app.ts                              # A. Clase principal del componente raíz (App).
-                        │   ├── index.html                              # A. Página HTML que carga Angular. Aquí se inserta la app (<app-root></app-root>).
-                        │   ├── main.server.ts                          # A. Punto de entrada de Angular Universal para renderizado en servidor.
-                        │   ├── main.ts                                 # A. Punto de entrada de la app en el navegador. Inicializa Angular y arranca AppModule.
-                        │   ├── styles.css                              # A. Estilos globales de toda la aplicación.
-                        │   └── server.ts                               # A. Archivo para configurar el servidor (Node.js + Express).   
-                        ├── .editorconfig                               # A. Reglas de estilo para editores de código (indentación, fin de línea, etc.).
-                        ├── .gitignore                                  # A. Indica qué archivos/carpetas ignorar en Git (ej: node_modules).
-                        ├── angular.json                                # A. Configuración principal Angular (build, serve, rutas de assets, estilos globales).
-                        ├── package-lock.json                           # A. Versión exacta de las dependencias instaladas (bloquea versiones).
-                        ├── package.json                                # A. Lista de dependencias, scripts (ng serve, ng build, etc.) y metadatos del proyecto.
-                        ├── README.md                                   # A. Documentación inicial del proyecto.
-                        ├── tsconfig.app.json                           # A. Configuración de TypeScript específica para la aplicación (src/app).
-                        ├── tsconfig.json                               # A. Configuración base de TypeScript para todo el proyecto.
-                        └── tsconfig.spec.json                          # A. Configuración de TypeScript para pruebas unitarias (Karma/Jasmine).
+                frontend/                                                 # C. Raíz del Proyecto.
+                ├── .vscode                                               # C. Configuraciones específicas de Visual Studio Code (atajos, depuración, formato).
+                ├── node_modules                                          # C. Contiene todas las dependencias instaladas con npm (no se edita manualmente).
+                ├── public                                                # C. Recursos estáticos (imágenes, íconos, manifest.json, etc.).
+                ├── src                                                   # C. Carpeta principal del código fuente de Angular.
+                │   ├── app/                                              # C. Carpeta de la aplicación principal (componentes, servicios, módulos).
+                │   │   ├── app.config.server.ts                          # A. Configuración para el renderizado del lado del servidor (SSR:Angular Universal).
+                │   │   │   └── components/                               # C. Componentes de la aplicaciòn
+                │   │   │       ├── details/                              # C. Componente detalles
+                │   │   │       │   ├── details.css                       # A. Estilos del componente detalles
+                │   │   │       │   ├── details.html                      # A. Estructura y contenido del componente detalles
+                │   │   │       │   ├── details.spec.ts                   # A. Pruebas para el componente detalles
+                │   │   │       │   └── details.ts                        # A. Clase del componente detalles
+                │   │   │       ├── home/                                 # C. Componente home
+                │   │   │       │   ├── home.css                          # A. Estilos del componente home
+                │   │   │       │   ├── home.html                         # A. Estructura y contenido del componente home
+                │   │   │       │   ├── home.spec.ts                      # A. Pruebas para el componente home
+                │   │   │       │   └── home.ts                           # A. Clase del componente home
+                │   │   │       ├── housing-location/                     # C. Componente housing-location
+                │   │   │       │   ├── housing-location.css              # A. Estilos del componente housing-location
+                │   │   │       │   ├── housing-location.html             # A. Estructura y contenido del componente housing-location
+                │   │   │       │   ├── housing-location.spec.ts          # A. Pruebas para el componente housing-location
+                │   │   │       │   └── housing-location.ts               # A. Clase del componente housing-location
+                │   │   │       ├── housing-location-interface.ts         # A. Interface (Modelo) de los componentes 'home', 'housing-location' y 'details'
+                │   │   │       └── housing-service.ts                    # A. Servicio (métodos de consumo de la API) para los componentes anteriores
+                │   │   ├── app.config.ts                                 # A. Configuración general de la aplicación (módulos, dependencias, providers).
+                │   │   ├── app.css                                       # A. Estilos globales específicos del componente raíz.
+                │   │   ├── app.html                                      # A. Plantilla principal 'html' del componente raíz (App).
+                │   │   ├── app.routes.server.ts                          # A. Rutas usadas en el lado del servidor (Angular Universal).
+                │   │   ├── app.routes.ts                                 # A. Definición de rutas de la aplicación en el navegador.
+                │   │   ├── app.spec.ts                                   # A. Archivo de pruebas unitarias para App.
+                │   │   └── app.ts                                        # A. Clase principal del componente raíz (App).
+                │   ├── index.html                                        # A. Página HTML que carga Angular. Aquí se inserta la app (<app-root></app-root>).
+                │   ├── main.server.ts                                    # A. Punto de entrada de Angular Universal para renderizado en servidor.
+                │   ├── main.ts                                           # A. Punto de entrada de la app en el navegador. Inicializa Angular y arranca AppModule.
+                │   ├── styles.css                                        # A. Estilos globales de toda la aplicación.
+                │   └── server.ts                                         # A. Archivo para configurar el servidor (Node.js + Express).   
+                ├── .editorconfig                                         # A. Reglas de estilo para editores de código (indentación, fin de línea, etc.).
+                ├── .gitignore                                            # A. Indica qué archivos/carpetas ignorar en Git (ej: node_modules).
+                ├── angular.json                                          # A. Configuración principal Angular (build, serve, rutas de assets, estilos globales).
+                ├── package-lock.json                                     # A. Versión exacta de las dependencias instaladas (bloquea versiones).
+                ├── package.json                                          # A. Lista de dependencias, scripts (ng serve, ng build, etc.) y metadatos del proyecto.
+                ├── README.md                                             # A. Documentación inicial del proyecto.
+                ├── tsconfig.app.json                                     # A. Configuración de TypeScript específica para la aplicación (src/app).
+                ├── tsconfig.json                                         # A. Configuración base de TypeScript para todo el proyecto.
+                └── tsconfig.spec.json                                    # A. Configuración de TypeScript para pruebas unitarias (Karma/Jasmine).
 
 
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

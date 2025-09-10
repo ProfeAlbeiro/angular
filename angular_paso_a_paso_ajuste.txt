@@ -2371,7 +2371,7 @@
 
             07. Ejecutar el servidor de 'angular':
 
-                    ⦿   PS C:\..\frontend> ng serve -o
+                    ⦿   PS C:\..\frontend> ng s -o
 
             08. Abrir una terminal y ubicarse en el servidor json:
 
